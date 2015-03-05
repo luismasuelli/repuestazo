@@ -57,3 +57,4 @@ target/
 *.iml
 .idea
 local_settings.py
+*.sqlite3
