@@ -2,3 +2,10 @@
     background: url('../images/bg-coming-soon.png') center center no-repeat;
     background-size: contain;
 }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
