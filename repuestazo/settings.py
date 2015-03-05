@@ -84,3 +84,8 @@ STATIC_URL = 'http://static.repuestazo.com/repuestazo/'
 STATIC_ROOT = '/home/rleiva/webapps/static/repuestazo/'
 MEDIA_URL = 'http://media.repuestazo.com/repuestazo/'
 MEDIA_ROOT = '/home/rleiva/webapps/media/repuestazo/'
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
