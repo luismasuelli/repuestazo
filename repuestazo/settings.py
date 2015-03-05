@@ -80,7 +80,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATIC_URL = 'http://static.repuestazo.com/repuestazo'
-STATIC_ROOT = '/home/rleiva/webapps/static/repuestazo'
-MEDIA_URL = 'http://media.repuestazo.com/repuestazo'
-MEDIA_ROOT = '/home/rleiva/webapps/media/repuestazo'
+STATIC_URL = 'http://static.repuestazo.com/repuestazo/'
+STATIC_ROOT = '/home/rleiva/webapps/static/repuestazo/'
+MEDIA_URL = 'http://media.repuestazo.com/repuestazo/'
+MEDIA_ROOT = '/home/rleiva/webapps/media/repuestazo/'
