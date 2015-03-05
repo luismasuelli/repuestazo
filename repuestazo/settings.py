@@ -37,7 +37,7 @@ INSTALLED_APPS = (
     # 'stock',
     # 'advertisement',
     # 'contact',
-    # 'pages',
+    'pages',
 )
 
 MIDDLEWARE_CLASSES = (
