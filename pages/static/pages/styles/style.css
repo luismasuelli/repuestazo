@@ -1,6 +1,7 @@
 #coming-soon {
     background: url('../images/bg-coming-soon.png') center center no-repeat;
     background-size: contain;
+    cursor: pointer;
 }
 
 html, body {
