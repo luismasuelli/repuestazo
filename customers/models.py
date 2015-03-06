@@ -13,7 +13,7 @@ class Contact(Trackable):
     """
 
     name = models.CharField(max_length=61, null=False, validators=[NameRegexValidator()])
-    phone_number = models.CharField(max_length=9, null=False, validators=[RegexValidator('^09\d{8}|0[2-8]\d{7}$')])
+    phone_number = models.CharField(max_length=10, null=False, validators=[RegexValidator('^09\d{8}|0[2-8]\d{7}$')])
     email = models.EmailField(null=False)
     city = models.CharField(max_length=40, null=False, validators=[NameRegexValidator(NameRegexValidator.MODE_ACCEPT_NUMBERS)])
     address = models.CharField(max_length=55, null=False, validators=[NameRegexValidator(NameRegexValidator.MODE_ALPHANUMERIC_EXTENDED)])
