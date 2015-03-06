@@ -31,7 +31,7 @@ class NameRegexValidator(AccentsAgnosticRegexValidator):
     MODE_ALPHANUMERIC = 2
     MODE_ALPHANUMERIC_EXTENDED = 3
 
-    def __init__(self, mode, *args, **kwargs):
+    def __init__(self, mode=MODE_ONLY_LETTERS, *args, **kwargs):
         try:
             super(NameRegexValidator, self).__init__([
                 r'^\s*[A-Za-z]+(\'[A-Za-z]+)?(\s+[A-Za-z]+(\'[A-Za-z]+)?)*\s*$',
