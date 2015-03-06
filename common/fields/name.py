@@ -10,6 +10,9 @@ import re
 _RX_LATIN = RegexValidator(r'^\s*[A-Za-z]+(\'[A-Za-z]+)?(\s+[A-Za-z]+(\'[A-Za-z]+)?)*\s*$',
                            message=_(u'Enter a valid name value'), code='invalid_name', flags=re.IGNORECASE)
 
+_RX_LATIN_NUMS = RegexValidator(r'^\s*([A-Za-z]+(\'[A-Za-z]+)?|\d+)(\s+([A-Za-z]+(\'[A-Za-z]+)?|\d+))*\s*$',
+                                message=_(u'Enter a valid name value'), code='invalid_name', flags=re.IGNORECASE)
+
 
 def _normalize(value):
     return ''.join(c for c in unicodedata.normalize('NFD', six.text_type(value)) if unicodedata.category(c) != 'Mn')
@@ -23,6 +26,10 @@ class NameField(CharField):
 
     default_error_messages = name_field_error_messages
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, allow_numbers=False, *args, **kwargs):
         super(NameField, self).__init__(*args, **kwargs)
-        self.validators.append(lambda v: _RX_LATIN(_normalize(v)))
+        if allow_numbers:
+            validator = lambda v: _RX_LATIN_NUMS(_normalize(v))
+        else:
+            validator = lambda v: _RX_LATIN(_normalize(v))
+        self.validators.append()
