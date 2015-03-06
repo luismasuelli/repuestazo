@@ -4,9 +4,10 @@ from django.core.validators import RegexValidator
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from common.validators.regex import NameRegexValidator
+from common.apps.track.models import Trackable
 
 
-class Contact(models.Model):
+class Contact(Trackable):
     """
     A quite basic contact request
     """
@@ -19,5 +20,6 @@ class Contact(models.Model):
     content = models.TextField(max_length=1024, null=False)
 
     class Meta:
+        abstract = False
         verbose_name = _('Contact')
         verbose_name_plural = _('Contacts')
