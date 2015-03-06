@@ -49,6 +49,12 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    )
+}
+
 ROOT_URLCONF = 'repuestazo.urls'
 
 WSGI_APPLICATION = 'repuestazo.wsgi.application'
