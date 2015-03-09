@@ -3,10 +3,72 @@
 <html>
     <head>
         <title>Repuestazo.com | Próximamente</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'pages/styles/bootstrap.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'pages/styles/bootstrap-theme.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'pages/styles/style.css' %}" />
-        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="{% static '//ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js' %}"></script>
+        <script type="text/javascript" src="{% static '//ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular-cookies.js' %}"></script>
+        <script type="text/javascript" src="{% static '//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.js' %}"></script>
+        <script type="text/javascript" src="{% static 'pages/scripts/coming-soon.js' %}"></script>
+        <script type="text/javascript">
+            angular.element(document).ready(function() {
+                window.STATIC_URL = '{{ STATIC_URL | escapejs }}';
+                window.CONTACT_URL = '{% url 'contact-send' as CONTACT_URL %}{{ CONTACT_URL | escapejs }}';
+                angular.bootstrap(document, ['Repuestazo']);
+            });
+        </script>
+        {% verbatim %}
+        <script type="text/ng-template" id="contact.us.html">
+            <form class="form-horizontal" ng-if="!success" novalidate="novalidate">
+                <div class="form-group">
+                    <label for="field-nombre" class="col-sm-2 control-label">Nombre</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control col-sm-offset-1" id="field-nombre" placeholder="Nombre" ng-model="form.name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="field-telefono" class="col-sm-2 control-label">Tel&eacute;fono</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control col-sm-offset-1" id="field-telefono" placeholder="Tel&eacute;fono" ng-model="form.phone_number">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="field-direccion" class="col-sm-2 control-label">Direcci&oacute;n</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control col-sm-offset-1" id="field-direccion" placeholder="Direcci&oacute;n" ng-model="form.address">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="field-ciudad" class="col-sm-2 control-label">Ciudad</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control col-sm-offset-1" id="field-ciudad" placeholder="Ciudad" ng-model="form.city">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="field-email" class="col-sm-2 control-label">E-mail</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control col-sm-offset-1" id="field-email" placeholder="E-mail" ng-model="form.email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="field-comentarios" class="col-sm-2 control-label">Comentarios</label>
+                    <div class="col-sm-8">
+                        <textarea class="form-control col-sm-offset-1" id="field-comentarios" placeholder="Comentarios" ng-model="form.content"></textarea>
+                    </div>
+                </div>
+                <div class="bg-danger text-danger messages-list" ng-if="errors">
+                    <div ng-repeat="error in errors track by $index">{{ error }}</div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default col-sm-offset-3" ng-click="send()">Enviar</button>
+                </div>
+            </form>
+            <div class="bg-success text-success messages-list" ng-if="success">
+                Su consulta ha sido enviada con &eacute;xito
+            </div>
+        </script>
+        {% endverbatim %}
     </head>
-    <body id="coming-soon">
-
+    <body id="coming-soon" ng-controller="ComingSoon" ng-click="contactForm()">
     </body>
 </html>

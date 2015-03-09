@@ -1,0 +1,143 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-03-09 00:09-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: common/apps/world/countries/models.py:19
+msgid "Country"
+msgstr "País"
+
+#: common/apps/world/countries/models.py:20
+msgid "Countries"
+msgstr "Países"
+
+#: common/apps/world/ec/models.py:17
+msgid "Citizen ID"
+msgstr "Cédula"
+
+#: common/apps/world/ec/models.py:18
+msgid "Passport"
+msgstr "Pasaporte"
+
+#: common/apps/world/ec/models.py:31
+msgid "Must use Ecuador as country for citizen IDs"
+msgstr "Debe elegirse Ecuador como país si se elige cédula"
+
+#: common/apps/world/ec/models.py:34
+msgid "Ecuadorean identifier ID must be 10 digits long"
+msgstr "La cédula ecuatoriana debe tener 10 carácteres de longitud"
+
+#: common/apps/world/ec/models.py:48 common/apps/world/ec/models.py:51
+#: common/apps/world/ec/models.py:54
+msgid "Invalid ecuadorean identifier"
+msgstr "Cédula ecuatoriana inválida"
+
+#: common/apps/world/ec/models.py:62
+msgid "Cannot use Ecuador as country for passports"
+msgstr "No se puede elegir Ecuador como país para pasaportes"
+
+#: common/apps/world/ec/models.py:65
+msgid "Passport must be an alphanumeric string of 6-9 characters"
+msgstr "Los pasaportes deben ser una secuencia alfanumérica entre 6 o 9 carácteres"
+
+#: customers/models.py:24
+msgid "Contact"
+msgstr "Contacto"
+
+#: customers/models.py:25
+msgid "Contacts"
+msgstr "Contactos"
+
+#traducciones al español de Django REST Framework
+
+msgid "This field may not be blank."
+msgstr "Este campo es requerido."
+
+msgid "This field may not be null."
+msgstr "Este campo no puede ser nulo."
+
+msgid "`{input}` is not a valid boolean."
+msgstr "`{input}`no es un valor lógico válido."
+
+msgid "Ensure this field has no more than {max_length} characters."
+msgstr "Este campo no debe tener más de {max_length} carácteres."
+
+msgid "Ensure this field has at least {min_length} characters."
+msgstr "Este campo no debe tener menos de {min_length} carácteres."
+
+msgid "This value does not match the required pattern."
+msgstr "Este valor no corresponde al formato requerido."
+
+msgid "\"{value}\" is not a valid UUID."
+msgstr "\"{value}\" no es un UUID válido."
+
+msgid "A valid integer is required."
+msgstr "Un número entero es requerido."
+
+msgid "A valid number is required."
+msgstr "Un número es requerido."
+
+msgid "Ensure this value is less than or equal to {max_value}."
+msgstr "Este valor debe ser menor o igual a {max_value}."
+
+msgid "Ensure this value is greater than or equal to {min_value}."
+msgstr "Este valor debe ser mayor o igual a {min_value}."
+
+msgid "String value too large"
+msgstr "Texto demasiado largo"
+
+msgid "Ensure that there are no more than {max_digits} digits in total."
+msgstr "No debe haber más de {max_digits} dígitos."
+
+msgid "Ensure that there are no more than {max_decimal_places} decimal places."
+msgstr "No debe haber más de {max_decimal_places} dígitos decimales."
+
+msgid "Ensure that there are no more than {max_whole_digits} digits before the decimal point."
+msgstr "No debe haber más de {max_whole_digits} antes del punto decimal."
+
+msgid "Datetime has wrong format. Use one of these formats instead: {format}"
+msgstr "La fecha/hora tiene un formato incorrecto. Debe usarse uno de los siguientes formatos: {format}"
+
+msgid "Date has wrong format. Use one of these formats instead: {format}"
+msgstr "La fecha tiene un formato incorrecto. Debe usarse uno de los siguientes formatos: {format}"
+
+msgid "Time has wrong format. Use one of these formats instead: {format}"
+msgstr "La hora tiene un formato incorrecto. Debe usarse uno de los siguientes formatos: {format}"
+
+msgid "Expected a datetime but got a date."
+msgstr "Se esperaba una fecha/hora, pero se recibió una fecha."
+
+msgid "Expected a date but got a datetime."
+msgstr "Se esperaba una fecha, pero se recibió una fecha/hora."
+
+msgid "`{input}` is not a valid choice."
+msgstr "`{input}` no es una elección válida."
+
+msgid "Expected a list of items but got type `{input_type}`."
+msgstr "Se esperaba una lista de elementos pero se obtuvo un tipo `{input_type}`."
+
+msgid "The submitted data was not a file. Check the encoding type on the form."
+msgstr "Los datos enviados no eran un archivo. Debe verificarse el tipo de codificación en el formulario."
+
+msgid "No filename could be determined."
+msgstr "El nombre de archivo no pudo determinarse."
+
+msgid "Ensure this filename has at most {max_length} characters (it has {length})."
+msgstr "El nombre de archivo debe tener como mucho {max_length}' carácteres (tiene {length})."
+
+msgid "Expected a dictionary of items but got type `{input_type}`"
+msgstr "Se esperaba un diccionario de elementos pero se obtuvo un tipo `{input_type}`"

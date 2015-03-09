@@ -10,3 +10,18 @@ html, body {
     width: 100%;
     height: 100%;
 }
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+.form-dialog .modal-content {
+    background-color: red;
+    padding: 8px;
+    font-weight: 500;
+    color: white
+}
+
+.messages-list {
+    padding: 12px;
+    border-radius: 6px;
+    margin: 0 15px 15px;
+}
