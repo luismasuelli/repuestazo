@@ -49,6 +49,7 @@
             $scope.modalState = 'closed';
             if ($rootScope.modalState != 'opened') {
                 $rootScope.modalState = 'opened';
+                console.log("opening ...");
                 var instance = $modal.open({
                     keyboard: true,
                     backdrop: true,
@@ -100,6 +101,8 @@
                     }]
                 });
                 instance.result.then(function(){
+                    $rootScope.modalState = 'closed';
+                }, function(){
                     $rootScope.modalState = 'closed';
                 });
             }
