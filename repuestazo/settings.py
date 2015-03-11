@@ -101,8 +101,12 @@ EMAIL_HOST_USER = 'atencion@repuestazo.com'
 EMAIL_HOST_PASSWORD = 'mail:repuestazo$2014'
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = False
-DEFAULT_FROM_EMAIL = 'atencion@repuestazo.com'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+DEFAULT_FROM_EMAIL = 'atencion@repuestazo.com'
+DEFAULT_RECIPIENTS = {
+    'contact': ['sguevara@autosierra.com.ec', 'quimelia@quimelia.com']
+}
 
 try:
     from local_settings import *
