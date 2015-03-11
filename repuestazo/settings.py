@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 Django settings for repuestazo project.
 
@@ -103,9 +104,9 @@ EMAIL_USE_TLS = False
 EMAIL_USE_SSL = False
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-DEFAULT_FROM_EMAIL = 'atencion@repuestazo.com'
+DEFAULT_FROM_NAME = u'Atención al Cliente <atencion@repuestazo.com>'
 DEFAULT_RECIPIENTS = {
-    'contact': ['luisfmasuelli@gmail.com']  # ['sguevara@autosierra.com.ec', 'quimelia@quimelia.com']
+    'contact': ['sguevara@autosierra.com.ec', 'quimelia@quimelia.com']
 }
 
 try:
