@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock title %}</title>
+    {% block head %}
+    {% endblock head %}
+    </head>
+    <body {% block body_attrs %}{% endblock body_attrs %}>
+    {% block body %}
+    {% endblock body %}
+        <p>
+            Atentamente,
+            &nbsp;&nbsp;&nbsp;&nbsp;Atenci&oacute; al cliente de repuestazo.com
+        </p>
+    </body>
+</html>
