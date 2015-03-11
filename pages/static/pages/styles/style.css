@@ -25,3 +25,39 @@ html, body {
     border-radius: 6px;
     margin: 0 15px 15px;
 }
+
+form.popup-repuestazo {
+    position: relative;
+}
+
+form.popup-repuestazo .header {
+    float: right;
+    height: 100px;
+    width: 50%;
+    overflow: visible;
+    border-bottom: 2px solid white;
+    margin-bottom: 15px;
+}
+
+form.popup-repuestazo .form-group {
+    clear: both;
+}
+
+form.popup-repuestazo button.btn {
+    background: yellow;
+    color: red;
+    border: 3px red;
+    border-radius: 6px;
+}
+
+form.popup-repuestazo #logo {
+    float: left;
+    width: 156px;
+    height: 83px;
+}
+
+form.popup-repuestazo #slogan {
+    float: right;
+    width: 260px;
+    height: 40px;
+}

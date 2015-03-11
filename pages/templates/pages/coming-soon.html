@@ -17,9 +17,12 @@
                 angular.bootstrap(document, ['Repuestazo']);
             });
         </script>
-        {% verbatim %}
         <script type="text/ng-template" id="contact.us.html">
-            <form class="form-horizontal" ng-if="!success" novalidate="novalidate">
+            <form class="form-horizontal popup-repuestazo" ng-if="!success" novalidate="novalidate">
+                <img id="logo" src="{{ STATIC_URL }}pages/images/logo-formulario.png" />
+                <div class="header">
+                    <img id="slogan" src="{{ STATIC_URL }}pages/images/slogan-formulario.png" />
+                </div>
                 <div class="form-group">
                     <label for="field-nombre" class="col-sm-2 control-label">Nombre</label>
                     <div class="col-sm-8">
@@ -56,9 +59,11 @@
                         <textarea class="form-control col-sm-offset-1" id="field-comentarios" placeholder="Comentarios" ng-model="form.content"></textarea>
                     </div>
                 </div>
+                {% verbatim %}
                 <div class="bg-danger text-danger messages-list" ng-if="errors">
                     <div ng-repeat="error in errors track by $index">{{ error }}</div>
                 </div>
+                {% endverbatim %}
                 <div class="form-group">
                     <button class="btn btn-default col-sm-offset-3" ng-click="send()">Enviar</button>
                 </div>
@@ -67,7 +72,6 @@
                 Su consulta ha sido enviada con &eacute;xito
             </div>
         </script>
-        {% endverbatim %}
     </head>
     <body id="coming-soon" ng-controller="ComingSoon" ng-click="contactForm()">
     </body>
