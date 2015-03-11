@@ -105,7 +105,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 DEFAULT_FROM_EMAIL = 'atencion@repuestazo.com'
 DEFAULT_RECIPIENTS = {
-    'contact': ['sguevara@autosierra.com.ec', 'quimelia@quimelia.com']
+    'contact': ['luisfmasuelli@gmail.com'] #['sguevara@autosierra.com.ec', 'quimelia@quimelia.com']
 }
 
 try:
