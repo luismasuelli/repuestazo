@@ -93,6 +93,17 @@ STATIC_ROOT = '/home/rleiva/webapps/static/repuestazo/'
 MEDIA_URL = 'http://media.repuestazo.com/repuestazo/'
 MEDIA_ROOT = '/home/rleiva/webapps/media/repuestazo/'
 
+# email
+
+EMAIL_HOST = 'smtp.webfaction.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'atencion@repuestazo.com'
+EMAIL_HOST_PASSWORD = 'mail:repuestazo$2014'
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = False
+DEFAULT_FROM_EMAIL = 'atencion@repuestazo.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 try:
     from local_settings import *
 except ImportError:

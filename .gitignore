@@ -59,3 +59,5 @@ target/
 local_settings.py
 *.sqlite3
 .ignored
+
+tmp/
