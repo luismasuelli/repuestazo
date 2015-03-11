@@ -97,7 +97,7 @@ MEDIA_ROOT = '/home/rleiva/webapps/media/repuestazo/'
 
 EMAIL_HOST = 'smtp.webfaction.com'
 EMAIL_PORT = 25
-EMAIL_HOST_USER = 'atencion@repuestazo.com'
+EMAIL_HOST_USER = 'atencion'
 EMAIL_HOST_PASSWORD = 'mail:repuestazo$2014'
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = False
@@ -105,7 +105,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 DEFAULT_FROM_EMAIL = 'atencion@repuestazo.com'
 DEFAULT_RECIPIENTS = {
-    'contact': ['luisfmasuelli@gmail.com'] #['sguevara@autosierra.com.ec', 'quimelia@quimelia.com']
+    'contact': ['luisfmasuelli@gmail.com']  # ['sguevara@autosierra.com.ec', 'quimelia@quimelia.com']
 }
 
 try:
