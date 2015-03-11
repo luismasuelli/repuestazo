@@ -1,0 +1,14 @@
+{% extends "customers/mail.base.html" %}
+
+{% block body %}
+    Una nueva solicitud ha llegado al sistema. Los detalles de la misma se agregan a continuación:
+
+    Nombre: {{ name | safe }}
+    Número de teléfono: {{ phone_number | safe }}
+    Dirección e-mail: {{ email | safe }}
+    Ciudad: {{ city | safe }}
+    Domicilio: {{ address | safe }}
+
+    Mensaje:
+    {{ content }}
+{% endblock body %}
