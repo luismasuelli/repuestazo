@@ -45,6 +45,26 @@ msgstr "Ancho de banner"
 msgid "Banner height"
 msgstr "Alto de banner"
 
+msgid "Banner type"
+msgstr "Tipo de banner"
+
+msgid "Banner types"
+msgstr "Tipos de banner"
+
+msgid "Banner"
+msgstr "Banner"
+
+msgid "Banners"
+msgstr "Banners"
+
+#, python-format
+msgid 'Image width (currently: %d) must be the expected in the banner type (currently: %d)'
+msgstr 'El ancho de la imagen (actualmente: %(current)d) debe ser el esperado en el tipo de banner (actualmente: %(expected)d)'
+
+#, python-format
+msgid 'Image height (currently: %d) must be the expected in the banner type (currently: %d)'
+msgstr 'El alto de la imagen (actualmente: %(current)d) debe ser el esperado en el tipo de banner (actualmente: %(expected)d)'
+
 #: common/apps/world/countries/models.py:19
 msgid "Country"
 msgstr "País"

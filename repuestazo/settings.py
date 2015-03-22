@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'customers',
     'pages',
+    'advertisement',
 )
 
 MIDDLEWARE_CLASSES = (
