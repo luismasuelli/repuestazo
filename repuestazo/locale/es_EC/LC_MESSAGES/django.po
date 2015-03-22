@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-09 00:09-0500\n"
+"POT-Creation-Date: 2015-03-22 16:34-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,34 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: advertisement/models.py:10
+msgid "Code"
+msgstr "Código"
+
+#: advertisement/models.py:11
+msgid "Expected banner width"
+msgstr "Ancho esperado de banner"
+
+#: advertisement/models.py:12
+msgid "Expected banner height"
+msgstr "Alto esperado de banner"
+
+#: advertisement/models.py:13
+msgid "Name"
+msgstr "Nombre"
+
+#: advertisement/models.py:14
+msgid "Description"
+msgstr "Descripción"
+
+#: advertisement/models.py:22
+msgid "Banner width"
+msgstr "Ancho de banner"
+
+#: advertisement/models.py:23
+msgid "Banner height"
+msgstr "Alto de banner"
 
 #: common/apps/world/countries/models.py:19
 msgid "Country"
@@ -52,7 +80,7 @@ msgstr "No se puede elegir Ecuador como país para pasaportes"
 
 #: common/apps/world/ec/models.py:65
 msgid "Passport must be an alphanumeric string of 6-9 characters"
-msgstr "Los pasaportes deben ser una secuencia alfanumérica entre 6 o 9 carácteres"
+msgstr "Los pasaportes deben ser una secuencia alfanumérica entre 6 y 9 carácteres"
 
 #: customers/models.py:24
 msgid "Contact"
@@ -62,82 +90,288 @@ msgstr "Contacto"
 msgid "Contacts"
 msgstr "Contactos"
 
-#traducciones al español de Django REST Framework
+#: rest_framework/authtoken/serializers.py:20
+msgid "User account is disabled."
+msgstr "La cuenta de usuario está desactivada."
 
-msgid "This field may not be blank."
+#: rest_framework/authtoken/serializers.py:23
+msgid "Unable to log in with provided credentials."
+msgstr "No se puede iniciar sesión con las credenciales provistas."
+
+#: rest_framework/authtoken/serializers.py:26
+msgid "Must include \"username\" and \"password\""
+msgstr "Debe incluir \"username\" y \"password\""
+
+#: rest_framework/exceptions.py:39
+msgid "A server error occured"
+msgstr "Ocurrió un error en el servidor"
+
+#: rest_framework/exceptions.py:74
+msgid "Malformed request."
+msgstr "Petición mal formada."
+
+#: rest_framework/exceptions.py:79
+msgid "Incorrect authentication credentials."
+msgstr "Credenciales de autenticación incorrectas."
+
+#: rest_framework/exceptions.py:84
+msgid "Authentication credentials were not provided."
+msgstr "Las credenciales de autenticación no fueron provistas."
+
+#: rest_framework/exceptions.py:89
+msgid "You do not have permission to perform this action."
+msgstr "No tiene permisos para realizar esta acción."
+
+#: rest_framework/exceptions.py:94
+#, python-format
+msgid "Method '%s' not allowed."
+msgstr "Método '%s' no permitido."
+
+#: rest_framework/exceptions.py:105
+msgid "Could not satisfy the request Accept header"
+msgstr "No se puede satisfacer el encabezado Accept de la petición"
+
+#: rest_framework/exceptions.py:117
+#, python-format
+msgid "Unsupported media type '%s' in request."
+msgstr "Tipo de contenido '%s' no soportado en petición."
+
+#: rest_framework/exceptions.py:128
+msgid "Request was throttled."
+msgstr "La petición fue detenida debido a regulación por tiempo."
+
+#: rest_framework/exceptions.py:130
+#, python-format
+msgid "Expected available in %(wait)d second."
+msgid_plural "Expected available in %(wait)d seconds."
+msgstr[0] "Disponible en %(wait)d segundo."
+msgstr[1] "Disponible en %(wait)d segundos."
+
+#: rest_framework/fields.py:153 rest_framework/relations.py:132
+#: rest_framework/relations.py:156 rest_framework/validators.py:77
+#: rest_framework/validators.py:155
+msgid "This field is required."
 msgstr "Este campo es requerido."
 
+#: rest_framework/fields.py:154
 msgid "This field may not be null."
 msgstr "Este campo no puede ser nulo."
 
+#: rest_framework/fields.py:487 rest_framework/fields.py:515
+#, python-brace-format
 msgid "`{input}` is not a valid boolean."
 msgstr "`{input}`no es un valor lógico válido."
 
+#: rest_framework/fields.py:550
+msgid "This field may not be blank."
+msgstr "Este campo es requerido."
+
+#: rest_framework/fields.py:551 rest_framework/fields.py:1325
+#, python-brace-format
 msgid "Ensure this field has no more than {max_length} characters."
 msgstr "Este campo no debe tener más de {max_length} carácteres."
 
+#: rest_framework/fields.py:552
+#, python-brace-format
 msgid "Ensure this field has at least {min_length} characters."
 msgstr "Este campo no debe tener menos de {min_length} carácteres."
 
+#: rest_framework/fields.py:587
+msgid "Enter a valid email address."
+msgstr "Ingrese una dirección de correo electrónico válida."
+
+#: rest_framework/fields.py:604
 msgid "This value does not match the required pattern."
 msgstr "Este valor no corresponde al formato requerido."
 
+#: rest_framework/fields.py:615
+msgid "Enter a valid 'slug' consisting of letters, numbers, underscores or hyphens."
+msgstr "Ingrese un 'slug' consistente en letras, números, guión bajo, y/o guión medio."
+
+#: rest_framework/fields.py:627
+msgid "Enter a valid URL."
+msgstr "Ingrese una URL válida."
+
+#: rest_framework/fields.py:638
+#, python-brace-format
 msgid "\"{value}\" is not a valid UUID."
 msgstr "\"{value}\" no es un UUID válido."
 
+#: rest_framework/fields.py:657
 msgid "A valid integer is required."
 msgstr "Un número entero es requerido."
 
-msgid "A valid number is required."
-msgstr "Un número es requerido."
-
+#: rest_framework/fields.py:658 rest_framework/fields.py:692
+#: rest_framework/fields.py:725
+#, python-brace-format
 msgid "Ensure this value is less than or equal to {max_value}."
 msgstr "Este valor debe ser menor o igual a {max_value}."
 
+#: rest_framework/fields.py:659 rest_framework/fields.py:693
+#: rest_framework/fields.py:726
+#, python-brace-format
 msgid "Ensure this value is greater than or equal to {min_value}."
 msgstr "Este valor debe ser mayor o igual a {min_value}."
 
+#: rest_framework/fields.py:660 rest_framework/fields.py:694
+#: rest_framework/fields.py:730
 msgid "String value too large"
 msgstr "Texto demasiado largo"
 
+#: rest_framework/fields.py:691 rest_framework/fields.py:724
+msgid "A valid number is required."
+msgstr "Un número es requerido."
+
+#: rest_framework/fields.py:727
+#, python-brace-format
 msgid "Ensure that there are no more than {max_digits} digits in total."
 msgstr "No debe haber más de {max_digits} dígitos."
 
+#: rest_framework/fields.py:728
+#, python-brace-format
 msgid "Ensure that there are no more than {max_decimal_places} decimal places."
 msgstr "No debe haber más de {max_decimal_places} dígitos decimales."
 
+#: rest_framework/fields.py:729
+#, python-brace-format
 msgid "Ensure that there are no more than {max_whole_digits} digits before the decimal point."
 msgstr "No debe haber más de {max_whole_digits} antes del punto decimal."
 
+#: rest_framework/fields.py:813
+#, python-brace-format
 msgid "Datetime has wrong format. Use one of these formats instead: {format}"
 msgstr "La fecha/hora tiene un formato incorrecto. Debe usarse uno de los siguientes formatos: {format}"
 
-msgid "Date has wrong format. Use one of these formats instead: {format}"
-msgstr "La fecha tiene un formato incorrecto. Debe usarse uno de los siguientes formatos: {format}"
-
-msgid "Time has wrong format. Use one of these formats instead: {format}"
-msgstr "La hora tiene un formato incorrecto. Debe usarse uno de los siguientes formatos: {format}"
-
+#: rest_framework/fields.py:814
 msgid "Expected a datetime but got a date."
 msgstr "Se esperaba una fecha/hora, pero se recibió una fecha."
 
+#: rest_framework/fields.py:878
+#, python-brace-format
+msgid "Date has wrong format. Use one of these formats instead: {format}"
+msgstr "La fecha tiene un formato incorrecto. Debe usarse uno de los siguientes formatos: {format}"
+
+#: rest_framework/fields.py:879
 msgid "Expected a date but got a datetime."
 msgstr "Se esperaba una fecha, pero se recibió una fecha/hora."
 
+#: rest_framework/fields.py:936
+#, python-brace-format
+msgid "Time has wrong format. Use one of these formats instead: {format}"
+msgstr "La hora tiene un formato incorrecto. Debe usarse uno de los siguientes formatos: {format}"
+
+#: rest_framework/fields.py:992 rest_framework/fields.py:1036
+#, python-brace-format
 msgid "`{input}` is not a valid choice."
 msgstr "`{input}` no es una elección válida."
 
+#: rest_framework/fields.py:1037 rest_framework/serializers.py:480
+#: rest_framework/fields.py:1152
+#, python-brace-format
 msgid "Expected a list of items but got type `{input_type}`."
 msgstr "Se esperaba una lista de elementos pero se obtuvo un tipo `{input_type}`."
 
+#: rest_framework/fields.py:1067
+msgid "No file was submitted."
+msgstr "El archivo no fue cargado."
+
+#: rest_framework/fields.py:1068
 msgid "The submitted data was not a file. Check the encoding type on the form."
 msgstr "Los datos enviados no eran un archivo. Debe verificarse el tipo de codificación en el formulario."
 
+#: rest_framework/fields.py:1069
 msgid "No filename could be determined."
 msgstr "El nombre de archivo no pudo determinarse."
 
+#: rest_framework/fields.py:1070
+msgid "The submitted file is empty."
+msgstr "El archivo cargado está vacío."
+
+#: rest_framework/fields.py:1071
+#, python-brace-format
 msgid "Ensure this filename has at most {max_length} characters (it has {length})."
 msgstr "El nombre de archivo debe tener como mucho {max_length}' carácteres (tiene {length})."
 
+#: rest_framework/fields.py:1113 rest_framework/fields.py:1037
+#: rest_framework/serializers.py:480
+msgid "Upload a valid image. The file you uploaded was either not an image or a corrupted image."
+msgstr "Debe cargar una imagen válida. El archivo cargado no es una imagen o está dañado."
+
+#: rest_framework/fields.py:1189
+#, python-brace-format
 msgid "Expected a dictionary of items but got type `{input_type}`"
 msgstr "Se esperaba un diccionario de elementos pero se obtuvo un tipo `{input_type}`"
+
+#: rest_framework/generics.py:122
+msgid "Page is not 'last', nor can it be converted to an int."
+msgstr "La página no es 'last', ni puede convertirse a un número entero."
+
+#: rest_framework/generics.py:126
+#, python-format
+msgid "Invalid page (%(page_number)s): %(message)s"
+msgstr "Página inválida (%(page_number)s): %(message)s"
+
+#: rest_framework/relations.py:133
+#, python-brace-format
+msgid "Invalid pk '{pk_value}' - object does not exist."
+msgstr "Valor inválido de clave primaria '{pk_value}' - el objeto no existe."
+
+#: rest_framework/relations.py:134
+#, python-brace-format
+msgid "Incorrect type. Expected pk value, received {data_type}."
+msgstr "Tipo incorrecto. Se esperaba un valor para la clave primaria, se obtuvo {data_type}."
+
+#: rest_framework/relations.py:157
+msgid "Invalid hyperlink - No URL match"
+msgstr "Hipervínculo inválido - no hay encaje para la URL."
+
+#: rest_framework/relations.py:158
+msgid "Invalid hyperlink - Incorrect URL match."
+msgstr "Hipervínculo inválido - Encaje incorrecto para la URL."
+
+#: rest_framework/relations.py:159
+msgid "Invalid hyperlink - Object does not exist."
+msgstr "Hipervínculo inválido - El objeto no existe."
+
+#: rest_framework/relations.py:160
+#, python-brace-format
+msgid "Incorrect type. Expected URL string, received {data_type}."
+msgstr "Tipo incorrecto. Se esperaba una URL, se obtuvo {data_type}."
+
+#: rest_framework/relations.py:295
+#, python-brace-format
+msgid "Object with {slug_name}={value} does not exist."
+msgstr "No existe ningún objeto con {slug_name}={value}."
+
+#: rest_framework/relations.py:296
+msgid "Invalid value."
+msgstr "Valor inválido"
+
+#: rest_framework/serializers.py:299
+#, fuzzy, python-brace-format
+msgid "Invalid data. Expected a dictionary, but got {datatype}."
+msgstr "Datos inválidos. Se esperaba un diccionario pero se obtuvo {datatype}."
+
+#: rest_framework/validators.py:22
+msgid "This field must be unique."
+msgstr "Este campo debe ser único."
+
+#: rest_framework/validators.py:76
+#, python-brace-format
+msgid "The fields {field_names} must make a unique set."
+msgstr "Los campos {field_names} deben hacer una combinación única."
+
+#: rest_framework/validators.py:219
+#, python-brace-format
+msgid "This field must be unique for the \"{date_field}\" date."
+msgstr "Este campo debe ser único para el día de \"{date_field}\"."
+
+#: rest_framework/validators.py:234
+#, python-brace-format
+msgid "This field must be unique for the \"{date_field}\" month."
+msgstr "Este campo debe ser único para el mes de \"{date_field}\"."
+
+#: rest_framework/validators.py:247
+#, python-brace-format
+msgid "This field must be unique for the \"{date_field}\" year."
+msgstr "Este campo debe ser único para el año de \"{date_field}\"."
