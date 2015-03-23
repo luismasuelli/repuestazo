@@ -95,6 +95,12 @@ msgstr "Imagen de marquesina"
 msgid "Reel images"
 msgstr "Imágenes de marquesina"
 
+msgid "Reel image width"
+msgstr "Ancho de imagen de marquesina"
+
+msgid "Reel image height"
+msgstr "Alto de imagen de marquesina"
+
 msgid "Sequence"
 msgstr "Secuencia"
 

@@ -118,6 +118,9 @@ class ReelImage(Trackable):
     sequence = models.PositiveIntegerField(verbose_name=_(u'Sequence'), null=False, validators=[MinValueValidator(1)])
     name = models.CharField(verbose_name=_(u'Name'), max_length=30, null=False)
     description = models.CharField(verbose_name=_(u'Description'), max_length=100, null=False)
+    width = models.PositiveIntegerField(verbose_name=_(u'Reel image width'), null=False, editable=False)
+    height = models.PositiveIntegerField(verbose_name=_(u'Reel image height'), null=False, editable=False)
+    image = models.ImageField(upload_to='reel', null=False, height_field='height', width_field='width')
 
     def clean(self):
         """
