@@ -5,9 +5,10 @@ from django.db.models import Max
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
+from common.apps.track.models import Trackable
 
 
-class BannerType(models.Model):
+class BannerType(Trackable):
     """
     Define un tipo de banner con su descripcion y dimensiones.
     """
@@ -24,7 +25,7 @@ class BannerType(models.Model):
         verbose_name_plural = _(u'Banner types')
 
 
-class Banner(models.Model):
+class Banner(Trackable):
     """
     Define un banner, ligado al tipo de banner, validando dimensiones.
     """
@@ -54,7 +55,7 @@ class Banner(models.Model):
         verbose_name_plural = _(u'Banners')
 
 
-class ReelType(models.Model):
+class ReelType(Trackable):
     """
     Define un tipo de reel con su descripcion y dimensiones.
     """
@@ -82,7 +83,7 @@ class ReelQuerySet(models.QuerySet):
         return self.annotate(number_of_images=models.Count('image_list')).exclude(number_of_images=0)
 
 
-class Reel(models.Model):
+class Reel(Trackable):
     """
     Define un reel, ligado a un tipo de reel.
     """
@@ -108,7 +109,7 @@ class Reel(models.Model):
         verbose_name_plural = _(u'Reels')
 
 
-class ReelImage(models.Model):
+class ReelImage(Trackable):
     """
     Define una imagen de un reel, validando sus dimensiones.
     """
