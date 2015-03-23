@@ -60,9 +60,26 @@ class Migration(migrations.Migration):
             unique_together=set([('code',)]),
         ),
         migrations.CreateModel(
+            name='ReelType',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('code', models.CharField(max_length=10, verbose_name='Code')),
+                ('width', models.PositiveIntegerField(help_text='Each image in each reel with this type must have this width', verbose_name='Expected reel width')),
+                ('height', models.PositiveIntegerField(help_text='Each image in each reel with this type must have this height', verbose_name='Expected reel height')),
+                ('name', models.CharField(max_length=30, verbose_name='Name')),
+                ('description', models.CharField(max_length=100, verbose_name='Description')),
+            ],
+            options={
+                'verbose_name': 'Reel type',
+                'verbose_name_plural': 'Reel types',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
             name='Reel',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('reel_type', models.ForeignKey(verbose_name='Reel type', to='advertisement.ReelType')),
                 ('code', models.CharField(max_length=10, verbose_name='Code')),
                 ('name', models.CharField(max_length=30, verbose_name='Name')),
                 ('description', models.CharField(max_length=100, verbose_name='Description')),
@@ -81,26 +98,13 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=30, verbose_name='Name')),
                 ('description', models.CharField(max_length=100, verbose_name='Description')),
                 ('reel', models.ForeignKey(related_name='image_list', verbose_name='Reel', to='advertisement.Reel')),
+                ('height', models.PositiveIntegerField(verbose_name='Reel image height', editable=False)),
+                ('width', models.PositiveIntegerField(verbose_name='Reel image width', editable=False)),
+                ('image', models.ImageField(default=None, height_field=b'height', width_field=b'width', upload_to=b'reel'))
             ],
             options={
                 'verbose_name': 'Reel image',
                 'verbose_name_plural': 'Reel images',
-            },
-            bases=(models.Model,),
-        ),
-        migrations.CreateModel(
-            name='ReelType',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('code', models.CharField(max_length=10, verbose_name='Code')),
-                ('width', models.PositiveIntegerField(help_text='Each image in each reel with this type must have this width', verbose_name='Expected reel width')),
-                ('height', models.PositiveIntegerField(help_text='Each image in each reel with this type must have this height', verbose_name='Expected reel height')),
-                ('name', models.CharField(max_length=30, verbose_name='Name')),
-                ('description', models.CharField(max_length=100, verbose_name='Description')),
-            ],
-            options={
-                'verbose_name': 'Reel type',
-                'verbose_name_plural': 'Reel types',
             },
             bases=(models.Model,),
         ),
@@ -111,12 +115,6 @@ class Migration(migrations.Migration):
         migrations.AlterUniqueTogether(
             name='reelimage',
             unique_together=set([('reel', 'sequence')]),
-        ),
-        migrations.AddField(
-            model_name='reel',
-            name='reel_type',
-            field=models.ForeignKey(verbose_name='Reel type', to='advertisement.ReelType'),
-            preserve_default=True,
         ),
         migrations.AlterUniqueTogether(
             name='reel',
@@ -197,23 +195,5 @@ class Migration(migrations.Migration):
             name='sequence',
             field=models.PositiveIntegerField(verbose_name='Sequence', validators=[django.core.validators.MinValueValidator(1)]),
             preserve_default=True,
-        ),
-        migrations.AddField(
-            model_name='reelimage',
-            name='height',
-            field=models.PositiveIntegerField(default=0, verbose_name='Reel image height', editable=False),
-            preserve_default=False,
-        ),
-        migrations.AddField(
-            model_name='reelimage',
-            name='image',
-            field=models.ImageField(default=None, height_field=b'height', width_field=b'width', upload_to=b'reel'),
-            preserve_default=False,
-        ),
-        migrations.AddField(
-            model_name='reelimage',
-            name='width',
-            field=models.PositiveIntegerField(default=0, verbose_name='Reel image width', editable=False),
-            preserve_default=False,
         ),
     ]
