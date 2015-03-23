@@ -8,7 +8,7 @@ class BannerType(models.Model):
     Define un tipo de banner con su descripcion y dimensiones.
     """
 
-    code = models.CharField(verbose_name=_(u'Code'),  max_length=10)
+    code = models.CharField(verbose_name=_(u'Code'),  max_length=10, null=False)
     width = models.PositiveIntegerField(verbose_name=_(u'Expected banner width'), null=False)
     height = models.PositiveIntegerField(verbose_name=_(u'Expected banner height'), null=False)
     name = models.CharField(verbose_name=_(u'Name'), max_length=30, null=False)
@@ -25,7 +25,7 @@ class Banner(models.Model):
     Define un banner, ligado al tipo de banner, validando dimensiones.
     """
 
-    banner_type = models.ForeignKey(BannerType)
+    banner_type = models.ForeignKey(BannerType, null=False, verbose_name=_(u'Banner type'))
     code = models.SlugField(verbose_name=_(u'Code'), max_length=10, null=False)
     name = models.CharField(verbose_name=_(u'Name'), max_length=30, null=False)
     description = models.CharField(verbose_name=_(u'Description'), max_length=100, null=False)
@@ -48,3 +48,88 @@ class Banner(models.Model):
         unique_together = (('code',),)
         verbose_name = _(u'Banner')
         verbose_name_plural = _(u'Banners')
+
+
+class ReelType(models.Model):
+    """
+    Define un tipo de reel con su descripcion y dimensiones.
+    """
+
+    code = models.CharField(verbose_name=_(u'Code'), max_length=10, null=False)
+    width = models.PositiveIntegerField(verbose_name=_(u'Expected reel width'), null=False,
+                                        help_text=_(u'Each image in each reel with this type must have this width'))
+    height = models.PositiveIntegerField(verbose_name=_(u'Expected reel height'), null=False,
+                                         help_text=_(u'Each image in each reel with this type must have this height'))
+    name = models.CharField(verbose_name=_(u'Name'), max_length=30, null=False)
+    description = models.CharField(verbose_name=_(u'Description'), max_length=100, null=False)
+
+    class Meta:
+        unique_together = (('code',),)
+        verbose_name = _(u'Reel type')
+        verbose_name_plural = _(u'Reel types')
+
+
+class ReelQuerySet(models.QuerySet):
+    """
+    Permite listar reels que se encuentran listos (es decir: se excluyen los que no tienen imagenes cargadas).
+    """
+
+    def ready(self):
+        return self.annotate(number_of_images=models.Count('image_list')).exclude(number_of_images=0)
+
+
+class Reel(models.Model):
+    """
+    Define un reel, ligado a un tipo de reel.
+    """
+
+    reel_type = models.ForeignKey(ReelType, null=False, verbose_name=_(u'Reel type'))
+    code = models.CharField(verbose_name=_(u'Code'), max_length=10, null=False)
+    name = models.CharField(verbose_name=_(u'Name'), max_length=30, null=False)
+    description = models.CharField(verbose_name=_(u'Description'), max_length=100, null=False)
+
+    #manager personalizado
+    objects = ReelQuerySet.as_manager()
+
+    def ready(self):
+        """
+        Determina si puede ser mostrado (es decir: si tiene imagenes).
+        """
+
+        return self.image_list.exists()
+
+    class Meta:
+        unique_together = (('code',),)
+        verbose_name = _(u'Reel')
+        verbose_name_plural = _(u'Reels')
+
+
+class ReelImage(models.Model):
+    """
+    Define una imagen de un reel, validando sus dimensiones.
+    """
+
+    reel = models.ForeignKey(Reel, null=False, verbose_name=_(u'Reel'), related_name='image_list')
+    sequence = models.PositiveIntegerField(verbose_name=_(u'Sequence'), null=False)
+    name = models.CharField(verbose_name=_(u'Name'), max_length=30, null=False)
+    description = models.CharField(verbose_name=_(u'Description'), max_length=100, null=False)
+
+    def clean(self):
+        """
+        Controla que las dimensiones encajen como debe ser, contra el tipo.
+        """
+
+        try:
+            if self.width != self.reel.reel_type.width:
+                raise ValidationError(_(u'Reel image width (currently: %(current)d) must be the expected in the reel '
+                                        u'type (currently: %(expected)d)') % {'current': self.width, 'expected': self.reel.reel_type.width})
+            if self.height != self.reel.reel_type.height:
+                raise ValidationError(_(u'Reel image height (currently: %(current)d) must be the expected in the reel '
+                                        u'type (currently: %(expected)d)') % {'current': self.height, 'expected': self.reel.reel_type.height})
+        except Reel.DoesNotExist:
+            pass
+
+    class Meta:
+        unique_together = (('reel', 'sequence'),)
+        verbose_name = _(u'Reel image')
+        verbose_name_plural = _(u'Reel images')
