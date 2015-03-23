@@ -1,5 +1,9 @@
 from django.core.exceptions import ValidationError
+from django.core.validators import MinValueValidator
 from django.db import models
+from django.db.models import Max
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -110,7 +114,7 @@ class ReelImage(models.Model):
     """
 
     reel = models.ForeignKey(Reel, null=False, verbose_name=_(u'Reel'), related_name='image_list')
-    sequence = models.PositiveIntegerField(verbose_name=_(u'Sequence'), null=False)
+    sequence = models.PositiveIntegerField(verbose_name=_(u'Sequence'), null=False, validators=[MinValueValidator(1)])
     name = models.CharField(verbose_name=_(u'Name'), max_length=30, null=False)
     description = models.CharField(verbose_name=_(u'Description'), max_length=100, null=False)
 
@@ -130,6 +134,22 @@ class ReelImage(models.Model):
             pass
 
     class Meta:
+        ordering = ('reel', 'sequence')
         unique_together = (('reel', 'sequence'),)
         verbose_name = _(u'Reel image')
         verbose_name_plural = _(u'Reel images')
+
+
+@receiver(pre_save, sender=ReelImage)
+def before_save_reel_image(sender, **kwargs):
+    """
+    Asigna un numero de secuencia automaticamente si es que no lo tiene.
+    """
+    instance = kwargs['instance']
+    if not instance.sequence:
+        sequence = 1
+        for obj in instance.reel.all():
+            if obj.sequence != sequence:
+                break
+            sequence += 1
+        instance.sequence = sequence
