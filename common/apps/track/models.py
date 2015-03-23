@@ -15,7 +15,6 @@ class Trackable(models.Model):
     class Meta:
         abstract = True
 
-
-@receiver(pre_save, sender=Trackable)
-def _save(sender, **kwargs):
-    kwargs['instance'].updated_on = now()
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        self.updated_on = now()
+        return super(Trackable, self).save(force_insert, force_update, using, update_fields)
