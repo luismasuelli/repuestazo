@@ -5,6 +5,5 @@ urlpatterns = patterns('',
     url(r'', include('pages.urls')),
     url(r'^customers/', include('customers.urls')),
     url(r'^ads/', include('advertisement.urls')),
-    # url(r'^ads/', include('advertisement.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
