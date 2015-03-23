@@ -76,10 +76,14 @@ class ReelType(Trackable):
 
 class ReelQuerySet(models.QuerySet):
     """
-    Permite listar reels que se encuentran listos (es decir: se excluyen los que no tienen imagenes cargadas).
+    Permite listar marquesinas que se encuentran listas (es decir: se excluyen las que no tienen imagenes cargadas).
     """
 
     def ready(self):
+        """
+        Excluimos las marquesinas que no tienen al menos una imagen cargada.
+        """
+
         return self.annotate(number_of_images=models.Count('image_list')).exclude(number_of_images=0)
 
 
