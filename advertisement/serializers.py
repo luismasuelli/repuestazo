@@ -15,7 +15,7 @@ class ReelSerializer(ModelSerializer):
 
         class Meta:
             model = ReelImage
-            exclude = ('reel', 'created_on', 'updated_on')
+            exclude = ('sequence', 'name', 'description', 'image', 'height', 'width', 'target')
 
     image_list = InlineReelImageSerializer()
 

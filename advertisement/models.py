@@ -37,6 +37,8 @@ class Banner(Trackable):
     width = models.PositiveIntegerField(verbose_name=_(u'Banner width'), null=False, editable=False)
     height = models.PositiveIntegerField(verbose_name=_(u'Banner height'), null=False, editable=False)
     image = models.ImageField(upload_to='banner', null=False, height_field='height', width_field='width')
+    target = models.URLField(verbose_name=_(u'Target'), help_text=_(u'If set, the banner becomes a link'),
+                             null=True, blank=True)
 
     def clean(self):
         try:
@@ -96,9 +98,22 @@ class Reel(Trackable):
     code = models.CharField(verbose_name=_(u'Code'), max_length=10, null=False)
     name = models.CharField(verbose_name=_(u'Name'), max_length=30, null=False)
     description = models.CharField(verbose_name=_(u'Description'), max_length=100, null=False)
+    link_default = models.URLField(verbose_name=_(u'Default target'), help_text=_(u'Default target URL for reel images'),
+                                   null=True, blank=True)
+    link_prevails = models.BooleanField(default=False, verbose_name=_(u'Prevailing target'), null=False,
+                                        help_text=_(u'Tells whether clicking any reel image will always make use '
+                                                    u'of the default target instead of following the image\'s critera. '
+                                                    u'Such criterion is only effective when the default target is set'))
 
     #manager personalizado
     objects = ReelQuerySet.as_manager()
+
+    def make_link(self, url):
+        """
+        Creates a link given the children image's link. It considers those by "or" operation, but
+          with different "prevail" order for the calculation.
+        """
+        return self.link_default or url if self.link_prevails else url or self.link_default
 
     def ready(self):
         """
@@ -125,6 +140,21 @@ class ReelImage(Trackable):
     width = models.PositiveIntegerField(verbose_name=_(u'Reel image width'), null=False, editable=False)
     height = models.PositiveIntegerField(verbose_name=_(u'Reel image height'), null=False, editable=False)
     image = models.ImageField(upload_to='reel', null=False, height_field='height', width_field='width')
+    link_own = models.URLField(verbose_name=_(u'Target'), null=True, blank=True,
+                               help_text=_(u'A reel image will become a link if it has a value in this field, or the '
+                                           u'owner reel has something in the default target field. If neither of those '
+                                           u'cases occur, the reel image will not be a link'))
+
+    @property
+    def target(self):
+        """
+        Obtiene la URL para la cual se transformara en un enlace.
+        """
+
+        try:
+            return self.reel.make_link(self.link_own)
+        except Reel.DoesNotExist:
+            return None
 
     def clean(self):
         """
