@@ -14,7 +14,7 @@ class ReplacementAdmin(ModelAdmin):
 
     def get_urls(self):
         return super(ReplacementAdmin, self).get_urls() + patterns('',
-            url(r'^upload/$', self.admin_site.admin_url(self.upload_replacements), name='stock_replacement_xlsupload')
+            url(r'^upload/$', self.admin_site.admin_view(self.upload_replacements), name='stock_replacement_xlsupload')
         )
 
     def upload_replacements(self, request):
