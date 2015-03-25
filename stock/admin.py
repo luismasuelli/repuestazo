@@ -10,9 +10,11 @@ from .forms import UploadReplacementsForm
 
 class ReplacementAdmin(ModelAdmin):
 
+    change_list_template = 'stock/changelist.html'
+
     def get_urls(self):
         return super(ReplacementAdmin, self).get_urls() + patterns('',
-            url(r'^upload/$', self.admin_site.admin_url(self.upload_replacements))
+            url(r'^upload/$', self.admin_site.admin_url(self.upload_replacements), name='stock_replacement_xlsupload')
         )
 
     def upload_replacements(self, request):
@@ -29,7 +31,7 @@ class ReplacementAdmin(ModelAdmin):
                 self.message_user(request, _(u'An error occurred while loading the replacements file'), level=messages.ERROR)
         else:
             self.message_user(request, _(u'No replacements file was submitted'), level=messages.INFO)
-        return redirect(to=reverse('stock_replacement_changelist'))
+        return redirect(to=reverse('admin:stock_replacement_changelist'))
 
 
 site.register(Replacement, ReplacementAdmin)
