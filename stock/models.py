@@ -42,6 +42,8 @@ class Replacement(Trackable):
         ('ACCESORIOS', u'Accesories'),
     )
 
+    objects = ReplacementQueryset.as_manager()
+
     dealer = models.CharField(max_length=20, blank=False, null=False)
     score = models.CharField(max_length=1, blank=False, null=False)
     category = models.CharField(max_length=20, blank=False, null=False)
