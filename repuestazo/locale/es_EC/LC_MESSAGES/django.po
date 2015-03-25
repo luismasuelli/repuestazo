@@ -58,12 +58,12 @@ msgid "Banners"
 msgstr "Banners"
 
 #, python-format
-msgid 'Image width (currently: %d) must be the expected in the banner type (currently: %d)'
-msgstr 'El ancho de la imagen (actualmente: %(current)d) debe ser el esperado en el tipo de banner (actualmente: %(expected)d)'
+msgid "Image width (currently: %(current)d) must be the expected in the banner type (currently: %(expected)d)"
+msgstr "El ancho de la imagen (actualmente: %(current)d) debe ser el esperado en el tipo de banner (actualmente: %(expected)d)"
 
 #, python-format
-msgid 'Image height (currently: %d) must be the expected in the banner type (currently: %d)'
-msgstr 'El alto de la imagen (actualmente: %(current)d) debe ser el esperado en el tipo de banner (actualmente: %(expected)d)'
+msgid "Image height (currently: %(current)d) must be the expected in the banner type (currently: %(expected)d)"
+msgstr "El alto de la imagen (actualmente: %(current)d) debe ser el esperado en el tipo de banner (actualmente: %(expected)d)"
 
 msgid "Expected reel width"
 msgstr "Ancho esperado de marquesina"
@@ -105,66 +105,63 @@ msgid "Sequence"
 msgstr "Secuencia"
 
 #, python-format
-msgid 'Reel image width (currently: %(current)d) must be the expected in the reel type (currently: %(expected)d)'
-msgstr 'El ancho de la imagen de marquesina (actualmente: %(current)s) debe ser el esperado en el tipo de marquesina (actualmente: %(expected)d)'
+msgid "Reel image width (currently: %(current)d) must be the expected in the reel type (currently: %(expected)d)"
+msgstr "El ancho de la imagen de marquesina (actualmente: %(current)d) debe ser el esperado en el tipo de marquesina (actualmente: %(expected)d)"
 
 #, python-format
-msgid 'Reel image height (currently: %(current)d) must be the expected in the reel type (currently: %(expected)d)'
-msgstr 'El alto de la imagen de marquesina (actualmente: %(current)s) debe ser el esperado en el tipo de marquesina (actualmente: %(expected)d)'
+msgid "Reel image height (currently: %(current)d) must be the expected in the reel type (currently: %(expected)d)"
+msgstr "El alto de la imagen de marquesina (actualmente: %(current)d) debe ser el esperado en el tipo de marquesina (actualmente: %(expected)d)"
 
-msgid 'Replacement'
-msgstr 'Repuesto'
+msgid "Replacement"
+msgstr "Repuesto"
 
-msgid 'Replacements'
-msgstr 'Repuestos'
+msgid "Replacements"
+msgstr "Repuestos"
 
-msgid 'Dealer'
-msgstr 'Distribuidor'
+msgid "Dealer"
+msgstr "Distribuidor"
 
-msgid 'Score'
-msgstr 'Calificación'
+msgid "Score"
+msgstr "Calificación"
 
-msgid 'Category'
-msgstr 'Categoría'
+msgid "Category"
+msgstr "Categoría"
 
-msgid 'Code'
-msgstr 'Código'
+msgid "Product"
+msgstr "Producto"
 
-msgid 'Product'
-msgstr 'Producto'
+msgid "Brand"
+msgstr "Marca"
 
-msgid 'Brand'
-msgstr 'Marca'
+msgid "Model"
+msgstr "Modelo"
 
-msgid 'Model'
-msgstr 'Modelo'
+msgid "Year"
+msgstr "Año"
 
-msgid 'Year'
-msgstr 'Año'
+msgid "Stock"
+msgstr "Existencias"
 
-msgid 'Stock'
-msgstr 'Existencias'
+msgid "Cost"
+msgstr "Costo"
 
-msgid 'Cost'
-msgstr 'Costo'
+msgid "Price"
+msgstr "Precio"
 
-msgid 'Price'
-msgstr 'Precio'
+msgid "Offer"
+msgstr "Oferta"
 
-msgid 'Offer'
-msgstr 'Oferta'
+msgid "Load replacements list from file"
+msgstr "Cargar repuestos desde archivo"
 
-msgid 'Load replacements list from file'
-msgstr 'Cargar repuestos desde archivo'
+msgid "No replacements file was submitted"
+msgstr "No se cargó ningún archivo de repuestos"
 
-msgid 'No replacements file was submitted'
-msgstr 'No se cargó ningún archivo de repuestos'
+msgid "An error occurred while loading the replacements file. Verify it is a valid XLSX file"
+msgstr "Ocurrió un error mientras se cargaba el archivo de repuestos. Asegúrese de que es un archivo XLSX válido"
 
-msgid 'An error occurred while loading the replacements file. Verify it is a valid XLSX file'
-msgstr 'Ocurrió un error mientras se cargaba el archivo de repuestos. Asegúrese de que es un archivo XLSX válido'
-
-msgid 'The replacements file was successfully submitted'
-msgstr 'El archivo de repuestos fue cargado con éxito'
+msgid "The replacements file was successfully submitted"
+msgstr "El archivo de repuestos fue cargado con éxito"
 
 #: common/apps/world/countries/models.py:19
 msgid "Country"
