@@ -28,7 +28,7 @@ class ReplacementAdmin(ModelAdmin):
                     Replacement.load_xls(xls)
                 self.message_user(request, _(u'The replacements file was successfully submitted'), level=messages.INFO)
             except Replacement.LoadError:
-                self.message_user(request, _(u'An error occurred while loading the replacements file'), level=messages.ERROR)
+                self.message_user(request, _(u'An error occurred while loading the replacements file. Verify it is a valid XLSX file'), level=messages.ERROR)
         else:
             self.message_user(request, _(u'No replacements file was submitted'), level=messages.INFO)
         return redirect(to=reverse('admin:stock_replacement_changelist'))

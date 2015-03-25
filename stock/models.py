@@ -1,6 +1,6 @@
-import os
 from django.core.validators import MinValueValidator
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 from common.apps.track.models import Trackable
 from openpyxl import load_workbook
 from openpyxl.utils.exceptions import CellCoordinatesException, InsufficientCoordinatesException, InvalidFileException
@@ -44,18 +44,18 @@ class Replacement(Trackable):
 
     objects = ReplacementQueryset.as_manager()
 
-    dealer = models.CharField(max_length=20, blank=False, null=False)
-    score = models.CharField(max_length=1, blank=False, null=False)
-    category = models.CharField(max_length=20, blank=False, null=False)
-    code = models.CharField(max_length=20, null=False, blank=False)
-    product = models.CharField(max_length=40, null=False, blank=False)
-    brand = models.CharField(max_length=20, blank=False, null=False)
-    model = models.CharField(max_length=255, blank=True, null=False)
-    year = models.SmallIntegerField(validators=[MinValueValidator(2000)], null=True)
-    stock = models.DecimalField(max_digits=8, decimal_places=2, validators=[MinValueValidator(0)], null=True)
-    cost = models.DecimalField(max_digits=8, decimal_places=2, validators=[MinValueValidator(0)], null=True)
-    price = models.DecimalField(max_digits=8, decimal_places=2, validators=[MinValueValidator(0)], null=True)
-    offer = models.DecimalField(max_digits=8, decimal_places=2, validators=[MinValueValidator(0)], null=True)
+    dealer = models.CharField(max_length=20, blank=False, null=False, verbose_name=_(u'Dealer'))
+    score = models.CharField(max_length=1, blank=False, null=False, verbose_name=_(u'Score'))
+    category = models.CharField(max_length=20, blank=False, null=False, verbose_name=_(u'Category'))
+    code = models.CharField(max_length=20, null=False, blank=False, verbose_name=_(u'Code'))
+    product = models.CharField(max_length=40, null=False, blank=False, verbose_name=_(u'Product'))
+    brand = models.CharField(max_length=20, blank=False, null=False, verbose_name=_(u'Brand'))
+    model = models.CharField(max_length=255, blank=True, null=False, verbose_name=_(u'Model'))
+    year = models.SmallIntegerField(validators=[MinValueValidator(2000)], null=True, verbose_name=_(u'Year'))
+    stock = models.DecimalField(max_digits=8, decimal_places=2, validators=[MinValueValidator(0)], null=True, verbose_name=_(u'Stock'))
+    cost = models.DecimalField(max_digits=8, decimal_places=2, validators=[MinValueValidator(0)], null=True, verbose_name=_(u'Cost'))
+    price = models.DecimalField(max_digits=8, decimal_places=2, validators=[MinValueValidator(0)], null=True, verbose_name=_(u'Price'))
+    offer = models.DecimalField(max_digits=8, decimal_places=2, validators=[MinValueValidator(0)], null=True, verbose_name=_(u'Offer'))
 
     @property
     def discount(self):
@@ -107,3 +107,7 @@ class Replacement(Trackable):
             ])
         except (InvalidFileException, CellCoordinatesException, InsufficientCoordinatesException):
             raise cls.LoadError("An error occurred while loading xls")
+
+    class Meta:
+        verbose_name = _(u'Replacement')
+        verbose_name_plural = _(u'Replacements')

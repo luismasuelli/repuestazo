@@ -112,6 +112,60 @@ msgstr 'El ancho de la imagen de marquesina (actualmente: %(current)s) debe ser 
 msgid 'Reel image height (currently: %(current)d) must be the expected in the reel type (currently: %(expected)d)'
 msgstr 'El alto de la imagen de marquesina (actualmente: %(current)s) debe ser el esperado en el tipo de marquesina (actualmente: %(expected)d)'
 
+msgid 'Replacement'
+msgstr 'Repuesto'
+
+msgid 'Replacements'
+msgstr 'Repuestos'
+
+msgid 'Dealer'
+msgstr 'Distribuidor'
+
+msgid 'Score'
+msgstr 'Calificación'
+
+msgid 'Category'
+msgstr 'Categoría'
+
+msgid 'Code'
+msgstr 'Código'
+
+msgid 'Product'
+msgstr 'Producto'
+
+msgid 'Brand'
+msgstr 'Marca'
+
+msgid 'Model'
+msgstr 'Modelo'
+
+msgid 'Year'
+msgstr 'Año'
+
+msgid 'Stock'
+msgstr 'Existencias'
+
+msgid 'Cost'
+msgstr 'Costo'
+
+msgid 'Price'
+msgstr 'Precio'
+
+msgid 'Offer'
+msgstr 'Oferta'
+
+msgid 'Load replacements list from file'
+msgstr 'Cargar repuestos desde archivo'
+
+msgid 'No replacements file was submitted'
+msgstr 'No se cargó ningún archivo de repuestos'
+
+msgid 'An error occurred while loading the replacements file. Verify it is a valid XLSX file'
+msgstr 'Ocurrió un error mientras se cargaba el archivo de repuestos. Asegúrese de que es un archivo XLSX válido'
+
+msgid 'The replacements file was successfully submitted'
+msgstr 'El archivo de repuestos fue cargado con éxito'
+
 #: common/apps/world/countries/models.py:19
 msgid "Country"
 msgstr "País"
