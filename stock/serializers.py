@@ -6,4 +6,4 @@ class ReplacementSerializer(ModelSerializer):
 
     class Meta:
         model = Replacement
-        exclude = ('product', 'brand', 'model', 'year', 'discount')
+        fields = ('product', 'brand', 'model', 'year', 'discount')

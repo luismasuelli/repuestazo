@@ -1,3 +1,4 @@
+from decimal import Decimal
 from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -66,14 +67,14 @@ class Replacement(Trackable):
         price = self.price or self.cost
         if not offer or not price:
             return None
-        return (offer - price) * -100.0 / price
+        return "%1.2f%%" % ((offer - price) * Decimal(-100.0) / price)
 
     @classmethod
     def load_xls(cls, xls_file):
         """
         Limpia y carga todo desde un xml.
         """
-        cls.objects.delete()
+        cls.objects.all().delete()
 
         def int_(v):
             try:

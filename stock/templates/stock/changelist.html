@@ -3,11 +3,12 @@
 
 {% block content %}
     <div style="text-align: center">
-        <form style="display: inline-block; text-align: left" action="{% url 'admin:stock_replacement_xlsupload' %}" method="post">
+        <form style="display: inline-block; text-align: left" action="{% url 'admin:stock_replacement_xlsupload' %}" method="post" enctype="multipart/form-data">
             <p>
                 {% trans "Load replacements list from file" %}
             </p>
             <p>
+                {% csrf_token %}
                 <input type="file" name="replacements" />
             </p>
             <p style="text-align: center">
@@ -17,11 +18,12 @@
     </div>
     {{ block.super }}
     <div style="text-align: center">
-        <form style="display: inline-block; text-align: left" action="{% url 'admin:stock_replacement_xlsupload' %}" method="post">
+        <form style="display: inline-block; text-align: left" action="{% url 'admin:stock_replacement_xlsupload' %}" method="post" enctype="multipart/form-data">
             <p>
                 {% trans "Load replacements list from file" %}
             </p>
             <p>
+                {% csrf_token %}
                 <input type="file" name="replacements" />
             </p>
             <p style="text-align: center">

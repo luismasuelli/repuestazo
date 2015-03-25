@@ -151,6 +151,9 @@ msgstr "Precio"
 msgid "Offer"
 msgstr "Oferta"
 
+msgid "Discount"
+msgstr "Descuento"
+
 msgid "Load replacements list from file"
 msgstr "Cargar repuestos desde archivo"
 
