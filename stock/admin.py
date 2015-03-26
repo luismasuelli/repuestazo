@@ -13,6 +13,7 @@ class ReplacementAdmin(ModelAdmin):
     change_list_template = 'stock/changelist.html'
     list_display = ('dealer', 'score', 'category', 'code', 'product', 'brand', 'model', 'year', 'stock', 'cost', 'price', 'offer', 'discount')
     list_display_links = ('product',)
+    search_fields = ('dealer', 'score', 'category', 'code', 'product', 'brand', 'model', 'year')
 
     def get_urls(self):
         return patterns('',
