@@ -1,6 +1,6 @@
 from django.contrib.admin import TabularInline, ModelAdmin
 from repuestazo.admin import site
-from .models import Banner, BannerType, ReelType, Reel, ReelImage
+from .models import Banner, BannerType, ReelType, Reel, ReelImage, TextSetType, TextSetTypeField, TextSet, TextSetElement
 
 
 class BannerTypeAdmin(ModelAdmin):
@@ -33,8 +33,28 @@ class ReelImageAdmin(ModelAdmin):
     pass
 
 
+class TextSetTypeAdmin(ModelAdmin):
+    pass
+
+
+class TextSetTypeFieldAdmin(ModelAdmin):
+    pass
+
+
+class TextSetAdmin(ModelAdmin):
+    pass
+
+
+class TextSetElementAdmin(ModelAdmin):
+    pass
+
+
 site.register(BannerType, BannerTypeAdmin)
 site.register(Banner, BannerAdmin)
 site.register(ReelType, ReelTypeAdmin)
 site.register(Reel, ReelAdmin)
 site.register(ReelImage, ReelImageAdmin)
+site.register(TextSetType, TextSetTypeAdmin)
+site.register(TextSetTypeField, TextSetTypeFieldAdmin)
+site.register(TextSet, TextSetAdmin)
+site.register(TextSetElement, TextSetElementAdmin)

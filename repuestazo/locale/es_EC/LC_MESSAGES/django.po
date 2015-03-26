@@ -172,6 +172,42 @@ msgstr "Ocurrió un error mientras se cargaba el archivo de repuestos. Asegúres
 msgid "The replacements file was successfully submitted"
 msgstr "El archivo de repuestos fue cargado con éxito"
 
+msgid "Text set type"
+msgstr "Tipo de conjunto de texto"
+
+msgid "Text set types"
+msgstr "Tipos de conjunto de texto"
+
+msgid "Required"
+msgstr "Requerido"
+
+msgid "Text set type field"
+msgstr "Campo de tipo de conjunto de texto"
+
+msgid "Text set type fields"
+msgstr "Campos de tipo de conjunto de texto"
+
+msgid "Text set"
+msgstr "Conjunto de texto"
+
+msgid "Text sets"
+msgstr "Conjuntos de texto"
+
+msgid "Content"
+msgstr "Contenido"
+
+msgid "Text set element"
+msgstr "Elemento de texto"
+
+msgid "Text set elements"
+msgstr "Elementos de texto"
+
+msgid "The value must not be empty since the owner entry's type defines this field as required"
+msgstr "El valor no debe estar vacío ya que el tipo de conjunto de texto de la instancia que le posee define a dicho campo como requerido"
+
+msgid "Text set element has an unexpected code (%(code)s) regarding its owner set"
+msgstr "El elemento de texto tiene un código no esperado (%(code)s) respecto de su conjunto propietario"
+
 #: common/apps/world/countries/models.py:19
 msgid "Country"
 msgstr "País"

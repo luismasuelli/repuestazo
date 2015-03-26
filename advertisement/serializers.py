@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from .models import Banner, Reel, ReelImage
+from .models import Banner, Reel, ReelImage, TextSet, TextSetElement
 
 
 class BannerSerializer(ModelSerializer):
@@ -22,3 +22,18 @@ class ReelSerializer(ModelSerializer):
     class Meta:
         model = Reel
         exclude = ('created_on', 'updated_on', 'reel_type', 'code')
+
+
+class TextSetSerializer(ModelSerializer):
+
+    class TextSetElementSerializer(ModelSerializer):
+
+        class Meta:
+            model = TextSetElement
+            fields = ('code', 'value')
+
+    entries = TextSetElementSerializer()
+
+    class Meta:
+        model = TextSet
+        exclude = ('created_on', 'updated_on', 'text_set_type', 'code')

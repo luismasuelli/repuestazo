@@ -190,3 +190,76 @@ def before_save_reel_image(sender, **kwargs):
                 break
             sequence += 1
         instance.sequence = sequence
+
+
+class TextSetType(Trackable):
+    """
+    Define un preset de textos publicitarios (lineales, chicos).
+    """
+
+    code = models.CharField(verbose_name=_(u'Code'), max_length=10, null=False)
+    name = models.CharField(verbose_name=_(u'Name'), max_length=30, null=False)
+    description = models.CharField(verbose_name=_(u'Description'), max_length=100, null=False)
+
+    class Meta:
+        unique_together = (('code',),)
+        verbose_name = _(u'Text set type')
+        verbose_name_plural = _(u'Text set types')
+
+
+class TextSetTypeField(Trackable):
+    """
+    Define una columna esperada para cierto preset. Se puede definir si la entrada es obligatoria o no.
+    """
+
+    owner = models.ForeignKey(TextSetType, null=False, verbose_name=_(u'Text set type'), related_name='fields')
+    code = models.CharField(verbose_name=_(u'Code'), max_length=10, null=False)
+    required = models.BooleanField(default=True, verbose_name=_(u'Required'), null=False)
+
+    class Meta:
+        unique_together = (('code', 'owner'),)
+        verbose_name = _(u'Text set type field')
+        verbose_name_plural = _(u'Text set type fields')
+
+
+class TextSet(Trackable):
+    """
+    Define un conjunto de textos, para cierto tipo de texto.
+    """
+
+    text_set_type = models.ForeignKey(TextSetType, null=False, verbose_name=_(u'Text set type'), related_name='entries')
+    code = models.CharField(verbose_name=_(u'Code'), max_length=10, null=False)
+
+    class Meta:
+        unique_together = (('code',),)
+        verbose_name = _(u'Text set')
+        verbose_name_plural = _(u'Text sets')
+
+
+class TextSetElement(Trackable):
+    """
+    Define un texto, perteneciente a cierto conjunto de textos.
+    """
+
+    owner = models.ForeignKey(TextSet, null=False, verbose_name=_(u'Text set'), related_name='entries')
+    code = models.CharField(verbose_name=_(u'Code'), max_length=10, null=False)
+    value = models.CharField(max_length=255, null=False, blank=True, verbose_name=_(u'Content'))
+
+    def clean(self):
+        """
+        Exige que el campo se requiera, si corresponde, y exista en el tipo.
+        """
+
+        try:
+            field = self.owner.text_set_type.fields.get(code=self.code)
+            if not self.value and field.required:
+                raise ValidationError(_(u'The value must not be empty since the owner entry\'s type defines this field as required'))
+        except TextSet.DoesNotExist:
+            pass
+        except TextSetTypeField.DoesNotExist:
+            raise ValidationError(_(u'Text set element has an unexpected code (%(code)s) regarding its owner set') % {'code': self.code})
+
+    class Meta:
+        unique_together = (('code', 'owner'),)
+        verbose_name = _(u'Text set element')
+        verbose_name_plural = _(u'Text set elements')
