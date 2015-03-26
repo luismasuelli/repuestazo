@@ -1,4 +1,5 @@
-from django.contrib.admin import ModelAdmin, site
+from django.contrib.admin import ModelAdmin
+from repuestazo.admin import site
 from customers.models import Contact
 
 

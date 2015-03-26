@@ -1,9 +1,10 @@
 from django.contrib import messages
-from django.contrib.admin import ModelAdmin, site
+from django.contrib.admin import ModelAdmin
 from django.conf.urls import patterns, url
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect
 from django.utils.translation import ugettext_lazy as _
+from repuestazo.admin import site
 from .models import Replacement
 from .forms import UploadReplacementsForm
 

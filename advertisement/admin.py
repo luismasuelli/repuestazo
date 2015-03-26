@@ -1,4 +1,5 @@
-from django.contrib.admin import TabularInline, ModelAdmin, site
+from django.contrib.admin import TabularInline, ModelAdmin
+from repuestazo.admin import site
 from .models import Banner, BannerType, ReelType, Reel, ReelImage
 
 
