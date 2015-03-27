@@ -35,6 +35,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'grimoire.django.xmail',
     'rest_framework',
     'customers',
     'pages',
@@ -104,7 +105,8 @@ EMAIL_HOST_USER = 'atencion'
 EMAIL_HOST_PASSWORD = 'mail:repuestazo$2014'
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = False
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'grimoire.django.xmail.backends.AsyncEmailBackend'
+XMAIL_BRIDGED_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 DEFAULT_FROM_NAME = u'Atención al Cliente <atencion@repuestazo.com>'
 DEFAULT_RECIPIENTS = {

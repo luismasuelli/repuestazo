@@ -5,6 +5,7 @@ from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
 from common.apps.track.models import Trackable
+from cantrips.entropy import weighted_random
 
 
 class BannerType(Trackable):
@@ -263,3 +264,70 @@ class TextSetElement(Trackable):
         unique_together = (('code', 'owner'),)
         verbose_name = _(u'Text set element')
         verbose_name_plural = _(u'Text set elements')
+
+
+class RandomBanner(Trackable):
+    """
+    Permite asignarse un tipo de banner y darle un conjunto de banners de los que se saca uno aleatoriamente.
+    """
+
+    banner_type = models.ForeignKey(BannerType, null=False, verbose_name=_(u'Banner type'))
+    code = models.SlugField(verbose_name=_(u'Code'), max_length=10, null=False)
+    name = models.CharField(verbose_name=_(u'Name'), max_length=30, null=False)
+    description = models.CharField(verbose_name=_(u'Description'), max_length=100, null=False)
+
+    def pick(self):
+        """
+        Toma un banner al azar, considerando peso y disponibilidad.
+        """
+        elements = self.choices.filter(models.Q(remaining_hits__isnull=True) | models.Q(remaining_hits__gt=0))
+        if not elements.exists():
+            return None
+
+        choice = weighted_random((element.banner, element.weight) for element in elements)
+        choice.hit()
+        return choice
+
+    class Meta:
+        unique_together = (('code',),)
+        verbose_name = _(u'Random banner')
+        verbose_name_plural = _(u'Random banners')
+
+
+class RandomBannerChoice(Trackable):
+    """
+    Cada una de las opciones, para un banner aleatorio.
+    """
+
+    owner = models.ForeignKey(RandomBanner, null=False, verbose_name=_(u'Random owner'), related_name='choices')
+    banner = models.ForeignKey(Banner, null=False, verbose_name=_(u'Banner'))
+    weight = models.PositiveIntegerField(verbose_name=_(u'Weight'), null=False, validators=[MinValueValidator(1)])
+    remaining_hits = models.PositiveIntegerField(verbose_name=_(u'Remaining hits'), null=True)
+
+    def clean(self):
+        """
+        Verifica que el tipo de banner en el banner y en el random sean el mismo.
+        """
+        try:
+            if self.banner.banner_type != self.owner.banner_type:
+                raise ValidationError(_(u'The chosen banner and owner random source must have the same banner type'))
+        except BannerType.DoesNotExist:
+            pass
+
+    def hit(self):
+        """
+        En caso de tener un conteo, reducimos en uno dicho conteo,
+        """
+        if self.remaining_hits:
+            self.remaining_hits -= 1
+
+    def is_unlimited(self):
+        """
+        Determina si es ilimitado su consumo o no.
+        """
+        return self.remaining_hits is None
+
+    class Meta:
+        unique_together = (('owner', 'banner'),)
+        verbose_name = _(u'Random banner')
+        verbose_name_plural = _(u'Random banners')
