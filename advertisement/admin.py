@@ -23,7 +23,6 @@ class ReelAdmin(ModelAdmin):
     class InlineReelImageAdmin(TabularInline):
         model = ReelImage
         ordering = ('sequence',)
-        exclude = ('reel_type',)
         min_num = 4
 
     inlines = [InlineReelImageAdmin]
@@ -34,27 +33,34 @@ class ReelImageAdmin(ModelAdmin):
 
 
 class TextSetTypeAdmin(ModelAdmin):
-    pass
+    """
+    Muestra, de forma embebida, los campos que le pertenecen.
+    """
 
+    class InlineTextSetTypeFieldAdmin(TabularInline):
+        model = TextSetTypeField
+        ordering = ('code',)
+        min_num = 4
 
-class TextSetTypeFieldAdmin(ModelAdmin):
-    pass
+    inlines = [InlineTextSetTypeFieldAdmin]
 
 
 class TextSetAdmin(ModelAdmin):
-    pass
+    """
+    Muestra, de forma embebida, los miembros que le pertenecen.
+    """
 
+    class InlineTextSetElementAdmin(TabularInline):
+        model = TextSetElement
+        ordering = ('code',)
+        min_num = 4
 
-class TextSetElementAdmin(ModelAdmin):
-    pass
+    inlines = [InlineTextSetElementAdmin]
 
 
 site.register(BannerType, BannerTypeAdmin)
 site.register(Banner, BannerAdmin)
 site.register(ReelType, ReelTypeAdmin)
 site.register(Reel, ReelAdmin)
-site.register(ReelImage, ReelImageAdmin)
 site.register(TextSetType, TextSetTypeAdmin)
-site.register(TextSetTypeField, TextSetTypeFieldAdmin)
 site.register(TextSet, TextSetAdmin)
-site.register(TextSetElement, TextSetElementAdmin)
