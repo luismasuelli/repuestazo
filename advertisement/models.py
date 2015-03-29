@@ -329,5 +329,59 @@ class RandomBannerChoice(Trackable):
 
     class Meta:
         unique_together = (('owner', 'banner'),)
-        verbose_name = _(u'Random banner')
-        verbose_name_plural = _(u'Random banners')
+        verbose_name = _(u'Random banner choice')
+        verbose_name_plural = _(u'Random banner choices')
+
+
+class RandomTextSet(Trackable):
+    """
+    Permite asignarse un tipo de conjunto de texto y darle un conjunto de opciones de los que se saca uno aleatoriamente.
+    """
+
+    text_set_type = models.ForeignKey(TextSetType, null=False, verbose_name=_(u'Text set type'))
+    code = models.SlugField(verbose_name=_(u'Code'), max_length=10, null=False)
+    name = models.CharField(verbose_name=_(u'Name'), max_length=30, null=False)
+    description = models.CharField(verbose_name=_(u'Description'), max_length=100, null=False)
+
+    def pick(self):
+        """
+        Toma un banner al azar, considerando peso y disponibilidad.
+        """
+        elements = self.choices.filter(models.Q(remaining_hits__isnull=True) | models.Q(remaining_hits__gt=0))
+        if not elements.exists():
+            return None
+
+        choice = weighted_random((element.text_set, element.weight) for element in elements)
+        choice.hit()
+        return choice
+
+    class Meta:
+        unique_together = (('code',),)
+        verbose_name = _(u'Random text set')
+        verbose_name_plural = _(u'Random text set')
+
+
+class RandomTextSetChoice(Trackable):
+    """
+    Cada una de las opciones, para un conjunto de textos aleatorio.
+    """
+
+    owner = models.ForeignKey(RandomTextSet, null=False, verbose_name=_(u'Random owner'), related_name='choices')
+    text_set = models.ForeignKey(TextSet, null=False, verbose_name=_(u'Text set'))
+    weight = models.PositiveIntegerField(verbose_name=_(u'Weight'), null=False, validators=[MinValueValidator(1)])
+    remaining_hits = models.PositiveIntegerField(verbose_name=_(u'Remaining hits'), null=True)
+
+    def clean(self):
+        """
+        Verifica que el tipo de banner en el banner y en el random sean el mismo.
+        """
+        try:
+            if self.text_set.text_set_type != self.owner.text_set_type:
+                raise ValidationError(_(u'The chosen text set and owner random source must have the same text set type'))
+        except TextSetType.DoesNotExist:
+            pass
+
+    class Meta:
+        unique_together = (('owner', 'text_set'),)
+        verbose_name = _(u'Random text set choice')
+        verbose_name_plural = _(u'Random text set choices')

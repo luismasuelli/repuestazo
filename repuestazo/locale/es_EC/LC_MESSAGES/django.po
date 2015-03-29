@@ -208,6 +208,39 @@ msgstr "El valor no debe estar vacío ya que el tipo de conjunto de texto de la 
 msgid "Text set element has an unexpected code (%(code)s) regarding its owner set"
 msgstr "El elemento de texto tiene un código no esperado (%(code)s) respecto de su conjunto propietario"
 
+msgid "Random banner"
+msgstr "Banner aleatorio"
+
+msgid "Random banners"
+msgstr "Banners aleatorios"
+
+msgid "Random banner choice"
+msgstr "Opción de banner aleatorio"
+
+msgid "Random banner choices"
+msgstr "Opciones de banner aleatorio"
+
+msgid "Random owner"
+msgstr "Origen de azar"
+
+msgid "Remaining hots"
+msgstr "Impresiones restantes"
+
+msgid "Weight"
+msgstr "Peso"
+
+msgid "The chosen banner and owner random source must have the same banner type"
+msgstr "El banner elegido y el origen de banner aleatorio deben tener el mismo tipo de banner"
+
+msgid "Random text set"
+msgstr "Conjunto de texto aleatorio"
+
+msgid "Random text sets"
+msgstr "Conjuntos de texto aleatorios"
+
+msgid "The chosen text set and owner random source must have the same text set type"
+msgstr "El conjunto de textos elegido y el origen de texto aleatorio deben tener el mismo tipo de conjunto de texto"
+
 #: common/apps/world/countries/models.py:19
 msgid "Country"
 msgstr "País"
