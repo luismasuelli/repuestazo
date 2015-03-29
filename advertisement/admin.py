@@ -1,6 +1,8 @@
 from django.contrib.admin import TabularInline, ModelAdmin
 from repuestazo.admin import site
-from .models import Banner, BannerType, ReelType, Reel, ReelImage, TextSetType, TextSetTypeField, TextSet, TextSetElement
+from .models import (Banner, BannerType, ReelType, Reel, ReelImage,
+                     TextSetType, TextSetTypeField, TextSet, TextSetElement,
+                     RandomBanner, RandomBannerChoice, RandomTextSet, RandomTextSetChoice)
 
 
 class BannerTypeAdmin(ModelAdmin):
@@ -52,10 +54,34 @@ class TextSetAdmin(ModelAdmin):
 
     class InlineTextSetElementAdmin(TabularInline):
         model = TextSetElement
-        ordering = ('code',)
+        ordering = ('field',)
         min_num = 4
 
     inlines = [InlineTextSetElementAdmin]
+
+
+class RandomBannerAdmin(ModelAdmin):
+    """
+    Muestra, de forma embebida, las opciones que le pertenecen.
+    """
+
+    class InlineRandomBannerChoiceAdmin(TabularInline):
+        model = RandomBannerChoice
+        ordering = ('banner',)
+        min_num = 4
+
+    inlines = [InlineRandomBannerChoiceAdmin]
+
+
+class RandomTextSetAdmin(ModelAdmin):
+    """
+    Muestra, de forma embebida, las opciones que le pertenecen.
+    """
+
+    class InlineRandomTextSetChoiceAdmin(TabularInline):
+        model = RandomTextSetChoice
+        ordering = ('text_set',)
+        min_num = 4
 
 
 site.register(BannerType, BannerTypeAdmin)
@@ -64,3 +90,5 @@ site.register(ReelType, ReelTypeAdmin)
 site.register(Reel, ReelAdmin)
 site.register(TextSetType, TextSetTypeAdmin)
 site.register(TextSet, TextSetAdmin)
+site.register(RandomBanner, RandomBannerAdmin)
+site.register(RandomTextSet, RandomTextSetAdmin)

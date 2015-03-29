@@ -19,6 +19,9 @@ class BannerType(Trackable):
     name = models.CharField(verbose_name=_(u'Name'), max_length=30, null=False)
     description = models.CharField(verbose_name=_(u'Description'), max_length=100, null=False)
 
+    def __unicode__(self):
+        return u"[%s] %s" % (self.code, self.name)
+
     class Meta:
         unique_together = (('code',),)
         verbose_name = _(u'Banner type')
@@ -51,6 +54,9 @@ class Banner(Trackable):
         except BannerType.DoesNotExist:
             pass
 
+    def __unicode__(self):
+        return u"[%s] %s" % (self.code, self.name)
+
     class Meta:
         unique_together = (('code',),)
         verbose_name = _(u'Banner')
@@ -69,6 +75,9 @@ class ReelType(Trackable):
                                          help_text=_(u'Each image in each reel with this type must have this height'))
     name = models.CharField(verbose_name=_(u'Name'), max_length=30, null=False)
     description = models.CharField(verbose_name=_(u'Description'), max_length=100, null=False)
+
+    def __unicode__(self):
+        return u"[%s] %s" % (self.code, self.name)
 
     class Meta:
         unique_together = (('code',),)
@@ -122,6 +131,9 @@ class Reel(Trackable):
 
         return self.image_list.exists()
 
+    def __unicode__(self):
+        return u"[%s] %s" % (self.code, self.name)
+
     class Meta:
         unique_together = (('code',),)
         verbose_name = _(u'Reel')
@@ -171,6 +183,9 @@ class ReelImage(Trackable):
         except Reel.DoesNotExist:
             pass
 
+    def __unicode__(self):
+        return u"%s > %s" % (self.reel, self.name)
+
     class Meta:
         ordering = ('reel', 'sequence')
         unique_together = (('reel', 'sequence'),)
@@ -202,6 +217,9 @@ class TextSetType(Trackable):
     name = models.CharField(verbose_name=_(u'Name'), max_length=30, null=False)
     description = models.CharField(verbose_name=_(u'Description'), max_length=100, null=False)
 
+    def __unicode__(self):
+        return u"[%s] %s" % (self.code, self.name)
+
     class Meta:
         unique_together = (('code',),)
         verbose_name = _(u'Text set type')
@@ -217,6 +235,9 @@ class TextSetTypeField(Trackable):
     code = models.CharField(verbose_name=_(u'Code'), max_length=10, null=False)
     required = models.BooleanField(default=True, verbose_name=_(u'Required'), null=False)
 
+    def __unicode__(self):
+        return u"[%s.%s] %s" % (self.owner.code, self.code, self.name)
+
     class Meta:
         unique_together = (('code', 'owner'),)
         verbose_name = _(u'Text set type field')
@@ -231,6 +252,9 @@ class TextSet(Trackable):
     text_set_type = models.ForeignKey(TextSetType, null=False, verbose_name=_(u'Text set type'), related_name='entries')
     code = models.CharField(verbose_name=_(u'Code'), max_length=10, null=False)
 
+    def __unicode__(self):
+        return u"[%s:%s]" % (self.text_set_type.code, self.code)
+
     class Meta:
         unique_together = (('code',),)
         verbose_name = _(u'Text set')
@@ -243,7 +267,7 @@ class TextSetElement(Trackable):
     """
 
     owner = models.ForeignKey(TextSet, null=False, verbose_name=_(u'Text set'), related_name='entries')
-    code = models.CharField(verbose_name=_(u'Code'), max_length=10, null=False)
+    field = models.ForeignKey(TextSetTypeField, verbose_name=_(u'Field'), null=False)
     value = models.CharField(max_length=255, null=False, blank=True, verbose_name=_(u'Content'))
 
     def clean(self):
@@ -252,16 +276,20 @@ class TextSetElement(Trackable):
         """
 
         try:
-            field = self.owner.text_set_type.fields.get(code=self.code)
-            if not self.value and field.required:
+            if not self.field.owner == self.owner.text_set_type:
+                raise ValidationError(_(u'The entry field does not belong to the owner\'s type'))
+            if not self.value and self.field.required:
                 raise ValidationError(_(u'The value must not be empty since the owner entry\'s type defines this field as required'))
         except TextSet.DoesNotExist:
             pass
         except TextSetTypeField.DoesNotExist:
-            raise ValidationError(_(u'Text set element has an unexpected code (%(code)s) regarding its owner set') % {'code': self.code})
+            pass
+
+    def __unicode__(self):
+        return u"%s.%s" % (self.owner, self.field.code)
 
     class Meta:
-        unique_together = (('code', 'owner'),)
+        unique_together = (('field', 'owner'),)
         verbose_name = _(u'Text set element')
         verbose_name_plural = _(u'Text set elements')
 
@@ -276,7 +304,8 @@ class RandomBanner(Trackable):
     name = models.CharField(verbose_name=_(u'Name'), max_length=30, null=False)
     description = models.CharField(verbose_name=_(u'Description'), max_length=100, null=False)
 
-    def pick(self):
+    @property
+    def random(self):
         """
         Toma un banner al azar, considerando peso y disponibilidad.
         """
@@ -287,6 +316,9 @@ class RandomBanner(Trackable):
         choice = weighted_random((element.banner, element.weight) for element in elements)
         choice.hit()
         return choice
+
+    def __unicode__(self):
+        return u"[%s] %s" % (self.code, self.name)
 
     class Meta:
         unique_together = (('code',),)
@@ -327,6 +359,9 @@ class RandomBannerChoice(Trackable):
         """
         return self.remaining_hits is None
 
+    def __unicode__(self):
+        return u"%s > %s" % (self.owner, self.banner.code)
+
     class Meta:
         unique_together = (('owner', 'banner'),)
         verbose_name = _(u'Random banner choice')
@@ -343,7 +378,8 @@ class RandomTextSet(Trackable):
     name = models.CharField(verbose_name=_(u'Name'), max_length=30, null=False)
     description = models.CharField(verbose_name=_(u'Description'), max_length=100, null=False)
 
-    def pick(self):
+    @property
+    def random(self):
         """
         Toma un banner al azar, considerando peso y disponibilidad.
         """
@@ -354,6 +390,9 @@ class RandomTextSet(Trackable):
         choice = weighted_random((element.text_set, element.weight) for element in elements)
         choice.hit()
         return choice
+
+    def __unicode__(self):
+        return u"[%s] %s" % (self.code, self.name)
 
     class Meta:
         unique_together = (('code',),)
@@ -380,6 +419,9 @@ class RandomTextSetChoice(Trackable):
                 raise ValidationError(_(u'The chosen text set and owner random source must have the same text set type'))
         except TextSetType.DoesNotExist:
             pass
+
+    def __unicode__(self):
+        return u"%s > %s" % (self.owner, self.text_set.code)
 
     class Meta:
         unique_together = (('owner', 'text_set'),)

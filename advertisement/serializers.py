@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from .models import Banner, Reel, ReelImage, TextSet, TextSetElement
+from .models import Banner, Reel, ReelImage, TextSet, TextSetElement, TextSetTypeField, RandomBanner, RandomTextSet
 
 
 class BannerSerializer(ModelSerializer):
@@ -28,12 +28,38 @@ class TextSetSerializer(ModelSerializer):
 
     class TextSetElementSerializer(ModelSerializer):
 
+        class TextSetElementFieldSerializer(ModelSerializer):
+
+            class Meta:
+                model = TextSetTypeField
+                fields = ('code',)
+
+        field = TextSetElementFieldSerializer()
+
         class Meta:
             model = TextSetElement
-            fields = ('code', 'value')
+            fields = ('field', 'value')
 
     entries = TextSetElementSerializer()
 
     class Meta:
         model = TextSet
         exclude = ('created_on', 'updated_on', 'text_set_type', 'code')
+
+
+class RandomBannerSerializer(ModelSerializer):
+
+    random = BannerSerializer()
+
+    class Meta:
+        model = RandomBanner
+        fields = ('name', 'description', 'random')
+
+
+class RandomTextSetSerializer(ModelSerializer):
+
+    random = TextSetSerializer()
+
+    class Meta:
+        model = RandomTextSet
+        fields = ('name', 'description', 'random')
