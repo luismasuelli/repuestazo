@@ -62,7 +62,7 @@ class ReelType(Trackable):
     Define un tipo de reel con su descripcion y dimensiones.
     """
 
-    code = models.CharField(verbose_name=_(u'Code'), max_length=10, null=False)
+    code = models.SlugField(verbose_name=_(u'Code'), max_length=10, null=False)
     width = models.PositiveIntegerField(verbose_name=_(u'Expected reel width'), null=False,
                                         help_text=_(u'Each image in each reel with this type must have this width'))
     height = models.PositiveIntegerField(verbose_name=_(u'Expected reel height'), null=False,
@@ -95,7 +95,7 @@ class Reel(Trackable):
     """
 
     reel_type = models.ForeignKey(ReelType, null=False, verbose_name=_(u'Reel type'))
-    code = models.CharField(verbose_name=_(u'Code'), max_length=10, null=False)
+    code = models.SlugField(verbose_name=_(u'Code'), max_length=10, null=False)
     name = models.CharField(verbose_name=_(u'Name'), max_length=30, null=False)
     description = models.CharField(verbose_name=_(u'Description'), max_length=100, null=False)
     link_default = models.URLField(verbose_name=_(u'Default target'), help_text=_(u'Default target URL for reel images'),
@@ -198,7 +198,7 @@ class TextSetType(Trackable):
     Define un preset de textos publicitarios (lineales, chicos).
     """
 
-    code = models.CharField(verbose_name=_(u'Code'), max_length=10, null=False)
+    code = models.SlugField(verbose_name=_(u'Code'), max_length=10, null=False)
     name = models.CharField(verbose_name=_(u'Name'), max_length=30, null=False)
     description = models.CharField(verbose_name=_(u'Description'), max_length=100, null=False)
 
@@ -214,7 +214,7 @@ class TextSetTypeField(Trackable):
     """
 
     owner = models.ForeignKey(TextSetType, null=False, verbose_name=_(u'Text set type'), related_name='fields')
-    code = models.CharField(verbose_name=_(u'Code'), max_length=10, null=False)
+    code = models.SlugField(verbose_name=_(u'Code'), max_length=10, null=False)
     required = models.BooleanField(default=True, verbose_name=_(u'Required'), null=False)
 
     class Meta:
@@ -229,7 +229,7 @@ class TextSet(Trackable):
     """
 
     text_set_type = models.ForeignKey(TextSetType, null=False, verbose_name=_(u'Text set type'), related_name='entries')
-    code = models.CharField(verbose_name=_(u'Code'), max_length=10, null=False)
+    code = models.SlugField(verbose_name=_(u'Code'), max_length=10, null=False)
 
     class Meta:
         unique_together = (('code',),)
@@ -243,7 +243,7 @@ class TextSetElement(Trackable):
     """
 
     owner = models.ForeignKey(TextSet, null=False, verbose_name=_(u'Text set'), related_name='entries')
-    code = models.CharField(verbose_name=_(u'Code'), max_length=10, null=False)
+    code = models.SlugField(verbose_name=_(u'Code'), max_length=10, null=False)
     value = models.CharField(max_length=255, null=False, blank=True, verbose_name=_(u'Content'))
 
     def clean(self):
