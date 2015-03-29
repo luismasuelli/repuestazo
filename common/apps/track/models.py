@@ -9,8 +9,8 @@ class Trackable(models.Model):
     This model object can be trackable (create/edit dates are stored).
     """
 
-    created_on = models.DateTimeField(default=now, null=False)
-    updated_on = models.DateTimeField(default=now, null=False)
+    created_on = models.DateTimeField(default=now, null=False, editable=False)
+    updated_on = models.DateTimeField(default=now, null=False, editable=False)
 
     class Meta:
         abstract = True
