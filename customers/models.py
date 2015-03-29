@@ -18,6 +18,7 @@ class Contact(Trackable):
     city = models.CharField(max_length=40, null=False, validators=[NameRegexValidator(NameRegexValidator.MODE_ACCEPT_NUMBERS)])
     address = models.CharField(max_length=55, null=False, validators=[NameRegexValidator(NameRegexValidator.MODE_ALPHANUMERIC_EXTENDED)])
     content = models.TextField(max_length=1024, null=False)
+    tracking_code = models.SlugField(max_length=10, null=True)
 
     class Meta:
         abstract = False
