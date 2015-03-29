@@ -23,9 +23,18 @@ msgstr "Administración de Repuestazo.com"
 msgid "Repuestazo.com site admin"
 msgstr "Sitio de administración de Repuestazo.com"
 
+msgid "Created on"
+msgstr "Creado en"
+
+msgid "Updated on"
+msgstr "Modificado en"
+
 #: advertisement/models.py:10
 msgid "Code"
 msgstr "Código"
+
+msgid "Field"
+msgstr "Campo"
 
 #: advertisement/models.py:11
 msgid "Expected banner width"
