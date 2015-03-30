@@ -220,3 +220,35 @@ div#address {
 #placeholder {
 
 }
+
+div.content-stripe {
+    text-align: center;
+}
+
+div.content-stripe > * {
+    text-align: left;
+}
+
+/* Barra primaria del home */
+
+div#home-bar {
+
+}
+
+/* Barra de elementos Informate / Busca / Garantia */
+
+div#buttons-bar {
+
+}
+
+/* Barra de reel y blog (home) */
+
+div#reel-bar {
+
+}
+
+/* Barra de banners inferiores */
+
+div#promos-bar {
+
+}

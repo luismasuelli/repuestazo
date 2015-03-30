@@ -2,26 +2,35 @@
 
     var Index = angular.module('Index', ['ui.router', 'ngCookies']);
 
-    Index.controller('Index.Main', ['$state', function($state){
+    Index.controller('Index.Main', ['$rootScope', '$state', function($rootScope, $state){
+        $rootScope.go = {
+            home: function() { $state.go('home') },
+            promociones: function() { $state.go('promociones') },
+            informate: function() { $state.go('informate') },
+            garantia: function() { $state.go('garantia') },
+            promoIzquierda: function() { $state.go('promo-izquierda') },
+            promoDerecha: function() { $state.go('promo-derecha') },
+            formulario: function(tag) { $state.go('promo-derecha', {tracking: tag}) }
+        };
         $state.go('home');
     }]);
 
-    Index.controller('Index.Home', ['$state', function($state){
+    Index.controller('Index.Home', ['$scope', function($scope){
 
     }]);
-    Index.controller('Index.Promociones', ['$state', function($state){
+    Index.controller('Index.Promociones', ['$scope', function($scope){
 
     }]);
-    Index.controller('Index.Informate', ['$state', function($state){
+    Index.controller('Index.Informate', ['$scope', function($scope){
 
     }]);
-    Index.controller('Index.Garantia', ['$state', function($state){
+    Index.controller('Index.Garantia', ['$scope', function($scope){
 
     }]);
-    Index.controller('Index.PromoIzquierda', ['$state', function($state){
+    Index.controller('Index.PromoIzquierda', ['$scope', function($scope){
 
     }]);
-    Index.controller('Index.PromoDerecha', ['$state', function($state){
+    Index.controller('Index.PromoDerecha', ['$scope', function($scope){
 
     }]);
     Index.controller('Index.Formulario', ['$rootScope', '$scope', '$http', '$state', '$stateParams', '$cookies',
@@ -33,7 +42,7 @@
         var tracking = $stateParams.tracking;
     }]);
 
-    module.provider('Settings', ['$windowProvider', function($wp) {
+    Index.provider('Settings', ['$windowProvider', function($wp) {
         /**
          * Este provider (SettingsProvider) tiene un provider que
          * en su $get devuelve un objeto que, considerando $window, crea un prefetch
@@ -77,32 +86,32 @@
 
         $stateProvider
             .state('home', {
-                templateUrl: settings.STATIC_URL + 'partials/home.html',
+                templateUrl: settings.STATIC_URL + 'pages/partials/home.html',
                 controller: 'Index.Home'
             })
             .state('promociones', {
-                templateUrl: settings.STATIC_URL + 'partials/promociones.html',
+                templateUrl: settings.STATIC_URL + 'pages/partials/promociones.html',
                 controller: 'Index.Promociones'
             })
             .state('informate', {
-                templateUrl: settings.STATIC_URL + 'partials/informate.html',
+                templateUrl: settings.STATIC_URL + 'pages/partials/informate.html',
                 controller: 'Index.Informate'
             })
             .state('garantia', {
-                templateUrl: settings.STATIC_URL + 'partials/garantia.html',
+                templateUrl: settings.STATIC_URL + 'pages/partials/garantia.html',
                 controller: 'Index.Garantia'
             })
             .state('promo-izquierda', {
-                templateUrl: settings.STATIC_URL + 'partials/promo-izquierda.html',
+                templateUrl: settings.STATIC_URL + 'pages/partials/promo-izquierda.html',
                 controller: 'Index.PromoIzquierda'
             })
             .state('promo-derecha', {
-                templateUrl: settings.STATIC_URL + 'partials/promo-derecha.html',
+                templateUrl: settings.STATIC_URL + 'pages/partials/promo-derecha.html',
                 controller: 'Index.PromoDerecha'
             })
             .state('formulario', {
                 params: ['tracking'],
-                templateUrl: settings.STATIC_URL + 'partials/formulario.html',
+                templateUrl: settings.STATIC_URL + 'pages/partials/formulario.html',
                 controller: 'Index.Formulario'
             });
     }]);

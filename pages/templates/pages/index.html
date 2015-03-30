@@ -8,12 +8,13 @@
         <link rel="stylesheet" type="text/css" href="{% static 'pages/styles/style.css' %}" />
         <script type="text/javascript" src="{% static 'pages/scripts/angular.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'pages/scripts/angular-ui-router.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'pages/scripts/angular-cookies.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'pages/scripts/index.js' %}"></script>
         <script type="text/javascript">
             angular.element(document).ready(function() {
                 window.STATIC_URL = '{{ STATIC_URL | escapejs }}';
                 window.MEDIA_URL = '{{ MEDIA_URL | escapejs }}';
-                angular.bootstrap(document, ['Repuestazo']);
+                angular.bootstrap(document, ['Index']);
             });
         </script>
     </head>
@@ -33,10 +34,7 @@
             </div>
         </div>
         <div id="content">
-
-            <div id="placeholder" ui-view>
-                Nestor
-            </div>
+            <div id="placeholder" ui-view></div>
         </div>
         <div id="footer">
             <div id="address">
