@@ -2,7 +2,7 @@
 
     var Index = angular.module('Index', ['ui.router', 'ngCookies']);
 
-    Index.controller('Index.Main', ['$rootScope', '$state', function($rootScope, $state){
+    Index.controller('Index.Main', ['$rootScope', '$state', '$http', function($rootScope, $state, $http) {
         $rootScope.go = {
             home: function() { $state.go('home') },
             promociones: function() { $state.go('promociones') },
@@ -13,9 +13,43 @@
             formulario: function(tag) { $state.go('promo-derecha', {tracking: tag}) }
         };
         $rootScope.randomText = {
+            //TODO poner los datos buenos
             name: 'Bomba de Gasolina Corsa',
             offer: '60% DSCT.',
             foot: 'Promoción por Tiempo Limitado'
+        };
+        $rootScope.randomImage = {
+            //TODO poner los datos buenos
+            url: ''
+        };
+        $rootScope.promos = [{"id":0,"product":"Cargando las ofertas","brand":"","model":"","year":null,"discount":""}];
+        $http
+            .get('/replacements/cheap', {})
+            .success(function(data){
+                $rootScope.promos = data;
+            })
+            .error(function(){
+                $rootScope.promos = [{"id":0,"product":"Hubo un error al cargar las ofertas","brand":"","model":"","year":null,"discount":""}];
+            });
+        $rootScope.displayPromo = function(promo) {
+            var content = promo.product;
+            if (promo.brand) {
+                content = content + ' ' + promo.brand;
+            }
+            if (promo.model) {
+                content = content + ' ' + promo.model;
+            }
+            if (parseFloat(promo.discount)) {
+                content = content + ' con un descuento de ' + promo.discount;
+            }
+            return content;
+        };
+        $rootScope.popupPromo = function(id) {
+            if (id) {
+                //TODO implementar
+                var url = '/replacements/cheap/' + id;
+                console.log('Accediendo a ' + url);
+            }
         };
         $state.go('home');
     }]);
