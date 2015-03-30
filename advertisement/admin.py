@@ -25,7 +25,6 @@ class ReelAdmin(ModelAdmin):
     class InlineReelImageAdmin(TabularInline):
         model = ReelImage
         ordering = ('sequence',)
-        min_num = 4
 
     inlines = [InlineReelImageAdmin]
 
@@ -42,7 +41,6 @@ class TextSetTypeAdmin(ModelAdmin):
     class InlineTextSetTypeFieldAdmin(TabularInline):
         model = TextSetTypeField
         ordering = ('code',)
-        min_num = 4
 
     inlines = [InlineTextSetTypeFieldAdmin]
 
@@ -55,7 +53,6 @@ class TextSetAdmin(ModelAdmin):
     class InlineTextSetElementAdmin(TabularInline):
         model = TextSetElement
         ordering = ('field',)
-        min_num = 4
 
     inlines = [InlineTextSetElementAdmin]
 
@@ -68,7 +65,6 @@ class RandomBannerAdmin(ModelAdmin):
     class InlineRandomBannerChoiceAdmin(TabularInline):
         model = RandomBannerChoice
         ordering = ('banner',)
-        min_num = 4
 
     inlines = [InlineRandomBannerChoiceAdmin]
 
@@ -81,7 +77,6 @@ class RandomTextSetAdmin(ModelAdmin):
     class InlineRandomTextSetChoiceAdmin(TabularInline):
         model = RandomTextSetChoice
         ordering = ('text_set',)
-        min_num = 4
 
 
 site.register(BannerType, BannerTypeAdmin)

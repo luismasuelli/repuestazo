@@ -345,6 +345,10 @@ class RandomBannerChoice(Trackable):
                 raise ValidationError(_(u'The chosen banner and owner random source must have the same banner type'))
         except BannerType.DoesNotExist:
             pass
+        except RandomBanner.DoesNotExist:
+            pass
+        except Banner.DoesNotExist:
+            pass
 
     def hit(self):
         """
@@ -418,6 +422,10 @@ class RandomTextSetChoice(Trackable):
             if self.text_set.text_set_type != self.owner.text_set_type:
                 raise ValidationError(_(u'The chosen text set and owner random source must have the same text set type'))
         except TextSetType.DoesNotExist:
+            pass
+        except TextSet.DoesNotExist:
+            pass
+        except RandomTextSet.DoesNotExist:
             pass
 
     def __unicode__(self):
