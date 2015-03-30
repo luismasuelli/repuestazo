@@ -6,9 +6,7 @@
             <div id="text3">{{ randomText.foot }}</div>
         </div>
     </div>
-    <div id="big-image">
-
-    </div>
+    <div id="big-image" ng-style="{'background-image': 'url(' + randomImage.random.image + ')'}"></div>
     <div id="promos-reel">
         <div class="inner">
             <div ng-repeat="promo in promos" ng-click="popupPromo(promo.id)" ng-class="{'promo': true, 'fading': fading && $index == 0}">

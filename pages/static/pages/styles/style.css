@@ -288,8 +288,8 @@ div#big-image {
     width: 250px;
     height: 288px;
     display: inline-block;
-    background-size: contain;
     background: center center no-repeat;
+    background-size: contain;
 }
 
 div#promos-reel {

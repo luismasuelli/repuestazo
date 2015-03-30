@@ -19,9 +19,25 @@
             foot: 'Promoción por Tiempo Limitado'
         };
         $rootScope.randomImage = {
-            //TODO poner los datos buenos
-            url: ''
+            "name": "Dummy Random Banner",
+            "description": "Dummy Random Source",
+            "random": {
+                "code": 1,
+                "name":"Dummy Banner",
+                "description": "Dummy Banner Result",
+                "width":797,
+                "height":738,
+                "image":"http://127.0.0.1:8000/media/banner/BigBanner.png"
+            }
         };
+        $http
+            .get('/ads/random-banner/bigfront', {})
+            .success(function(data){
+                $rootScope.randomImage = data;
+            })
+            .error(function(){
+
+            });
         $rootScope.promos = [{"id":0,"product":"Cargando las ofertas","brand":"","model":"","year":null,"discount":""}];
         $http
             .get('/replacements/cheap', {})
@@ -29,7 +45,6 @@
                 $rootScope.promos = data;
                 $interval(function(){
                     $rootScope.fading = true; //marcamos fading en primer elemento (se activara una clase)
-                    $
                     $timeout(function(){
                         //se completa el fade (esperamos el mismo tiempo que dura la transicion) y movemos el elemento
                         //bien hacia el final
