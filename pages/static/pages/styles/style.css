@@ -122,8 +122,6 @@ form.popup-repuestazo #slogan {
 
 ul#menu {
     border-radius: 10px;
-    right: 0;
-    top: 0;
     position: absolute;
     list-style-image: none;
     padding: 0;
@@ -135,7 +133,6 @@ ul#menu {
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
-    cursor: pointer;
     right: 113px;
     top: 113px;
 }
@@ -150,6 +147,7 @@ ul#menu li {
     text-transform: uppercase;
     font-size: 12px;
     text-shadow: 1px 1px;
+    cursor: pointer;
 }
 
 ul#menu li:not(:first-child) {
