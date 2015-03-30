@@ -10,6 +10,10 @@
 
     </div>
     <div id="promos-reel">
-
+        <div class="inner">
+            <div ng-repeat="promo in promos" ng-click="popupPromo(promo.id)" ng-class="{'promo': true, 'fading': fading && $index == 0}">
+                {{ displayPromo(promo) }}
+            </div>
+        </div>
     </div>
 </div>
