@@ -253,6 +253,7 @@ div#red-card > div#texts {
     font-family: Arial, Helvetica, sans-serif;
     text-transform: uppercase;
 }
+
 div#red-card > div#texts > div#text1 {
     color: white;
     font-size: 28px;
@@ -260,8 +261,9 @@ div#red-card > div#texts > div#text1 {
     line-height: 25px;
     min-height: 50px;
     max-height: 50px;
-    overflow-y: hidden;
+    overflow: hidden;
 }
+
 div#red-card > div#texts > div#text2 {
     color: #fff608;
     font-size: 47px;
@@ -269,15 +271,16 @@ div#red-card > div#texts > div#text2 {
     font-weight: 600;
     min-height: 50px;
     max-height: 50px;
-    overflow-y: hidden;
+    overflow: hidden;
 }
+
 div#red-card > div#texts > div#text3 {
     color: white;
     font-size: 14px;
     font-weight: normal;
     min-height: 20px;
     max-height: 20px;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 div#big-image {
@@ -286,6 +289,7 @@ div#big-image {
     height: 288px;
     display: inline-block;
     background-size: contain;
+    background: center center no-repeat;
 }
 
 div#promos-reel {
@@ -306,6 +310,16 @@ div#promos-reel {
     border: 1px solid #c0c0c0;
     padding: 8px;
     border-radius: 8px;
+}
+
+div#promos-reel > div.promo {
+    font-weight: 600;
+    overflow: hidden;
+}
+
+div#promos-reel > div.promo:hover {
+    color: white;
+    background: red;
 }
 
 /* Barra de elementos Informate / Busca / Garantia */
