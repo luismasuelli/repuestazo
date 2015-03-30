@@ -97,6 +97,33 @@
             .error(function(){
 
             });
+        $rootScope.bannerIzquierda = {};
+        $http
+            .get('/ads/banner/leftfoot', {})
+            .success(function(data){
+                $rootScope.bannerIzquierda = data;
+            })
+            .error(function(){
+
+            });
+        $rootScope.bannerCentro = {};
+        $http
+            .get('/ads/banner/midfoot', {})
+            .success(function(data){
+                $rootScope.bannerCentro = data;
+            })
+            .error(function(){
+
+            });
+        $rootScope.bannerDerecha = {};
+        $http
+            .get('/ads/banner/rightfoot', {})
+            .success(function(data){
+                $rootScope.bannerDerecha = data;
+            })
+            .error(function(){
+
+            });
         $rootScope.promos = [{"id":0,"product":"Cargando las ofertas","brand":"","model":"","year":null,"discount":""}];
         $http
             .get('/replacements/cheap', {})

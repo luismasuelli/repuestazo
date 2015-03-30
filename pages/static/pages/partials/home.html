@@ -47,13 +47,13 @@
     </div>
     <div id="promo-banners" class="silver-underline">
         <div id="promo-izquierda">
-            <img class="banner" ng-click="go.promoIzquierda()" />
+            <img class="banner" ng-src="{{ bannerIzquierda.image }}" ng-click="go.promoIzquierda()" />
         </div>
         <div id="centro">
-            <img class="banner" ng-click="go.promociones()"/>
+            <img class="banner" ng-src="{{ bannerCentro.image }}" ng-click="go.promociones()"/>
         </div>
         <div id="promo-derecha" class="silver-leftline">
-            <img class="banner" ng-click="go.promoDerecha()" />
+            <img class="banner" ng-src="{{ bannerDerecha.image }}" ng-click="go.promoDerecha()" />
         </div>
         <div class="clear"></div>
     </div>
