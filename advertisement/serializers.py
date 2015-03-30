@@ -34,11 +34,11 @@ class TextSetSerializer(ModelSerializer):
                 model = TextSetTypeField
                 fields = ('code',)
 
-        field = TextSetElementFieldSerializer()
+        text_field = TextSetElementFieldSerializer()
 
         class Meta:
             model = TextSetElement
-            fields = ('field', 'value')
+            fields = ('text_field', 'value')
 
     entries = TextSetElementSerializer(many=True)
 

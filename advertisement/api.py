@@ -1,5 +1,6 @@
 from rest_framework.generics import RetrieveAPIView
-from .serializers import ReelSerializer, BannerSerializer, RandomBannerSerializer, RandomTextSetSerializer
+from .serializers import ReelSerializer, BannerSerializer, RandomBannerSerializer, RandomTextSetSerializer, \
+    TextSetSerializer
 from .models import Reel, TextSet, Banner, RandomBanner, RandomTextSet
 
 
@@ -15,7 +16,7 @@ class ReelView(RetrieveAPIView):
 
 class TextSetView(RetrieveAPIView):
     queryset = TextSet.objects.all()
-    serializer_class = TextSet.objects.all()
+    serializer_class = TextSetSerializer
 
 
 class RandomBannerView(RetrieveAPIView):
@@ -24,5 +25,5 @@ class RandomBannerView(RetrieveAPIView):
 
 
 class RandomTextSetView(RetrieveAPIView):
-    queryset = RandomTextSet
+    queryset = RandomTextSet.objects.all()
     serializer_class = RandomTextSetSerializer

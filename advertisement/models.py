@@ -236,7 +236,7 @@ class TextSetTypeField(Trackable):
     required = models.BooleanField(default=True, verbose_name=_(u'Required'), null=False)
 
     def __unicode__(self):
-        return u"[%s.%s] %s" % (self.owner.code, self.code, self.name)
+        return u"[%s] %s" % (self.owner.code, self.code)
 
     class Meta:
         unique_together = (('code', 'owner'),)
@@ -267,7 +267,7 @@ class TextSetElement(Trackable):
     """
 
     owner = models.ForeignKey(TextSet, null=False, verbose_name=_(u'Text set'), related_name='entries')
-    field = models.ForeignKey(TextSetTypeField, verbose_name=_(u'Field'), null=False)
+    text_field = models.ForeignKey(TextSetTypeField, verbose_name=_(u'Field'), null=False)
     value = models.CharField(max_length=255, null=False, blank=True, verbose_name=_(u'Content'))
 
     def clean(self):
@@ -276,9 +276,9 @@ class TextSetElement(Trackable):
         """
 
         try:
-            if not self.field.owner == self.owner.text_set_type:
+            if not self.text_field.owner == self.owner.text_set_type:
                 raise ValidationError(_(u'The entry field does not belong to the owner\'s type'))
-            if not self.value and self.field.required:
+            if not self.value and self.text_field.required:
                 raise ValidationError(_(u'The value must not be empty since the owner entry\'s type defines this field as required'))
         except TextSet.DoesNotExist:
             pass
@@ -286,10 +286,10 @@ class TextSetElement(Trackable):
             pass
 
     def __unicode__(self):
-        return u"%s.%s" % (self.owner, self.field.code)
+        return u"%s.%s" % (self.owner, self.text_field.code)
 
     class Meta:
-        unique_together = (('field', 'owner'),)
+        unique_together = (('text_field', 'owner'),)
         verbose_name = _(u'Text set element')
         verbose_name_plural = _(u'Text set elements')
 
@@ -427,6 +427,19 @@ class RandomTextSetChoice(Trackable):
             pass
         except RandomTextSet.DoesNotExist:
             pass
+
+    def hit(self):
+        """
+        En caso de tener un conteo, reducimos en uno dicho conteo,
+        """
+        if self.remaining_hits:
+            self.remaining_hits -= 1
+
+    def is_unlimited(self):
+        """
+        Determina si es ilimitado su consumo o no.
+        """
+        return self.remaining_hits is None
 
     def __unicode__(self):
         return u"%s > %s" % (self.owner, self.text_set.code)

@@ -52,7 +52,7 @@ class TextSetAdmin(ModelAdmin):
 
     class InlineTextSetElementAdmin(TabularInline):
         model = TextSetElement
-        ordering = ('field',)
+        ordering = ('text_field',)
 
     inlines = [InlineTextSetElementAdmin]
 
@@ -77,6 +77,8 @@ class RandomTextSetAdmin(ModelAdmin):
     class InlineRandomTextSetChoiceAdmin(TabularInline):
         model = RandomTextSetChoice
         ordering = ('text_set',)
+
+    inlines = [InlineRandomTextSetChoiceAdmin]
 
 
 site.register(BannerType, BannerTypeAdmin)

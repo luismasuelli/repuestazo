@@ -20,6 +20,20 @@
             offer: '60% DSCT.',
             foot: 'Promoción por Tiempo Limitado'
         };
+        $http
+            .get('/ads/random-text-set/rtextfront', {})
+            .success(function(data){
+                var entries = data.random.entries;
+                $rootScope.randomText = {};
+                if (entries) {
+                    angular.forEach(entries, function(value){
+                        $rootScope.randomText[value.text_field.code] = value.value;
+                    });
+                }
+            })
+            .error(function(){
+
+            });
         $rootScope.reel = {
             "image_list": [
                 {
