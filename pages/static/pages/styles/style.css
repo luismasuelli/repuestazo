@@ -342,7 +342,114 @@ div#promos-reel > div.inner > div.promo:hover {
 /* Barra de elementos Informate / Busca / Garantia */
 
 div#buttons-bar {
+    position: relative;
+    height: 94px;
+    margin-top: 15px;
+}
 
+div#buttons-bar > div {
+    position: absolute;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    font-style: italic;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+div#buttons-bar div.texto {
+    text-align: center;
+    padding-left: 50px;
+    background-position: left center;
+}
+
+div#buttons-bar div.texto > span.bigger {
+    font-size: 30px;
+    line-height: 30px;
+}
+
+div#buttons-bar > div#garantia {
+    width: 450px;
+    height: 80px;
+    left: 0;
+    top: 50%;
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+div#buttons-bar > div#garantia > div.texto {
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    background-image: url('../images/tilde-garantia.png');
+    background-size: 35px 43px;
+    background-repeat: no-repeat;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+div#buttons-bar > div#busca {
+    height: 94px;
+    width: 238px;
+    border-radius: 6px;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+div#buttons-bar > div#busca > div.texto {
+    width: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-image: url('../images/tilde-busca.png');
+    background-size: 35px 35px;
+    background-repeat: no-repeat;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+div#buttons-bar > div#informate {
+    width: 450px;
+    height: 80px;
+    right: 0;
+    top: 50%;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+div#buttons-bar > div#informate > div.texto {
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    background-image: url('../images/tilde-informate.png');
+    background-size: 33px 33px;
+    background-repeat: no-repeat;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 /* Barra de reel y blog (home) */
