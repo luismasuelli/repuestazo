@@ -232,7 +232,7 @@ msgstr "Opciones de banner aleatorio"
 msgid "Random owner"
 msgstr "Origen de azar"
 
-msgid "Remaining hots"
+msgid "Remaining hits"
 msgstr "Impresiones restantes"
 
 msgid "Weight"
