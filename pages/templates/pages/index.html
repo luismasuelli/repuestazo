@@ -1,21 +1,49 @@
-{% extends "pages/base.html" %}
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Repuestazo.com | Próximamente</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'pages/styles/bootstrap.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'pages/styles/bootstrap-theme.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'pages/styles/style.css' %}" />
+        <script type="text/javascript" src="{% static 'pages/scripts/angular.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'pages/scripts/angular-ui-router.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'pages/scripts/index.js' %}"></script>
+        <script type="text/javascript">
+            angular.element(document).ready(function() {
+                window.STATIC_URL = '{{ STATIC_URL | escapejs }}';
+                window.MEDIA_URL = '{{ MEDIA_URL | escapejs }}';
+                angular.bootstrap(document, ['Repuestazo']);
+            });
+        </script>
+    </head>
+    <body id="index" ng-controller="Index.Main">
+        <div id="header">
 
-{% block title %}{{ block.super }}{% endblock title %}
+        </div>
+        <div id="content">
+            <div id="logo-main"></div>
+            <div id="slogan-main"></div>
+            <ul id="menu">
+                <li>inicio</li>
+                <li>promociones</li>
+                <li>pide tus repuestos</li>
+                <li>garant&iacute;a</li>
+                <li>forma de pago y env&iacute;o</li>
+                <li>cont&aacute;ctanos</li>
+            </ul>
+            <div ui-view>
 
-{% block head %}
-{{ block.super }}
-{% endblock head %}
-
-{% block head_scripts %}
-{{ block.super }}
-{% endblock head_scripts %}
-
-{% block body_attrs %}{{ block.super }}{% endblock body_attrs %}
-
-{% block body %}
-{{ block.super }}
-{% endblock body %}
-
-{% block body_scripts %}
-{{ block.super }}
-{% endblock body_scripts %}
+            </div>
+        </div>
+        <div id="footer">
+            <div id="address">
+                Ambato: Av Bolivariana y Calandria frente al Estadio Alterno - Ambato Telf: (03) 2 240 826
+            </div>
+            <div id="footer-icons">
+                <div id="slogan-foot"></div>
+                <div id="logo-foot"></div>
+            </div>
+        </div>
+    </body>
+</html>
