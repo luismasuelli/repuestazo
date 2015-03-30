@@ -312,12 +312,31 @@ div#promos-reel {
     border-radius: 8px;
 }
 
-div#promos-reel > div.promo {
-    font-weight: 600;
+div#promos-reel > div.inner {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    right: 8px;
+    bottom: 8px;
     overflow: hidden;
 }
 
-div#promos-reel > div.promo:hover {
+div#promos-reel > div.inner > div.promo {
+    font-weight: 600;
+    overflow: hidden;
+    line-height: 15px;
+}
+
+div#promos-reel > div.inner > div.promo.fading {
+    -webkit-transition: all 1.5s ease-in-out;
+    -moz-transition: all 1.5s ease-in-out;
+    -ms-transition: all 1.5s ease-in-out;
+    -o-transition: all 1.5s ease-in-out;
+    transition: all 1.5s ease-in-out;
+    height: 0;
+}
+
+div#promos-reel > div.inner > div.promo:hover {
     color: white;
     background: red;
 }
