@@ -1,0 +1,318 @@
+[
+    {
+        "fields": {
+            "code": "bigfront",
+            "name": "Imagen Home",
+            "height": 738,
+            "width": 797,
+            "created_on": "2015-03-30T15:26:28.319Z",
+            "updated_on": "2015-03-30T15:26:28.329Z",
+            "description": "Imagen Centro-Superior de Home"
+        },
+        "model": "advertisement.bannertype",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "code": "footbanner",
+            "name": "Banner de pie",
+            "height": 433,
+            "width": 934,
+            "created_on": "2015-03-30T20:39:14.567Z",
+            "updated_on": "2015-03-30T20:39:56.737Z",
+            "description": "Banner situado en el pie de la barra"
+        },
+        "model": "advertisement.bannertype",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "code": "bigfront01",
+            "description": "Repuestos varios",
+            "image": "banner/BigBanner.png",
+            "banner_type": 1,
+            "height": 738,
+            "width": 797,
+            "created_on": "2015-03-30T15:58:00.485Z",
+            "target": "",
+            "updated_on": "2015-03-30T15:58:00.780Z",
+            "name": "Repuestos"
+        },
+        "model": "advertisement.banner",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "code": "leftfoot",
+            "description": "Banner situado a la izquierda dentro del pie en su barra",
+            "image": "banner/boton-izq.png",
+            "banner_type": 2,
+            "height": 433,
+            "width": 934,
+            "created_on": "2015-03-30T20:40:33.768Z",
+            "target": "",
+            "updated_on": "2015-03-30T20:40:34.014Z",
+            "name": "Banner Izquierdo de Pie"
+        },
+        "model": "advertisement.banner",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "code": "rightfoot",
+            "description": "Banner situado a la derecha dentro del pie en su barra",
+            "image": "banner/boton-der.png",
+            "banner_type": 2,
+            "height": 433,
+            "width": 934,
+            "created_on": "2015-03-30T20:41:09.190Z",
+            "target": "",
+            "updated_on": "2015-03-30T20:41:09.212Z",
+            "name": "Banner Derecho de Pie"
+        },
+        "model": "advertisement.banner",
+        "pk": 3
+    },
+    {
+        "fields": {
+            "code": "midfoot",
+            "description": "Banner situado al centro dentro del pie en su barra",
+            "image": "banner/boton-med.png",
+            "banner_type": 2,
+            "height": 433,
+            "width": 934,
+            "created_on": "2015-03-30T20:41:46.761Z",
+            "target": "",
+            "updated_on": "2015-03-30T20:41:46.781Z",
+            "name": "Banner Medio de Pie"
+        },
+        "model": "advertisement.banner",
+        "pk": 4
+    },
+    {
+        "fields": {
+            "code": "reelfront",
+            "name": "Reel del Home",
+            "height": 541,
+            "width": 1954,
+            "created_on": "2015-03-30T18:30:39.830Z",
+            "updated_on": "2015-03-30T18:30:39.836Z",
+            "description": "Reel de la pagina principal"
+        },
+        "model": "advertisement.reeltype",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "link_prevails": true,
+            "code": "reelfront",
+            "name": "Reel del Home",
+            "reel_type": 1,
+            "link_default": "",
+            "created_on": "2015-03-30T18:38:51.460Z",
+            "updated_on": "2015-03-30T18:38:51.631Z",
+            "description": "Reel de la pagina principal"
+        },
+        "model": "advertisement.reel",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "description": "Repuestos para todos los modelos Chevrolet",
+            "sequence": 1,
+            "image": "reel/front-reel-1_4dC2mc1.png",
+            "height": 541,
+            "width": 1954,
+            "created_on": "2015-03-30T18:38:51.507Z",
+            "link_own": "",
+            "updated_on": "2015-03-30T18:38:51.646Z",
+            "reel": 1,
+            "name": "Repuestos Chevrolet"
+        },
+        "model": "advertisement.reelimage",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "description": "El m\u00e1s amplio stock del Ecuador",
+            "sequence": 2,
+            "image": "reel/front-reel-2_U1apJq2.png",
+            "height": 541,
+            "width": 1954,
+            "created_on": "2015-03-30T18:38:51.522Z",
+            "link_own": "",
+            "updated_on": "2015-03-30T18:38:51.655Z",
+            "reel": 1,
+            "name": "Envio Inmediato"
+        },
+        "model": "advertisement.reelimage",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "description": "Cont\u00e1ctanos al 0982 663 050 - Te enviaremos el repuesto a cualquier parte del Ecuador",
+            "sequence": 3,
+            "image": "reel/front-reel-3_Ply6IjC.png",
+            "height": 541,
+            "width": 1954,
+            "created_on": "2015-03-30T18:38:51.536Z",
+            "link_own": "",
+            "updated_on": "2015-03-30T18:38:51.661Z",
+            "reel": 1,
+            "name": "Cont\u00e1ctanos"
+        },
+        "model": "advertisement.reelimage",
+        "pk": 3
+    },
+    {
+        "fields": {
+            "description": "Llegamos a Ecuador con toda la gama de Chevrolet",
+            "sequence": 4,
+            "image": "reel/front-reel-4.png",
+            "height": 541,
+            "width": 1954,
+            "created_on": "2015-03-30T18:38:51.551Z",
+            "link_own": "",
+            "updated_on": "2015-03-30T18:38:51.669Z",
+            "reel": 1,
+            "name": "Toda la gama de Chevrolet"
+        },
+        "model": "advertisement.reelimage",
+        "pk": 4
+    },
+    {
+        "fields": {
+            "updated_on": "2015-03-30T20:00:57.199Z",
+            "created_on": "2015-03-30T20:00:57.117Z",
+            "code": "textfront",
+            "name": "Textos de Etiqueta Roja en Hom",
+            "description": "Textos de etiqueta roja en Home (hay 3)"
+        },
+        "model": "advertisement.textsettype",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "owner": 1,
+            "updated_on": "2015-03-30T20:00:57.258Z",
+            "created_on": "2015-03-30T20:00:57.150Z",
+            "code": "name",
+            "required": true
+        },
+        "model": "advertisement.textsettypefield",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "owner": 1,
+            "updated_on": "2015-03-30T20:00:57.260Z",
+            "created_on": "2015-03-30T20:00:57.162Z",
+            "code": "offer",
+            "required": true
+        },
+        "model": "advertisement.textsettypefield",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "owner": 1,
+            "updated_on": "2015-03-30T20:00:57.262Z",
+            "created_on": "2015-03-30T20:00:57.174Z",
+            "code": "foot",
+            "required": true
+        },
+        "model": "advertisement.textsettypefield",
+        "pk": 3
+    },
+    {
+        "fields": {
+            "updated_on": "2015-03-30T20:11:51.830Z",
+            "created_on": "2015-03-30T20:11:51.704Z",
+            "code": "textfront",
+            "text_set_type": 1
+        },
+        "model": "advertisement.textset",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "owner": 1,
+            "updated_on": "2015-03-30T20:11:51.837Z",
+            "created_on": "2015-03-30T20:11:51.741Z",
+            "value": "Bomba de Gasolina Corsa",
+            "text_field": 1
+        },
+        "model": "advertisement.textsetelement",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "owner": 1,
+            "updated_on": "2015-03-30T20:11:51.840Z",
+            "created_on": "2015-03-30T20:11:51.754Z",
+            "value": "60% DSCT.",
+            "text_field": 2
+        },
+        "model": "advertisement.textsetelement",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "owner": 1,
+            "updated_on": "2015-03-30T20:11:51.842Z",
+            "created_on": "2015-03-30T20:11:51.767Z",
+            "value": "Promoci\u00f3n por Tiempo Limitado",
+            "text_field": 3
+        },
+        "model": "advertisement.textsetelement",
+        "pk": 3
+    },
+    {
+        "fields": {
+            "code": "bigfront",
+            "description": "Fuente aleatoria para el banner de home",
+            "banner_type": 1,
+            "created_on": "2015-03-30T15:51:12.529Z",
+            "updated_on": "2015-03-30T16:00:29.492Z",
+            "name": "Banner de Home"
+        },
+        "model": "advertisement.randombanner",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "remaining_hits": null,
+            "weight": 1,
+            "created_on": "2015-03-30T16:00:29.429Z",
+            "owner": 1,
+            "updated_on": "2015-03-30T16:00:29.501Z",
+            "banner": 1
+        },
+        "model": "advertisement.randombannerchoice",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "code": "rtextfront",
+            "description": "Origen de textos aleatorios para el home",
+            "text_set_type": 1,
+            "created_on": "2015-03-30T20:21:04.884Z",
+            "updated_on": "2015-03-30T20:21:05.008Z",
+            "name": "Conjunto Aleatorio de Home"
+        },
+        "model": "advertisement.randomtextset",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "text_set": 1,
+            "remaining_hits": null,
+            "weight": 1,
+            "created_on": "2015-03-30T20:21:04.937Z",
+            "owner": 1,
+            "updated_on": "2015-03-30T20:21:05.016Z"
+        },
+        "model": "advertisement.randomtextsetchoice",
+        "pk": 1
+    }
+]
