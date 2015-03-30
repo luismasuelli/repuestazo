@@ -12,6 +12,11 @@
             promoDerecha: function() { $state.go('promo-derecha') },
             formulario: function(tag) { $state.go('promo-derecha', {tracking: tag}) }
         };
+        $rootScope.randomText = {
+            name: 'Bomba de Gasolina Corsa',
+            offer: '60% DSCT.',
+            foot: 'Promoción por Tiempo Limitado'
+        };
         $state.go('home');
     }]);
 
