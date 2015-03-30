@@ -54,6 +54,7 @@ MIDDLEWARE_CLASSES = (
 )
 
 REST_FRAMEWORK = {
+    'UNICODE_JSON': False,
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
     )
