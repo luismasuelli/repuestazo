@@ -92,6 +92,12 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='reel',
+            name='code',
+            field=models.SlugField(max_length=10, verbose_name='Code'),
+            preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='reel',
             name='created_on',
             field=models.DateTimeField(default=django.utils.timezone.now, editable=False),
             preserve_default=True,
@@ -116,6 +122,12 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='reeltype',
+            name='code',
+            field=models.SlugField(max_length=10, verbose_name='Code'),
+            preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='reeltype',
             name='created_on',
             field=models.DateTimeField(default=django.utils.timezone.now, editable=False),
             preserve_default=True,
@@ -128,6 +140,12 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='textset',
+            name='code',
+            field=models.SlugField(max_length=10, verbose_name='Code'),
+            preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='textset',
             name='created_on',
             field=models.DateTimeField(default=django.utils.timezone.now, editable=False),
             preserve_default=True,
@@ -140,6 +158,12 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='textsetelement',
+            name='code',
+            field=models.SlugField(max_length=10, verbose_name='Code'),
+            preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='textsetelement',
             name='created_on',
             field=models.DateTimeField(default=django.utils.timezone.now, editable=False),
             preserve_default=True,
@@ -152,6 +176,12 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='textsettype',
+            name='code',
+            field=models.SlugField(max_length=10, verbose_name='Code'),
+            preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='textsettype',
             name='created_on',
             field=models.DateTimeField(default=django.utils.timezone.now, editable=False),
             preserve_default=True,
@@ -160,6 +190,12 @@ class Migration(migrations.Migration):
             model_name='textsettype',
             name='updated_on',
             field=models.DateTimeField(default=django.utils.timezone.now, editable=False),
+            preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='textsettypefield',
+            name='code',
+            field=models.SlugField(max_length=10, verbose_name='Code'),
             preserve_default=True,
         ),
         migrations.AlterField(
