@@ -2,7 +2,7 @@
 
     var Index = angular.module('Index', ['ui.router', 'ngCookies']);
 
-    Index.controller('Index.Main', ['$rootScope', '$state', '$http', function($rootScope, $state, $http) {
+    Index.controller('Index.Main', ['$rootScope', '$state', '$http', '$interval', '$timeout', function($rootScope, $state, $http, $interval, $timeout) {
         $rootScope.go = {
             home: function() { $state.go('home') },
             promociones: function() { $state.go('promociones') },
@@ -27,6 +27,15 @@
             .get('/replacements/cheap', {})
             .success(function(data){
                 $rootScope.promos = data;
+                $interval(function(){
+                    $rootScope.fading = true; //marcamos fading en primer elemento (se activara una clase)
+                    $
+                    $timeout(function(){
+                        //se completa el fade (esperamos el mismo tiempo que dura la transicion) y movemos el elemento
+                        //bien hacia el final
+                        $rootScope.promos.push($rootScope.promos.shift());
+                    }, 1500);
+                }, 1500);
             })
             .error(function(){
                 $rootScope.promos = [{"id":0,"product":"Hubo un error al cargar las ofertas","brand":"","model":"","year":null,"discount":""}];
