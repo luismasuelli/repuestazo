@@ -334,7 +334,7 @@ class RandomBannerChoice(Trackable):
     owner = models.ForeignKey(RandomBanner, null=False, verbose_name=_(u'Random owner'), related_name='choices')
     banner = models.ForeignKey(Banner, null=False, verbose_name=_(u'Banner'))
     weight = models.PositiveIntegerField(verbose_name=_(u'Weight'), null=False, validators=[MinValueValidator(1)])
-    remaining_hits = models.PositiveIntegerField(verbose_name=_(u'Remaining hits'), null=True)
+    remaining_hits = models.PositiveIntegerField(verbose_name=_(u'Remaining hits'), null=True, blank=True)
 
     def clean(self):
         """
@@ -412,7 +412,7 @@ class RandomTextSetChoice(Trackable):
     owner = models.ForeignKey(RandomTextSet, null=False, verbose_name=_(u'Random owner'), related_name='choices')
     text_set = models.ForeignKey(TextSet, null=False, verbose_name=_(u'Text set'))
     weight = models.PositiveIntegerField(verbose_name=_(u'Weight'), null=False, validators=[MinValueValidator(1)])
-    remaining_hits = models.PositiveIntegerField(verbose_name=_(u'Remaining hits'), null=True)
+    remaining_hits = models.PositiveIntegerField(verbose_name=_(u'Remaining hits'), null=True, blank=True)
 
     def clean(self):
         """
