@@ -6,7 +6,7 @@ class BannerSerializer(ModelSerializer):
 
     class Meta:
         model = Banner
-        exclude = ('created_on', 'updated_on', 'banner_type', 'id')
+        exclude = ('created_on', 'updated_on', 'banner_type', 'id', 'target')
 
 
 class ReelSerializer(ModelSerializer):
