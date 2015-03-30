@@ -73,6 +73,7 @@ form.popup-repuestazo #slogan {
     position: relative;
     width: 1168px;
     margin: -125px auto -100px;
+    padding: 150px 0 125px;
     min-height: 100%;
 }
 
@@ -84,6 +85,19 @@ form.popup-repuestazo #slogan {
     background-color: red;
     height: 100px;
     position: relative;
+}
+
+#head-items {
+    height: 100%;
+    width: 1168px;
+    overflow: visible;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
 }
 
 #logo-main {
@@ -201,4 +215,8 @@ div#address {
     height: 60px;
     background: url('../images/slogan-pie.png') center center no-repeat;
     background-size: contain;
+}
+
+#placeholder {
+
 }
