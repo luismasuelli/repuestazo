@@ -6,7 +6,7 @@ class BannerSerializer(ModelSerializer):
 
     class Meta:
         model = Banner
-        exclude = ('created_on', 'updated_on', 'banner_type', 'id', 'target')
+        exclude = ('created_on', 'updated_on', 'banner_type', 'id')
 
 
 class ReelSerializer(ModelSerializer):
@@ -15,9 +15,9 @@ class ReelSerializer(ModelSerializer):
 
         class Meta:
             model = ReelImage
-            exclude = ('sequence', 'name', 'description', 'image', 'height', 'width', 'target')
+            exclude = ('sequence', 'name', 'description', 'image', 'height', 'width', 'reel')
 
-    image_list = InlineReelImageSerializer()
+    image_list = InlineReelImageSerializer(many=True)
 
     class Meta:
         model = Reel
@@ -40,7 +40,7 @@ class TextSetSerializer(ModelSerializer):
             model = TextSetElement
             fields = ('field', 'value')
 
-    entries = TextSetElementSerializer()
+    entries = TextSetElementSerializer(many=True)
 
     class Meta:
         model = TextSet
