@@ -2,7 +2,8 @@
 
     var Index = angular.module('Index', ['ui.router', 'ngCookies']);
 
-    Index.controller('Index.Main', ['$rootScope', '$state', '$http', '$interval', '$timeout', function($rootScope, $state, $http, $interval, $timeout) {
+    Index.controller('Index.Main', ['$rootScope', '$state', '$http', '$interval', '$timeout', 'Settings', function($rootScope, $state, $http, $interval, $timeout, settings) {
+        $rootScope.STATIC_URL = settings.STATIC_URL;
         $rootScope.go = {
             home: function() { $state.go('home') },
             promociones: function() { $state.go('promociones') },
@@ -10,7 +11,8 @@
             garantia: function() { $state.go('garantia') },
             promoIzquierda: function() { $state.go('promo-izquierda') },
             promoDerecha: function() { $state.go('promo-derecha') },
-            formulario: function(tag) { $state.go('promo-derecha', {tracking: tag}) }
+            formulario: function(tag) { $state.go('promo-derecha', {tracking: tag}) },
+            blog: function(){ $state.go('blog') }
         };
         $rootScope.randomText = {
             //TODO poner los datos buenos
@@ -18,6 +20,49 @@
             offer: '60% DSCT.',
             foot: 'Promoción por Tiempo Limitado'
         };
+        $rootScope.reel = {
+            "image_list": [
+                {
+                    "name": "Dummy Reel Image 1",
+                    "description": "Dummy Reel Image 1 Description",
+                    "image": "http://127.0.0.1:8000/media/reel/dummy1.png"
+                }, {
+                    "name": "Dummy Reel Image 2",
+                    "description": "Dummy Reel Image 2 Description",
+                    "image": "http://127.0.0.1:8000/media/reel/dummy2.png"
+                }, {
+                    "name": "Dummy Reel Image 3",
+                    "description": "Dummy Reel Image 3 Description",
+                    "image": "http://127.0.0.1:8000/media/reel/dummy3.png"
+                }, {
+                    "name": "Dummy Reel Image 4",
+                    "description": "Dummy Reel Image 4 Description",
+                    "image":" http://127.0.0.1:8000/media/reel/dummy4.png"
+                }
+            ],
+            "code":"reelfront",
+            "name":"Reel del Home",
+            "description":"Reel de la pagina principal",
+            "link_default":"",
+            "link_prevails":true
+        };
+        $http
+            .get('/ads/reel/reelfront', {})
+            .success(function(data){
+                $rootScope.reel = data;
+                $rootScope.reel.current = null;
+                var index = 0;
+                $interval(function(){
+                    index++;
+                    if (index == $rootScope.reel.image_list.length) {
+                        index = 0;
+                    }
+                    $rootScope.reel.current = $rootScope.reel.image_list[index];
+                }, 8000);
+            })
+            .error(function(){
+
+            });
         $rootScope.randomImage = {
             "name": "Dummy Random Banner",
             "description": "Dummy Random Source",
@@ -96,6 +141,9 @@
     Index.controller('Index.PromoDerecha', ['$scope', function($scope){
 
     }]);
+    Index.controller('Index.Blog', ['$scope', function($scope){
+
+    }]);
     Index.controller('Index.Formulario', ['$rootScope', '$scope', '$http', '$state', '$stateParams', '$cookies',
                                           function($rootScope, $scope, $http, $state, $stateParams, $cookies){
         var headers = {
@@ -171,6 +219,10 @@
             .state('promo-derecha', {
                 templateUrl: settings.STATIC_URL + 'pages/partials/promo-derecha.html',
                 controller: 'Index.PromoDerecha'
+            })
+            .state('blog', {
+                templateUrl: settings.STATIC_URL + 'pages/partials/blog.html',
+                controller: 'Index.Blog'
             })
             .state('formulario', {
                 params: ['tracking'],

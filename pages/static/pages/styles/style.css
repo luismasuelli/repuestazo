@@ -461,5 +461,77 @@ div#reel-bar {
 /* Barra de banners inferiores */
 
 div#promos-bar {
+    width: 1000px;
+    min-height: 330px;
+    position: relative;
+    left: 50%;
+    margin-top: 15px;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
 
+div#promos-bar div#disclaimer {
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    writing-mode: lr-tb;
+    font-size: 12px;
+    display: inline-block;
+    position: absolute;
+    left: -143px;
+    bottom: 143px;
+}
+
+div#promos-bar div#reel-blog {
+    margin-left: 15px;
+    background-color: gray;
+}
+
+div#promos-bar div#promo-banners {
+    margin-left: 15px;
+    background-color: gray;
+}
+
+div#reel-holder {
+    display: inline-block;
+    float: left;
+    padding-bottom: 15px;
+    margin-right: 15px;
+}
+
+div#blog-link-holder {
+    display: inline-block;
+    float: left;
+    padding-right: 15px;
+}
+
+div#blog-link {
+    float: left;
+    display: inline-block;
+    height: 176px;
+    width: 311px;
+    background: url('../images/enlace-blog.png') center center no-repeat;
+    background-size: contain;
+    padding-bottom: 15px;
+    cursor: pointer;
+}
+
+div.clear {
+    clear: both;
+}
+
+img#reel-target {
+    width: 637px;
+    height: 176px;
+}
+
+.silver-underline {
+    border-bottom: 1px solid silver;
+}
+
+.silver-leftline {
+    border-left: 1px solid silver;
 }
