@@ -6,7 +6,7 @@ class BannerSerializer(ModelSerializer):
 
     class Meta:
         model = Banner
-        exclude = ('created_on', 'updated_on', 'banner_type', 'code')
+        exclude = ('created_on', 'updated_on', 'banner_type', 'id')
 
 
 class ReelSerializer(ModelSerializer):
@@ -21,7 +21,7 @@ class ReelSerializer(ModelSerializer):
 
     class Meta:
         model = Reel
-        exclude = ('created_on', 'updated_on', 'reel_type', 'code')
+        exclude = ('created_on', 'updated_on', 'reel_type', 'id')
 
 
 class TextSetSerializer(ModelSerializer):
@@ -44,7 +44,7 @@ class TextSetSerializer(ModelSerializer):
 
     class Meta:
         model = TextSet
-        exclude = ('created_on', 'updated_on', 'text_set_type', 'code')
+        exclude = ('created_on', 'updated_on', 'text_set_type', 'id')
 
 
 class RandomBannerSerializer(ModelSerializer):

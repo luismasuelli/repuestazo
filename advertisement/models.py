@@ -313,9 +313,9 @@ class RandomBanner(Trackable):
         if not elements.exists():
             return None
 
-        choice = weighted_random((element.banner, element.weight) for element in elements)
+        choice = weighted_random([(element, element.weight) for element in elements])
         choice.hit()
-        return choice
+        return choice.banner
 
     def __unicode__(self):
         return u"[%s] %s" % (self.code, self.name)
@@ -391,9 +391,9 @@ class RandomTextSet(Trackable):
         if not elements.exists():
             return None
 
-        choice = weighted_random((element.text_set, element.weight) for element in elements)
+        choice = weighted_random([(element, element.weight) for element in elements])
         choice.hit()
-        return choice
+        return choice.text_set
 
     def __unicode__(self):
         return u"[%s] %s" % (self.code, self.name)
