@@ -93,21 +93,23 @@ class Replacement(Trackable):
             rows = workbook['rwservlet'].rows
             next(rows)  # descartamos la primera fila
             cls.objects.bulk_create([
-                cls(dealer=dict_.get('A', ''),
-                    score=dict_.get('B', ''),
-                    category=dict_.get('C', ''),
-                    code=dict_.get('D', ''),
-                    product=dict_.get('E', ''),
-                    brand=dict_.get('F', ''),
-                    model=dict_.get('G', ''),
-                    year=int_(dict_.get('H', '')),
-                    stock=float_(dict_.get('I', '')),
-                    cost=float_(dict_.get('J', '')),
-                    price=float_(dict_.get('K', '')),
-                    offer=float_(dict_.get('M', ''))) for dict_ in ({cell.column: cell.value for cell in row if cell.column} for row in rows)
+                cls(dealer=unicode(dict_.get('A', u'')).encode('utf-8'),
+                    score=unicode(dict_.get('B', u'')).encode('utf-8'),
+                    category=unicode(dict_.get('C', u'')).encode('utf-8'),
+                    code=unicode(dict_.get('D', u'')).encode('utf-8'),
+                    product=unicode(dict_.get('E', u'')).encode('utf-8'),
+                    brand=unicode(dict_.get('F', u'')).encode('utf-8'),
+                    model=unicode(dict_.get('G', u'')).encode('utf-8'),
+                    year=int_(dict_.get('H', u'')),
+                    stock=float_(dict_.get('I', u'')),
+                    cost=float_(dict_.get('J', u'')),
+                    price=float_(dict_.get('K', u'')),
+                    offer=float_(dict_.get('M', u''))) for dict_ in ({cell.column: cell.value for cell in row if cell.column} for row in rows)
             ])
         except (InvalidFileException, CellCoordinatesException, InsufficientCoordinatesException):
             raise cls.LoadError("An error occurred while loading xls")
+        except UnicodeEncodeError:
+            raise cls.LoadError("Invalid character set")
 
     class Meta:
         verbose_name = _(u'Replacement')
