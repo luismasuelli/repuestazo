@@ -487,12 +487,12 @@ div#promos-bar div#disclaimer {
 
 div#promos-bar div#reel-blog {
     margin-left: 15px;
-    background-color: gray;
 }
 
 div#promos-bar div#promo-banners {
+    margin-top: 15px;
     margin-left: 15px;
-    background-color: gray;
+    padding-bottom: 15px;
 }
 
 div#reel-holder {
@@ -502,10 +502,17 @@ div#reel-holder {
     margin-right: 15px;
 }
 
+div#blog-separator {
+    display: inline-block;
+    float: left;
+    height: 176px;
+}
+
 div#blog-link-holder {
     display: inline-block;
     float: left;
-    padding-right: 15px;
+    height: 192px;
+    margin-left: 15px;
 }
 
 div#blog-link {
@@ -534,4 +541,28 @@ img#reel-target {
 
 .silver-leftline {
     border-left: 1px solid silver;
+}
+
+div#promo-banners img.banner {
+    width: 311px;
+    height: 136px;
+    cursor: pointer;
+}
+
+div#promo-banners div#promo-izquierda {
+    display: inline-block;
+    float: left;
+}
+
+div#promo-banners div#centro {
+    display: inline-block;
+    margin-left: 15px;
+    float: left;
+}
+
+div#promo-banners div#promo-derecha {
+    display: inline-block;
+    margin-left: 15px;
+    padding-left: 14px;
+    float: left;
 }

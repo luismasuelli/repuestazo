@@ -38,14 +38,23 @@
         <div id="reel-holder" class="silver-underline">
             <img id="reel-target" ng-src="{{ reel.current.image }}" ng-click="go.formulario('reel')" />
         </div>
-        <div id="blog-link-holder" class="silver-leftline">
-            <div id="blog-link" ng-click="go.blog()">
-
-            </div>
+        <div id="blog-separator" class="silver-leftline"></div>
+        <div id="blog-link-holder" class="silver-underline">
+            <div id="blog-link" ng-click="go.blog()"></div>
             <div class="clear"></div>
         </div>
+        <div class="clear"></div>
     </div>
-    <div id="promo-banners">
-
+    <div id="promo-banners" class="silver-underline">
+        <div id="promo-izquierda">
+            <img class="banner" ng-click="go.promoIzquierda()" />
+        </div>
+        <div id="centro">
+            <img class="banner" ng-click="go.promociones()"/>
+        </div>
+        <div id="promo-derecha" class="silver-leftline">
+            <img class="banner" ng-click="go.promoDerecha()" />
+        </div>
+        <div class="clear"></div>
     </div>
 </div>
