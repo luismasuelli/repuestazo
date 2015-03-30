@@ -52,11 +52,11 @@ class Replacement(Trackable):
     product = models.CharField(max_length=40, null=False, blank=False, verbose_name=_(u'Product'))
     brand = models.CharField(max_length=20, blank=False, null=False, verbose_name=_(u'Brand'))
     model = models.CharField(max_length=255, blank=True, null=False, verbose_name=_(u'Model'))
-    year = models.SmallIntegerField(validators=[MinValueValidator(2000)], null=True, verbose_name=_(u'Year'))
-    stock = models.DecimalField(max_digits=8, decimal_places=2, validators=[MinValueValidator(0)], null=True, verbose_name=_(u'Stock'))
-    cost = models.DecimalField(max_digits=8, decimal_places=2, validators=[MinValueValidator(0)], null=True, verbose_name=_(u'Cost'))
-    price = models.DecimalField(max_digits=8, decimal_places=2, validators=[MinValueValidator(0)], null=True, verbose_name=_(u'Price'))
-    offer = models.DecimalField(max_digits=8, decimal_places=2, validators=[MinValueValidator(0)], null=True, verbose_name=_(u'Offer'))
+    year = models.SmallIntegerField(validators=[MinValueValidator(2000)], null=True, blank=True, verbose_name=_(u'Year'))
+    stock = models.DecimalField(max_digits=8, decimal_places=2, validators=[MinValueValidator(0)], blank=True, null=True, verbose_name=_(u'Stock'))
+    cost = models.DecimalField(max_digits=8, decimal_places=2, validators=[MinValueValidator(0)], blank=True, null=True, verbose_name=_(u'Cost'))
+    price = models.DecimalField(max_digits=8, decimal_places=2, validators=[MinValueValidator(0)], blank=True, null=True, verbose_name=_(u'Price'))
+    offer = models.DecimalField(max_digits=8, decimal_places=2, validators=[MinValueValidator(0)], blank=True, null=True, verbose_name=_(u'Offer'))
 
     @property
     def discount(self):
