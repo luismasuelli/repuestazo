@@ -14,6 +14,13 @@
             formulario: function(tag) { $state.go('promo-derecha', {tracking: tag}) },
             blog: function(){ $state.go('blog') }
         };
+        $rootScope.playHomeReel= function() {
+            $rootScope.homeReelPlaying = true;
+        };
+        $rootScope.stopHomeReel = function() {
+            $rootScope.homeReelPlaying = false;
+        };
+        $rootScope.homeReelPlaying = false;
         $rootScope.randomText = {
             //TODO poner los datos buenos
             name: 'Bomba de Gasolina Corsa',
@@ -134,7 +141,9 @@
                     $timeout(function(){
                         //se completa el fade (esperamos el mismo tiempo que dura la transicion) y movemos el elemento
                         //bien hacia el final
-                        $rootScope.promos.push($rootScope.promos.shift());
+                        if ($rootScope.homeReelPlaying) {
+                            $rootScope.promos.push($rootScope.promos.shift());
+                        }
                     }, 1500);
                 }, 1500);
             })
@@ -150,7 +159,7 @@
                 content = content + ' ' + promo.model;
             }
             if (parseFloat(promo.discount)) {
-                content = content + ' con un descuento de ' + promo.discount;
+                content = content + ' descuento ' + promo.discount;
             }
             return content;
         };
