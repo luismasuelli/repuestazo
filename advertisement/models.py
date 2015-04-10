@@ -268,7 +268,7 @@ class TextSetElement(Trackable):
 
     owner = models.ForeignKey(TextSet, null=False, verbose_name=_(u'Text set'), related_name='entries')
     text_field = models.ForeignKey(TextSetTypeField, verbose_name=_(u'Field'), null=False)
-    value = models.CharField(max_length=255, null=False, blank=True, verbose_name=_(u'Content'))
+    value = models.TextField(max_length=16777215, null=False, blank=True, verbose_name=_(u'Content'))
 
     def clean(self):
         """
