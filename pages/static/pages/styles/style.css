@@ -200,7 +200,7 @@ div#address {
     bottom: 35px;
 }
 
-#logo-foot {
+#logo-foot, .logo-foot {
     float: right;
     width: 137px;
     height: 60px;
@@ -566,4 +566,10 @@ div#promo-banners div#promo-derecha {
     margin-left: 15px;
     padding-left: 14px;
     float: left;
+}
+
+div#garantia-bar {
+    text-align: left;
+    white-space: pre-line;
+    font-weight: 600;
 }

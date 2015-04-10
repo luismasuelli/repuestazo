@@ -170,6 +170,12 @@
                 console.log('Accediendo a ' + url);
             }
         };
+        $rootScope.textoGarantia = "Cargando ...";
+        $http
+            .get('/ads/text-set/garantia', {})
+            .success(function(data){
+                $rootScope.textoGarantia = data.entries[0].value;
+            });
         $state.go('home');
     }]);
 

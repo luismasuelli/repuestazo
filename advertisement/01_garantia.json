@@ -1,0 +1,45 @@
+[
+    {
+        "fields": {
+            "updated_on": "2015-04-10T02:10:50.906Z",
+            "created_on": "2015-04-10T02:09:32.202Z",
+            "code": "bigtext",
+            "name": "Texto con Pol\u00edticas",
+            "description": "Textos detallados con contenidos ideales para ser disclaimers, garantias, politicas, ..."
+        },
+        "model": "advertisement.textsettype",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "owner": 2,
+            "updated_on": "2015-04-10T02:09:32.290Z",
+            "created_on": "2015-04-10T02:09:32.234Z",
+            "code": "content",
+            "required": true
+        },
+        "model": "advertisement.textsettypefield",
+        "pk": 4
+    },
+    {
+        "fields": {
+            "updated_on": "2015-04-10T02:46:00.029Z",
+            "created_on": "2015-04-10T02:44:50.848Z",
+            "code": "garantia",
+            "text_set_type": 2
+        },
+        "model": "advertisement.textset",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "owner": 2,
+            "updated_on": "2015-04-10T02:44:50.955Z",
+            "created_on": "2015-04-10T02:44:50.888Z",
+            "value": "Repuestazo.com es una tienda de repuestos electr\u00f3nica que comercializa repuestos nuevos y originales de varias marcas de veh\u00edculos. Repuestazo.com NO comercializa ning\u00fan tipo de pieza o parte usada.\r\nLas partes y piezas listadas en este sitio electr\u00f3nico est\u00e1n garantizadas por el fabricante de las mismas bajo las distintas pol\u00edticas que cada marca posee. Repuestazo.com consultar\u00e1 a un distribuidor local del fabricante acerca del procedimiento concerniente a reclamos relacionados a las piezas y partes comercializadas.\r\n\r\nEl per\u00edodo de garant\u00eda de las partes y piezas comercializadas por Repuestazo.com es el que cada fabricante disponga para el efecto y pueden ser consultadas en las respectivas p\u00e1ginas web de cada marca.\r\nRepuestazo.com cubre con la garant\u00eda contra defectos de fabricaci\u00f3n que pudieren afectar el correcto desempe\u00f1o. La garant\u00eda no cubre los da\u00f1os ocasionados por mala instalaci\u00f3n de las piezas proporcionadas, o desgastes prematuros debido a una incorrecta utilizaci\u00f3n y mandanimiento de los mismos.\r\n\r\nLas excepciones a la garant\u00eda general son las siguientes:\r\n\r\nLlantas: La garant\u00eda es proporcionada por el fabricante y tiene una cobertura durante los primeros 5.000 kil\u00f3metros. No cubre el mal uso, desgaste normal, rajaduras, golpes, ca\u00eddas en huecos, golpes contra veredas, entre otros da\u00f1os ocasionados por agentes externos a su fabricaci\u00f3n. Se recomienda utilizar el servicio de alineaci\u00f3n y balanceo al menos cada 10.000 kil\u00f3metros de recorrido.\r\n\r\nRadios, parlantes, bater\u00edas, y alarmas originales: La garant\u00eda es proporcionada por el fabricante y cubre 1 a\u00f1o o 20.000 kil\u00f3metros (lo que ocurra primero). No cubre el uso indebido o exagerado de los mismos, ni tampoco el desgaste normal de las piezas debido a su uso.\r\n\r\nPiezas de latoner\u00eda: La garant\u00eda cubre defectos de fabricaci\u00f3n que pudieren afectar la correcta instalaci\u00f3n de las mismas. No cubre fallas por un mal proceso de pintura aplicado en el taller o golpes y rayones que se pudieran ocasionar debido a una mala manipulaci\u00f3n de las mismas durante el trayecto o instalaci\u00f3n. Para evitarlo Repuestazo.com despacha las piezas de latoner\u00eda en sus empaques originales proporcionados por el fabricante, debidamente sellados, los cuales cumplen con las respectivas normas de seguridad para su transporte establecidas por cada marca. La garant\u00eda tampoco cubre las piezas de latoner\u00eda que hayan tenido desgastes o deformaciones producto del uso o accidentes.\r\n\r\nConsulte el manual de su veh\u00edculo y cumpla con los programas de mantenimiento para as\u00ed asegurar el per\u00edodo de vida normal de partes y piezas originales. Desconf\u00ede siempre de los repuestos usados, ya que estos no le brindan ning\u00fan tipo de seguridad a usted o a su veh\u00edculo, pudiendo su uso ocasionar da\u00f1os a otras piezas de su veh\u00edculo o a sus ocupantes.",
+            "text_field": 4
+        },
+        "model": "advertisement.textsetelement",
+        "pk": 4
+    }
+]
