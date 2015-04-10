@@ -108,6 +108,7 @@ form.popup-repuestazo #slogan {
     height: 120px;
     background: url('../images/logo-principal.png') center center no-repeat;
     background-size: contain;
+    cursor: pointer;
 }
 
 #slogan-main {
