@@ -250,6 +250,27 @@ msgstr "Conjuntos de texto aleatorios"
 msgid "The chosen text set and owner random source must have the same text set type"
 msgstr "El conjunto de textos elegido y el origen de texto aleatorio deben tener el mismo tipo de conjunto de texto"
 
+msgid "Image"
+msgstr "Imagen"
+
+msgid "Target"
+msgstr "Destino"
+
+msgid "Default Target"
+msgstr "Destino Base"
+
+msgid "If set, the banner becomes a link"
+msgstr "Si es verdadero, el banner se convierte en un enlace"
+
+msgid "Default target URL for reel images"
+msgstr "Destino predeterminado para las imágenes de esta marquesina"
+
+msgid "Prevailing target"
+msgstr "Destino prevalesciente"
+
+msgid "Tells whether clicking any reel image will always make use of the default target instead of following the image's critera. Such criterion is only effective when the default target is set"
+msgstr "Determina si haciendo click en cualquier imagen de la marquesina va a hacer uso del destino predeterminado en lugar de seguir el criterio por cada imagen. Esto es solamente efectivo si se asignó el destino predeterminado de la marquesina"
+
 #: common/apps/world/countries/models.py:19
 msgid "Country"
 msgstr "País"

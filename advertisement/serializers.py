@@ -15,7 +15,7 @@ class ReelSerializer(ModelSerializer):
 
         class Meta:
             model = ReelImage
-            fields = ('name', 'description', 'image')
+            fields = ('name', 'description', 'image', 'target')
 
     image_list = InlineReelImageSerializer(many=True)
 

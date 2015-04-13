@@ -40,8 +40,8 @@ class Banner(Trackable):
     width = models.PositiveIntegerField(verbose_name=_(u'Banner width'), null=False, editable=False)
     height = models.PositiveIntegerField(verbose_name=_(u'Banner height'), null=False, editable=False)
     image = models.ImageField(upload_to='banner', null=False, height_field='height', width_field='width')
-    target = models.URLField(verbose_name=_(u'Target'), help_text=_(u'If set, the banner becomes a link'),
-                             null=True, blank=True)
+    target = models.CharField(max_length=255, verbose_name=_(u'Target'), help_text=_(u'If set, the banner becomes a link'),
+                              null=True, blank=True)
 
     def clean(self):
         try:
@@ -107,8 +107,8 @@ class Reel(Trackable):
     code = models.SlugField(verbose_name=_(u'Code'), max_length=10, null=False)
     name = models.CharField(verbose_name=_(u'Name'), max_length=30, null=False)
     description = models.CharField(verbose_name=_(u'Description'), max_length=100, null=False)
-    link_default = models.URLField(verbose_name=_(u'Default target'), help_text=_(u'Default target URL for reel images'),
-                                   null=True, blank=True)
+    link_default = models.CharField(max_length=255, verbose_name=_(u'Default Target'), help_text=_(u'Default target URL for reel images'),
+                                    null=True, blank=True)
     link_prevails = models.BooleanField(default=False, verbose_name=_(u'Prevailing target'), null=False,
                                         help_text=_(u'Tells whether clicking any reel image will always make use '
                                                     u'of the default target instead of following the image\'s critera. '
@@ -151,11 +151,12 @@ class ReelImage(Trackable):
     description = models.CharField(verbose_name=_(u'Description'), max_length=100, null=False)
     width = models.PositiveIntegerField(verbose_name=_(u'Reel image width'), null=False, editable=False)
     height = models.PositiveIntegerField(verbose_name=_(u'Reel image height'), null=False, editable=False)
-    image = models.ImageField(upload_to='reel', null=False, height_field='height', width_field='width')
-    link_own = models.URLField(verbose_name=_(u'Target'), null=True, blank=True,
-                               help_text=_(u'A reel image will become a link if it has a value in this field, or the '
-                                           u'owner reel has something in the default target field. If neither of those '
-                                           u'cases occur, the reel image will not be a link'))
+    image = models.ImageField(upload_to='reel', null=False, height_field='height', width_field='width',
+                              verbose_name=_(u'Image'))
+    link_own = models.CharField(max_length=255, verbose_name=_(u'Target'), null=True, blank=True,
+                                help_text=_(u'A reel image will become a link if it has a value in this field, or the '
+                                            u'owner reel has something in the default target field. If neither of those '
+                                            u'cases occur, the reel image will not be a link'))
 
     @property
     def target(self):
