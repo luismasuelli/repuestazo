@@ -79,7 +79,7 @@
                         index = 0;
                     }
                     $rootScope.reel.current = $rootScope.reel.image_list[index];
-                }, 8000);
+                }, 4000);
             })
             .error(function(){
 
@@ -177,6 +177,12 @@
                 $rootScope.textoGarantia = data.entries[0].value;
             });
         $state.go('home');
+        $rootScope.todasLasPromociones = [];
+        $http
+            .get('ads/reel/reelpromos', {})
+            .success(function(data) {
+                $rootScope.todasLasPromociones = data.image_list;
+            })
     }]);
 
     Index.controller('Index.Home', ['$scope', function($scope){

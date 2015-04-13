@@ -1,0 +1,93 @@
+[
+    {
+        "fields": {
+            "code": "reelpromos",
+            "name": "Reel de Promociones",
+            "height": 783,
+            "width": 3100,
+            "created_on": "2015-04-13T01:09:27.362Z",
+            "updated_on": "2015-04-13T01:09:27.370Z",
+            "description": "En realidad no es un reel sino una lista de imagenes que van a ser desplegadas secuencialmente"
+        },
+        "model": "advertisement.reeltype",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "link_prevails": false,
+            "code": "reelpromos",
+            "name": "Reel de Promociones",
+            "reel_type": 2,
+            "link_default": "promociones",
+            "created_on": "2015-04-13T01:28:32.956Z",
+            "updated_on": "2015-04-13T01:28:33.220Z",
+            "description": "Reel de promociones - lista  de imagenes para mostrar, aunque no sean tipo reel"
+        },
+        "model": "advertisement.reel",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "description": "Dispositivo de Rastreo Chevrolet",
+            "sequence": 1,
+            "image": "reel/imagen1_promo.jpg",
+            "height": 783,
+            "width": 3100,
+            "created_on": "2015-04-13T01:28:33.004Z",
+            "link_own": "",
+            "updated_on": "2015-04-13T01:28:33.227Z",
+            "reel": 2,
+            "name": "Dispositivo de Rastreo"
+        },
+        "model": "advertisement.reelimage",
+        "pk": 5
+    },
+    {
+        "fields": {
+            "description": "Pastillas de Freno Spark GT",
+            "sequence": 2,
+            "image": "reel/imagen2_promo.jpg",
+            "height": 783,
+            "width": 3100,
+            "created_on": "2015-04-13T01:28:33.019Z",
+            "link_own": "",
+            "updated_on": "2015-04-13T01:28:33.251Z",
+            "reel": 2,
+            "name": "Pastillas de Freno"
+        },
+        "model": "advertisement.reelimage",
+        "pk": 6
+    },
+    {
+        "fields": {
+            "description": "Guardachoque Delantero",
+            "sequence": 3,
+            "image": "reel/imagen3_promo.jpg",
+            "height": 783,
+            "width": 3100,
+            "created_on": "2015-04-13T01:28:33.033Z",
+            "link_own": "",
+            "updated_on": "2015-04-13T01:28:33.262Z",
+            "reel": 2,
+            "name": "Guardachoque Delantero"
+        },
+        "model": "advertisement.reelimage",
+        "pk": 7
+    },
+    {
+        "fields": {
+            "description": "GPS Original Chevrolet",
+            "sequence": 4,
+            "image": "reel/imagen4_promo.jpg",
+            "height": 783,
+            "width": 3100,
+            "created_on": "2015-04-13T01:28:33.047Z",
+            "link_own": "",
+            "updated_on": "2015-04-13T01:28:33.273Z",
+            "reel": 2,
+            "name": "GPS Original"
+        },
+        "model": "advertisement.reelimage",
+        "pk": 8
+    }
+]

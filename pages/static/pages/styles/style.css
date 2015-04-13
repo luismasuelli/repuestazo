@@ -540,6 +540,10 @@ img#reel-target {
     border-bottom: 1px solid silver;
 }
 
+.no-underline .silver-underline {
+    border-bottom: none;
+}
+
 .silver-leftline {
     border-left: 1px solid silver;
 }
@@ -572,4 +576,34 @@ div#garantia-bar {
     text-align: left;
     white-space: pre-line;
     font-weight: 600;
+    width: 1168px;
+    height: 701px;
+    background: url('../images/bg-garantia.png') center center no-repeat;
+    background-size: contain;
+    padding: 120px 50px 175px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+div#garantia-bar .garantia-text {
+    overflow-y: auto;
+    height: 100%;
+}
+
+div#promos-bar.half {
+    min-height: 165px;
+}
+
+div#all-promos-bar {
+    text-align: center;
+}
+
+div#all-promos-bar .img-holder {
+    text-align: center;
+}
+
+div#all-promos-bar img {
+    height: 152px;
+    width: 600px;
+    cursor: pointer;
 }

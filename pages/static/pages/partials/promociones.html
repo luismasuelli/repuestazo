@@ -1,0 +1,36 @@
+<div id="all-promos-bar">
+    <div class="center-block">
+
+    </div>
+    <img ng-repeat="img in todasLasPromociones" ng-src="{{ img.image }}" ng-click="go.formulario(img.target)" />
+</div>
+<div id="buttons-bar">
+    <div id="garantia" ng-click="go.garantia()">
+        <div class="texto">
+            <span class="bigger">Garant&iacute;a</span><br/>de f&aacute;brica en repuestos
+        </div>
+    </div>
+    <div id="busca" ng-click="go.formulario('busca')">
+        <div class="texto">
+            <span class="bigger">Busca</span><br/>tus repuestos ahora
+        </div>
+    </div>
+    <div id="informate" ng-click="go.informate()">
+        <div class="texto">
+            <span class="bigger">Inf&oacute;rmate</span><br/>c&oacute;mo pedir tu repuesto
+        </div>
+    </div>
+</div>
+<div id="promos-bar" class="half no-underline">
+    <div id="reel-blog">
+        <div id="reel-holder" class="silver-underline">
+            <img id="reel-target" ng-src="{{ reel.current.image }}" ng-click="go.formulario('reel')" />
+        </div>
+        <div id="blog-separator" class="silver-leftline"></div>
+        <div id="blog-link-holder" class="silver-underline">
+            <div id="blog-link" ng-click="go.blog()"></div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
