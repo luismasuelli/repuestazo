@@ -1,0 +1,31 @@
+[
+    {
+        "fields": {
+            "code": "informate",
+            "name": "Informate",
+            "height": 1892,
+            "width": 4000,
+            "created_on": "2015-04-14T04:03:21.757Z",
+            "updated_on": "2015-04-14T04:03:21.763Z",
+            "description": "Banner para la seccion de informacion, o cualquiera similar, de la pagina"
+        },
+        "model": "advertisement.bannertype",
+        "pk": 3
+    },
+    {
+        "fields": {
+            "code": "informate",
+            "description": "Banner para la seccion de informacion de la pagina",
+            "image": "banner/como_pedir.png",
+            "banner_type": 3,
+            "height": 1892,
+            "width": 4000,
+            "created_on": "2015-04-14T04:05:22.143Z",
+            "target": "",
+            "updated_on": "2015-04-14T04:05:22.265Z",
+            "name": "Informate"
+        },
+        "model": "advertisement.banner",
+        "pk": 5
+    }
+]

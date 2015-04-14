@@ -607,3 +607,13 @@ div#all-promos-bar img {
     width: 600px;
     cursor: pointer;
 }
+
+div#informate-bar {
+    text-align: center;
+}
+
+div#informate-bar img {
+    width: 1000px;
+    height: 473px;
+    cursor: pointer;
+}

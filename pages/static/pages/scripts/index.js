@@ -180,6 +180,12 @@
             .get('ads/reel/reelpromos', {})
             .success(function(data) {
                 $rootScope.todasLasPromociones = data.image_list;
+            });
+        $rootScope.imagenInformate = {};
+        $http
+            .get('ads/banner/informate', {})
+            .success(function(data) {
+                $rootScope.imagenInformate = data;
             })
     }]);
 
