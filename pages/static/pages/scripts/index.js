@@ -9,9 +9,7 @@
             promociones: function() { $state.go('promociones') },
             informate: function() { $state.go('informate') },
             garantia: function() { $state.go('garantia') },
-            promoIzquierda: function() { $state.go('promo-izquierda') },
-            promoDerecha: function() { $state.go('promo-derecha') },
-            formulario: function(tag) { $state.go('promo-derecha', {tracking: tag}) },
+            formulario: function(tag) { $state.go('formulario', {tracking: tag}) },
             blog: function(){ $state.go('blog') }
         };
         $rootScope.playHomeReel= function() {
@@ -197,12 +195,6 @@
     Index.controller('Index.Garantia', ['$scope', function($scope){
 
     }]);
-    Index.controller('Index.PromoIzquierda', ['$scope', function($scope){
-
-    }]);
-    Index.controller('Index.PromoDerecha', ['$scope', function($scope){
-
-    }]);
     Index.controller('Index.Blog', ['$scope', function($scope){
 
     }]);
@@ -273,14 +265,6 @@
             .state('garantia', {
                 templateUrl: settings.STATIC_URL + 'pages/partials/garantia.html',
                 controller: 'Index.Garantia'
-            })
-            .state('promo-izquierda', {
-                templateUrl: settings.STATIC_URL + 'pages/partials/promo-izquierda.html',
-                controller: 'Index.PromoIzquierda'
-            })
-            .state('promo-derecha', {
-                templateUrl: settings.STATIC_URL + 'pages/partials/promo-derecha.html',
-                controller: 'Index.PromoDerecha'
             })
             .state('blog', {
                 templateUrl: settings.STATIC_URL + 'pages/partials/blog.html',

@@ -1,7 +1,4 @@
 <div id="all-promos-bar">
-    <div class="center-block">
-
-    </div>
     <img ng-repeat="img in todasLasPromociones" ng-src="{{ img.image }}" ng-click="go.formulario(img.target)" />
 </div>
 <div id="buttons-bar">
@@ -24,7 +21,7 @@
 <div id="promos-bar" class="half no-underline">
     <div id="reel-blog">
         <div id="reel-holder" class="silver-underline">
-            <img id="reel-target" ng-src="{{ reel.current.image }}" ng-click="go.formulario('reel')" />
+            <img id="reel-target" ng-src="{{ reel.current.image }}" ng-click="go.formulario(reel.current.target)" />
         </div>
         <div id="blog-separator" class="silver-leftline"></div>
         <div id="blog-link-holder" class="silver-underline">
