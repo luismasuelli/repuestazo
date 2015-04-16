@@ -1,5 +1,14 @@
 (function(){
 
+    var FIELDS = {
+        phone_number: 'Número de teléfono',
+        city: 'Ciudad',
+        name: 'Nombre',
+        content: 'Comentarios',
+        address: 'Dirección',
+        email: 'E-mail'
+    };
+
     var Index = angular.module('Index', ['ui.router', 'ngCookies']);
 
     Index.controller('Index.Main', ['$rootScope', '$state', '$http', '$interval', '$timeout', 'Settings', function($rootScope, $state, $http, $interval, $timeout, settings) {
@@ -204,13 +213,50 @@
     Index.controller('Index.Blog', ['$scope', function($scope){
 
     }]);
-    Index.controller('Index.Formulario', ['$rootScope', '$scope', '$http', '$state', '$stateParams', '$cookies',
-                                          function($rootScope, $scope, $http, $state, $stateParams, $cookies){
-        var headers = {
-            'Accept-Language': 'es-ec',
-            'X-CSRFToken': $cookies['csrftoken']
-        };
+    Index.controller('Index.Formulario', ['$rootScope', '$scope', '$http', '$state', '$stateParams', '$cookies', 'Settings',
+                                          function($rootScope, $scope, $http, $state, $stateParams, $cookies, settings){
         var tracking = $stateParams.tracking;
+        $scope.success = false;
+        $scope.form = {
+            name: '',
+            email: '',
+            address: '',
+            phone_number: '',
+            city: '',
+            content: '',
+            tracking: tracking
+        };
+        $scope.send = function() {
+            $scope.errors = null;
+            $http
+                .post(settings.CONTACT_URL, $scope.form, {
+                    headers: {
+                        'Accept-Language': 'es-ec',
+                        'X-CSRFToken': $cookies['csrftoken']
+                    }
+                })
+                .success(function(data, status, headers, config){
+                    $scope.success = true;
+                })
+                .error(function(data, status, headers, config){
+                    if (status == 400) {
+                        var errors = [];
+                        angular.forEach(data, function(items, field){
+                            if (field != '__all__') {
+                                angular.forEach(items, function(value, index){
+                                    items[index] = (FIELDS[field] || field) + ': ' + value;
+                                });
+                            }
+                            Array.prototype.push.apply(errors, items);
+                        });
+                        $scope.errors = errors;
+                    } else if (status == 429) {
+                        $scope.errors = ['Debes esperar un tiempo entre diferentes consultas'];
+                    } else {
+                        $scope.errors = ['Ocurrió un error interno. Consule al administrador del sitio si el mismo persiste'];
+                    }
+                })
+        }
     }]);
 
     Index.provider('Settings', ['$windowProvider', function($wp) {
@@ -250,7 +296,8 @@
     Index.config(['$stateProvider', 'SettingsProvider', function($stateProvider, settingsProvider){
         settingsProvider.collect({
             'STATIC_URL': '/static/',
-            'MEDIA_URL': '/media/'
+            'MEDIA_URL': '/media/',
+            'CONTACT_URL': '/contact/'
         });
 
         var settings = settingsProvider.$get();

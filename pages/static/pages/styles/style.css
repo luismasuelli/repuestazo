@@ -36,8 +36,11 @@ form.popup-repuestazo .header {
     height: 100px;
     width: 50%;
     overflow: visible;
-    border-bottom: 2px solid white;
     margin-bottom: 15px;
+}
+
+form.popup-repuestazo .header img {
+    border-bottom: 1px solid white;
 }
 
 form.popup-repuestazo .form-group {
@@ -616,4 +619,9 @@ div#informate-bar img {
     width: 1000px;
     height: 473px;
     cursor: pointer;
+}
+
+div#contact-form {
+    float: left;
+    width: 550px;
 }
