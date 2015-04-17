@@ -1,0 +1,61 @@
+[
+    {
+        "fields": {
+            "code": "reelform",
+            "name": "Reel tipo formulario",
+            "height": 1139,
+            "width": 1500,
+            "created_on": "2015-04-17T01:56:38.011Z",
+            "updated_on": "2015-04-17T01:57:07.463Z",
+            "description": "Reel como los que se muestran en el formulario"
+        },
+        "model": "advertisement.reeltype",
+        "pk": 3
+    },
+    {
+        "fields": {
+            "link_prevails": true,
+            "code": "reelform",
+            "name": "Reel de Formulario",
+            "reel_type": 3,
+            "link_default": "",
+            "created_on": "2015-04-17T01:59:47.009Z",
+            "updated_on": "2015-04-17T01:59:47.318Z",
+            "description": "Reel para el formulario de contacto"
+        },
+        "model": "advertisement.reel",
+        "pk": 3
+    },
+    {
+        "fields": {
+            "description": "Escr\u00edbenos y te asesoramos de inmediato",
+            "sequence": 1,
+            "image": "reel/imagen1_formulario.jpg",
+            "height": 1139,
+            "width": 1500,
+            "created_on": "2015-04-17T01:59:47.061Z",
+            "link_own": "",
+            "updated_on": "2015-04-17T01:59:47.326Z",
+            "reel": 3,
+            "name": "Qu\u00e9 repuesto necesitas?"
+        },
+        "model": "advertisement.reelimage",
+        "pk": 9
+    },
+    {
+        "fields": {
+            "description": "Escr\u00edbenos y te enviaremos toda la informaci\u00f3n de los mejores accesorios para tu veh\u00edculo",
+            "sequence": 2,
+            "image": "reel/imagen2_formulario.jpg",
+            "height": 1139,
+            "width": 1500,
+            "created_on": "2015-04-17T01:59:47.073Z",
+            "link_own": "",
+            "updated_on": "2015-04-17T01:59:47.345Z",
+            "reel": 3,
+            "name": "Buscas accesorios?"
+        },
+        "model": "advertisement.reelimage",
+        "pk": 10
+    }
+]

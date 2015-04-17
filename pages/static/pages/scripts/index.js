@@ -195,6 +195,28 @@
             .get('ads/banner/informate', {})
             .success(function(data) {
                 $rootScope.imagenInformate = data;
+            });
+        $rootScope.form_reel = {
+            "images_list": [],
+            "code": "reelform",
+            "name": "Reel del Form",
+            "description": "Reel del formulario",
+            "link_default": "",
+            "link_prevails": true
+        };
+        $http
+            .get('/ads/reel/reelform', {})
+            .success(function(data){
+                $rootScope.form_reel = data;
+                $rootScope.form_reel.current = null;
+                var index = 0;
+                $interval(function(){
+                    index++;
+                    if (index == $rootScope.form_reel.image_list.length) {
+                        index = 0;
+                    }
+                    $rootScope.form_reel.current = $rootScope.form_reel.image_list[index];
+                }, 4000);
             })
     }]);
 
