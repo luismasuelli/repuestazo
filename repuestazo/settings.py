@@ -36,11 +36,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'grimoire.django.xmail',
+    'tinymce',
     'rest_framework',
     'customers',
     'pages',
     'advertisement',
     'stock',
+    'blog'
 )
 
 MIDDLEWARE_CLASSES = (
