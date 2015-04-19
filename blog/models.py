@@ -10,7 +10,7 @@ class Category(models.Model):
     Categoria de entradas de blog.
     """
 
-    code = models.SlugField(max_length=20, null=False, blank=False, unique=True, verbose_name=_(u'Code'))
+    code = models.SlugField(max_length=20, null=False, blank=True, unique=True, verbose_name=_(u'Code'))
     name = models.CharField(max_length=40, null=False, blank=False, verbose_name=_(u'Name'))
     description = models.CharField(max_length=255, null=False, blank=False, verbose_name=_(u'Description'))
 
@@ -49,7 +49,7 @@ class Entry(Trackable):
     """
 
     category = models.ForeignKey(Category)
-    slug = models.CharField(max_length=50, null=False, blank=False, verbose_name=_(u'Slug'))
+    slug = models.CharField(max_length=50, null=False, blank=True, verbose_name=_(u'Slug'))
     title = models.CharField(max_length=50, null=False, blank=False, verbose_name=_(u'Title'))
     content = HTMLField(max_length=16777215, null=False, blank=False, verbose_name=_(u'Content'))
 
