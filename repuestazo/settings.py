@@ -111,7 +111,8 @@ EMAIL_USE_SSL = False
 EMAIL_BACKEND = 'grimoire.django.xmail.backends.AsyncEmailBackend'
 XMAIL_BRIDGED_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-DEFAULT_FROM_NAME = u'Atención al Cliente <atencion@repuestazo.com>'
+DEFAULT_FROM_NAME = u'Atención al Cliente'
+DEFAULT_FROM_EMAIL = u'atencion@repuestazo.com'
 DEFAULT_RECIPIENTS = {
     'contact': ['sguevara@autosierra.com.ec', 'quimelia@quimelia.com']
 }
