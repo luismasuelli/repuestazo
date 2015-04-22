@@ -2,9 +2,11 @@ from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from grimoire.django.xmail.admin import AsyncEmailEntry, AsyncMailAdmin
+from grimoire.django.dynsettings.admin import DynamicSetting, DynamicSettingAdmin
 from .admin import site
 
 site.register(AsyncEmailEntry, AsyncMailAdmin)
+site.register(DynamicSetting, DynamicSettingAdmin)
 
 urlpatterns = patterns('',
     url(r'', include('pages.urls')),
