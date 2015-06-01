@@ -14,6 +14,15 @@ html, body {
 
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
+.form-dialog.popup {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
 .form-dialog .modal-content {
     background-color: red;
     padding: 8px;

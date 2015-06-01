@@ -32,6 +32,34 @@
         </div>
     </div>
 </div>
+<script type="text/ng-template" id="display.promo.html">
+    <form class="form-horizontal popup-repuestazo" novalidate="novalidate">
+        <div class="form-group">
+            <label class="col-sm-1 control-label">Producto</label>
+            <label class="col-sm-offset-1 col-sm-4 control-label">{{ currentPromo.product }}</label>
+            <label class="col-sm-offset-1 col-sm-1 control-label">A&ntilde;o</label>
+            <label class="col-sm-offset-1 col-sm-2 control-label">{{ currentPromo.year }}</label>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-1 control-label">Marca</label>
+            <label class="col-sm-offset-1 col-sm-4 control-label">{{ currentPromo.brand }}</label>
+            <label class="col-sm-offset-1 col-sm-1 control-label">Modelo</label>
+            <label class="col-sm-offset-1 col-sm-2 control-label">{{ currentPromo.model }}</label>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-1 control-label">Oferta</label>
+            <label class="col-sm-offset-1 col-sm-4 control-label">{{ currentPromo.offer }}</label>
+            <label class="col-sm-offset-1 col-sm-1 control-label">Descuento</label>
+            <label class="col-sm-offset-1 col-sm-2 control-label">{{ currentPromo.discount }}</label>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-default col-sm-offset-5" ng-click="goPromo(currentPromo)">Solicitar</button>
+        </div>
+    </form>
+    <div class="bg-success text-success messages-list" ng-if="success">
+        Su consulta ha sido enviada con &eacute;xito
+    </div>
+</script>
 <div id="promos-bar">
     <div id="disclaimer">Aplican restricciones. Promoci&oacute;n v&aacute;lida s&oacute;lo en Ecuador.</div>
     <div id="reel-blog">

@@ -9,9 +9,10 @@
         email: 'E-mail'
     };
 
-    var Index = angular.module('Index', ['ui.router', 'ngCookies']);
+    var Index = angular.module('Index', ['ui.bootstrap', 'ui.router', 'ngCookies']);
 
-    Index.controller('Index.Main', ['$rootScope', '$state', '$http', '$interval', '$timeout', 'Settings', function($rootScope, $state, $http, $interval, $timeout, settings) {
+    Index.controller('Index.Main', ['$rootScope', '$state', '$http', '$interval', '$timeout', 'Settings', '$modal',
+                     function($rootScope, $state, $http, $interval, $timeout, settings, $modal) {
         $rootScope.STATIC_URL = settings.STATIC_URL;
         $rootScope.go = {
             home: function() { $state.go('home') },
@@ -172,9 +173,39 @@
         };
         $rootScope.popupPromo = function(id) {
             if (id) {
-                //TODO implementar
                 var url = '/replacements/cheap/' + id;
                 console.log('Accediendo a ' + url);
+                $http
+                    .get(url)
+                    .success(function(data) {
+                        $rootScope.modalState = 'closed';
+                        $rootScope.currentPromo = data;
+                        if ($rootScope.modalState != 'opened') {
+                            $rootScope.modalState = 'opened';
+                            console.log("opening ...");
+                            var instance = $modal.open({
+                                keyboard: true,
+                                backdrop: true,
+                                templateUrl: 'display.promo.html',
+                                windowClass: 'form-dialog popup',
+                                scope: $rootScope,
+                                controller: ['$scope', '$modalInstance',
+                                    function($scope, $modalInstance){
+                                        $scope.goPromo = function(promo){
+                                            $modalInstance.close();
+                                            $state.go('formulario',
+                                                {defaultText: "Buenos días.\n\nEstoy interesado en adquirir: \"" + promo.product +
+                                                              "\" para marca \"" + promo.brand +  "\" y modelo \"" + promo.model + "\"."});
+                                        };
+                                    }]
+                            });
+                            instance.result.then(function(){
+                                $rootScope.modalState = 'closed';
+                            }, function(){
+                                $rootScope.modalState = 'closed';
+                            });
+                        }
+                    });
             }
         };
         $rootScope.textoGarantia = "Cargando ...";
@@ -238,6 +269,7 @@
     Index.controller('Index.Formulario', ['$rootScope', '$scope', '$http', '$state', '$stateParams', '$cookies', 'Settings',
                                           function($rootScope, $scope, $http, $state, $stateParams, $cookies, settings){
         var tracking = $stateParams.tracking;
+        var defaultText = $stateParams.defaultText || '';
         $scope.success = false;
         $scope.form = {
             name: '',
@@ -245,7 +277,7 @@
             address: '',
             phone_number: '',
             city: '',
-            content: '',
+            content: defaultText,
             tracking: tracking
         };
         $scope.send = function() {
@@ -346,7 +378,7 @@
                 controller: 'Index.Blog'
             })
             .state('formulario', {
-                params: ['tracking'],
+                params: ['tracking', 'defaultText'],
                 templateUrl: settings.STATIC_URL + 'pages/partials/formulario.html',
                 controller: 'Index.Formulario'
             });

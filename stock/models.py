@@ -67,7 +67,7 @@ class Replacement(Trackable):
         price = self.price or self.cost
         if not offer or not price:
             return None
-        return "%1.2f%%" % ((offer - price) * Decimal(-100.0) / price)
+        return "%1.2f%%" % (float((offer - price) * Decimal(-100.0) / price))
 
     @classmethod
     def load_xls(cls, xls_file):
