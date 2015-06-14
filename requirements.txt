@@ -6,3 +6,5 @@ openpyxl==2.2.0
 django-xmail-ritual>=0.0.11
 django-dynsettings-ritual>=0.0.5
 django-tinymce==1.5.3
+sqlparse-0.1.15
+pytz==2015.4

@@ -8,7 +8,8 @@ class CategoryAdmin(ModelAdmin):
 
 
 class EntryAdmin(ModelAdmin):
-    pass
+
+    exclude = ['preview']
 
 
 site.register(Category, CategoryAdmin)

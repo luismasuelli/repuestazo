@@ -142,6 +142,24 @@ msgstr "Calificación"
 msgid "Category"
 msgstr "Categoría"
 
+msgid "Categories"
+msgstr "Categorías"
+
+msgid "Entry"
+msgstr "Entrada"
+
+msgid "Entries"
+msgstr "Entradas"
+
+msgid "Title"
+msgstr "Título"
+
+msgid "Preview"
+msgstr "Previsualización"
+
+msgid "Slug"
+msgstr "Slug"
+
 msgid "Product"
 msgstr "Producto"
 
