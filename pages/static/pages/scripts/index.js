@@ -9,6 +9,21 @@
         email: 'E-mail'
     };
 
+    var MONTHS = [
+        'Ene',
+        'Feb',
+        'Mar',
+        'Abr',
+        'May',
+        'Jun',
+        'Jul',
+        'Ago',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec'
+    ];
+
     var Index = angular.module('Index', ['ui.bootstrap', 'ui.router', 'ngCookies']);
 
     Index.controller('Index.Main', ['$rootScope', '$state', '$http', '$interval', '$timeout', 'Settings', '$modal',
@@ -263,8 +278,78 @@
     Index.controller('Index.Garantia', ['$scope', function($scope){
 
     }]);
-    Index.controller('Index.Blog', ['$scope', function($scope){
-
+    Index.controller('Index.Blog', ['$scope', '$state', '$http', function($scope, $state, $http){
+        var date = new Date();
+        $scope.goList = function(year, month) {
+            $state.go('blog.list', {
+                month: month,
+                year: year
+            });
+        };
+        $scope.errorOnPeriods = false;
+        $scope.loadingPeriods = true;
+        $scope.monthName = function(month) {
+            return MONTHS[month - 1];
+        };
+        $http
+            .get('/blog/summary', {})
+            .success(function(data){
+                $scope.loadingPeriods = false;
+                if (!data) {
+                    data = [
+                        {
+                            created_year: date.getFullYear(),
+                            created_month: date.getMonth() + 1,
+                            entries_month: 0
+                        }
+                    ]
+                }
+                var last = data[data.length - 1];
+                $scope.periods = data;
+                $scope.errorOnPeriods = false;
+                $scope.goList(last.created_year, last.created_month);
+            })
+            .error(function(data, status){
+                $scope.loadingPeriods = false;
+                $scope.errorOnPeriods = true;
+            });
+    }]);
+    Index.controller('Index.Blog.One', ['$scope', '$state', '$stateParams', '$http',
+                                        function($scope, $state, $stateParams, $http){
+        $scope.errorOnEntry = false;
+        $scope.loadingEntry = true;
+        $http
+            .get('/blog/entry/' + ($stateParams.id || 0), {})
+            .success(function(data){
+                $scope.entry = data;
+                $scope.loadingEntry = false;
+                $scope.errorOnEntry = false;
+            })
+            .error(function(data, status){
+                $scope.errorOnEntry = true;
+                $scope.loadingEntry = false;
+            });
+    }]);
+    Index.controller('Index.Blog.List', ['$scope', '$state', '$stateParams', '$http',
+                                         function($scope, $state, $stateParams, $http){
+        $scope.goOne = function(id) {
+            $state.go('blog.one', {
+                id: id
+            });
+        };
+        $scope.errorOnEntriesList = false;
+        $scope.loadingEntriesList = true;
+        $http
+            .get('/blog/entries/' + ($stateParams.year || 2000) + '/' + ($stateParams.month || 0), {})
+            .success(function(data){
+                $scope.entriesList = data;
+                $scope.errorOnEntriesList = false;
+                $scope.loadingEntriesList = false;
+            })
+            .error(function(data, status){
+                $scope.errorOnEntriesList = true;
+                $scope.loadingEntriesList = false;
+            });
     }]);
     Index.controller('Index.Formulario', ['$rootScope', '$scope', '$http', '$state', '$stateParams', '$cookies', 'Settings',
                                           function($rootScope, $scope, $http, $state, $stateParams, $cookies, settings){
@@ -376,6 +461,16 @@
             .state('blog', {
                 templateUrl: settings.STATIC_URL + 'pages/partials/blog.html',
                 controller: 'Index.Blog'
+            })
+            .state('blog.one', {
+                params: ['id'],
+                templateUrl: settings.STATIC_URL + 'pages/partials/blog-one.html',
+                controller: 'Index.Blog.One'
+            })
+            .state('blog.list', {
+                params: ['year', 'month'],
+                templateUrl: settings.STATIC_URL + 'pages/partials/blog-list.html',
+                controller: 'Index.Blog.List'
             })
             .state('formulario', {
                 params: ['tracking', 'defaultText'],

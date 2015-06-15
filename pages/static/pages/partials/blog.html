@@ -1,0 +1,19 @@
+<div id="blog">
+    <div class="blog-content" ng-view></div>
+    <div class="blog-picker">
+        <a href="javascript:void(0)"
+           ng-repeat="period in periods"
+           ng-click="goList(period.created_year, period.created_month)"
+           ng-if="!errorOnPeriods && !loadingPeriods">
+            {{ monthName(period.created_month) }} {{ period.created_year }} ({{ period.entries_count }})
+        </a>
+        <a href="javascript:void(0)"
+           ng-if="errorOnPeriods">
+            Ocurri&oacute; un error
+        </a>
+        <a href="javascript:void(0)"
+           ng-if="loadingPeriods">
+            Cargando ...
+        </a>
+    </div>
+</div>
