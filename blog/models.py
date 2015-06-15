@@ -99,7 +99,7 @@ class MonthEntriesBreakdownQueryset(models.QuerySet):
         select @id := @id + 1 as id, year(created_on) as created_year, month(created_on) as created_month, count(1) as entries_count
         from %s t, (SELECT @i:=0) c
         group by created_year, created_month
-        order by created_year, created_month
+        order by created_year DESC, created_month DESC
         """ % Entry._meta.db_table)
 
 
