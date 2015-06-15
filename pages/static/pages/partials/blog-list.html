@@ -1,0 +1,6 @@
+<div class="entry preview" ng-repeat="entry in entriesList">
+    <label class="title">{{ entry.title }}</label>
+    <label class="date">Fecha de publicaci&oacute;n: {{ entry.date | date "dd/MM/yy HH:mm" }}</label>
+    <label class="category">Categor&iacute;a: {{ entry.category }}</label>
+    <p class="content">{{ entry.preview }}</p>
+</div>

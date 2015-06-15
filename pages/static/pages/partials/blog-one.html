@@ -1,0 +1,6 @@
+<div class="entry full">
+    <label class="title">{{ entry.title }}</label>
+    <label class="date">Fecha de publicaci&oacute;n: {{ entry.date | date "dd/MM/yy HH:mm" }}</label>
+    <label class="category">Categor&iacute;a: {{ entry.category }}</label>
+    <p class="content" ng-bind-html="entry.content"></p>
+</div>
