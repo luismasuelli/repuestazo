@@ -1,8 +1,10 @@
-from .models import Entry, MonthEntriesBreakdown
-from rest_framework.serializers import ModelSerializer
+from .models import Entry, MonthEntriesBreakdown, Category
+from rest_framework.serializers import ModelSerializer, SlugRelatedField
 
 
 class EntrySerializer(ModelSerializer):
+
+    category = SlugRelatedField(slug_field='name', queryset=Category.objects.all())
 
     class Meta:
         model = Entry
@@ -10,6 +12,8 @@ class EntrySerializer(ModelSerializer):
 
 
 class EntryPreviewSerializer(ModelSerializer):
+
+    category = SlugRelatedField(slug_field='name', queryset=Category.objects.all())
 
     class Meta:
         model = Entry
