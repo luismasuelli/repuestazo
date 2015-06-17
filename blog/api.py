@@ -35,7 +35,7 @@ class ListEntries(ListAPIView):
     """
 
     serializer_class = EntryPreviewSerializer
-    queryset = Entry.objects.preview().preview()
+    queryset = Entry.objects.preview()
 
     def get_queryset(self):
         return super(ListEntries, self).get_queryset().for_month(self.kwargs['year'], self.kwargs['month'])

@@ -281,6 +281,7 @@
     Index.controller('Index.Blog', ['$scope', '$state', '$http', function($scope, $state, $http){
         var date = new Date();
         $scope.goList = function(year, month) {
+            console.log("Going to blog list " + year + '/' + month);
             $state.go('blog.list', {
                 month: month,
                 year: year
@@ -314,14 +315,18 @@
                 $scope.errorOnPeriods = true;
             });
     }]);
-    Index.controller('Index.Blog.One', ['$scope', '$state', '$stateParams', '$http',
-                                        function($scope, $state, $stateParams, $http){
+    Index.controller('Index.Blog.One', ['$scope', '$state', '$stateParams', '$http', '$sce',
+                                        function($scope, $state, $stateParams, $http, $sce){
+        console.log('displaying blog entry: ' + $stateParams.id);
+        $scope.entry = null;
         $scope.errorOnEntry = false;
         $scope.loadingEntry = true;
         $http
             .get('/blog/entry/' + ($stateParams.id || 0), {})
             .success(function(data){
                 $scope.entry = data;
+                $scope.entry.content = $sce.trustAsHtml($scope.entry.content);
+                console.log($scope.entry);
                 $scope.loadingEntry = false;
                 $scope.errorOnEntry = false;
             })
@@ -333,12 +338,15 @@
     Index.controller('Index.Blog.List', ['$scope', '$state', '$stateParams', '$http',
                                          function($scope, $state, $stateParams, $http){
         $scope.goOne = function(id) {
+            console.log('going to blog entry: ' + id);
             $state.go('blog.one', {
                 id: id
             });
         };
+        $scope.entriesList = [];
         $scope.errorOnEntriesList = false;
         $scope.loadingEntriesList = true;
+        console.log("Displaying: " + $stateParams.year + '/' + $stateParams.month);
         $http
             .get('/blog/entries/' + ($stateParams.year || 2000) + '/' + ($stateParams.month || 0), {})
             .success(function(data){

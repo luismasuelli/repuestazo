@@ -8,7 +8,7 @@ class EntrySerializer(ModelSerializer):
 
     class Meta:
         model = Entry
-        fields = ('created_on', 'title', 'slug', 'category', 'content')
+        fields = ('id', 'created_on', 'title', 'slug', 'category', 'content')
 
 
 class EntryPreviewSerializer(ModelSerializer):
@@ -17,7 +17,7 @@ class EntryPreviewSerializer(ModelSerializer):
 
     class Meta:
         model = Entry
-        fields = ('created_on', 'title', 'slug', 'category', 'preview')
+        fields = ('id', 'created_on', 'title', 'slug', 'category', 'preview')
 
 
 class MonthEntriesBreakdownSerializer(ModelSerializer):
