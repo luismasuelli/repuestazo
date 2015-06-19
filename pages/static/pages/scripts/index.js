@@ -301,7 +301,7 @@
                         {
                             created_year: date.getFullYear(),
                             created_month: date.getMonth() + 1,
-                            entries_month: 0
+                            entries_count: 0
                         }
                     ]
                 }
