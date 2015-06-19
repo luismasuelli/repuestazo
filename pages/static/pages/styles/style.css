@@ -684,6 +684,9 @@ div#blog div.blog-content div.entry.preview label.title {
     cursor: pointer;
 }
 
+div#blog div.blog-content div.entry.preview label.title:hover {
+    text-decoration: underline;
+}
 
 div#blog div.blog-content div.entry label.title {
     font-size: 13px;
