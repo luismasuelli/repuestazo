@@ -38,4 +38,4 @@ class ListEntries(ListAPIView):
     queryset = Entry.objects.preview()
 
     def get_queryset(self):
-        return super(ListEntries, self).get_queryset().for_month(self.kwargs['year'], self.kwargs['month']).order('-created_on')
+        return super(ListEntries, self).get_queryset().for_month(self.kwargs['year'], self.kwargs['month']).order_by('-created_on')
