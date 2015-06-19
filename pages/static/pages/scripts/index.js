@@ -296,7 +296,7 @@
             .get('/blog/summary', {})
             .success(function(data){
                 $scope.loadingPeriods = false;
-                if (!data) {
+                if (!data.length) {
                     data = [
                         {
                             created_year: date.getFullYear(),
