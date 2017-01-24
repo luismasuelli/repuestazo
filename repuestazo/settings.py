@@ -106,7 +106,7 @@ MEDIA_ROOT = '/home/rleiva/webapps/media/repuestazo/'
 
 EMAIL_HOST = 'smtp.webfaction.com'
 EMAIL_PORT = 25
-EMAIL_HOST_USER = 'atencion'
+EMAIL_HOST_USER = 'atencion_repuestazo'
 EMAIL_HOST_PASSWORD = 'mail:repuestazo$2014'
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = False
