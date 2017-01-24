@@ -2,6 +2,7 @@ from grimoire.django.dynsettings.utils import settings
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from rest_framework.generics import CreateAPIView
+import sys
 from .serializers import ContactSerializer
 
 
@@ -19,5 +20,6 @@ class ContactSendAPIView(CreateAPIView):
                       fail_silently=True,
                       html_message=render_to_string('customers/mail.contact.html', request.DATA))
         except Exception as e:
-            raise
+            print >> sys.stderr, e, e.args
+            raise e
         return result
