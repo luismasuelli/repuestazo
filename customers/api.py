@@ -14,11 +14,11 @@ class ContactSendAPIView(CreateAPIView):
         result = super(ContactSendAPIView, self).post(request, *args, **kwargs)
         try:
             send_mail(subject="Nueva consulta",
-                      message=render_to_string('customers/mail.contact.txt', request.DATA),
+                      message=render_to_string('customers/mail.contact.txt', request.data),
                       from_email=settings.DEFAULT_FROM_EMAIL,
                       recipient_list=settings.DEFAULT_RECIPIENTS['contact'],
                       fail_silently=True,
-                      html_message=render_to_string('customers/mail.contact.html', request.DATA))
+                      html_message=render_to_string('customers/mail.contact.html', request.data))
         except Exception as e:
             print >> sys.stderr, e, e.args
             raise e
