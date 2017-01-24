@@ -19,5 +19,5 @@ class ContactSendAPIView(CreateAPIView):
                       fail_silently=True,
                       html_message=render_to_string('customers/mail.contact.html', request.DATA))
         except Exception as e:
-            pass
+            raise
         return result
